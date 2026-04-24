@@ -1,6 +1,6 @@
 ---
 title: "Italiano"
-type:"docs"
+type: "docs"
 bookCollapseSection: true
 weight:1
 ---
