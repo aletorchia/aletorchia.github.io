@@ -1,5 +1,7 @@
 ---
 title: "Alessandro Manzoni"
+type: "docs"
+weight:1
 ---
 # MANZONI 
 
