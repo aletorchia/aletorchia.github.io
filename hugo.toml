@@ -4,4 +4,5 @@ title = 'I Miei Appunti'
 theme = 'hugo-book'
 
 [params]
+  BookSectionEnumerable = true
   BookTheme = 'dark'
