@@ -1,8 +1,7 @@
 baseURL = 'https://aletorchia.github.io/'
 languageCode = 'it-it'
 title = 'I Miei Appunti'
-theme = 'hugo-book' # Usa il tema Hugo Book per avere il menu a sinistra
+theme = 'hugo-book'
 
-[module]
-  [[module.imports]]
-    path = 'github.com/alex-shpak/hugo-book'
+[params]
+  BookTheme = 'dark'
