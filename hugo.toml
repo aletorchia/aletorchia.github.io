@@ -1,0 +1,12 @@
+baseURL = 'https://aletorchia.github.io/'
+languageCode = 'it-it'
+title = 'I miei Appunti'
+
+# Questo dice a Hugo di usare il sistema di moduli per il tema (gratis e automatico)
+[module]
+  [[module.imports]]
+    path = 'github.com/alex-shpak/hugo-book'
+
+[params]
+  BookTheme = 'dark' 
+  BookToC = true     # mostra l'indice dell'appunto a destra
