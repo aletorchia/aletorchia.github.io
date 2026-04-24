@@ -1,6 +1,8 @@
 ---
 title: "Italiano"
+type:"docs"
 bookCollapseSection: true
+weight:1
 ---
 # Appunti di Italiano
-Qui trovi tutto quello che abbiamo fatto in classe di italiano.
+quei pochi appunti di italiano
