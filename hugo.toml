@@ -1,0 +1,8 @@
+baseURL = 'https://aletorchia.github.io/'
+languageCode = 'it-it'
+title = 'I Miei Appunti'
+theme = 'hugo-book'
+
+[params]
+  BookSectionEnumerable = true
+  BookTheme = 'dark'
