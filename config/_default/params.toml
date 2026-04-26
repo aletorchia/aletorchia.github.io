@@ -25,8 +25,8 @@ mathEngine = "KaTeX" # "KaTeX" (default) or "MathJax"
 
   ## Button
   navBarButton = false # false (default) or true
-  navBarButtonUrl = "/docs/prologue/introduction/"
-  navBarButtonText = "Get started"
+  navBarButtonUrl = "/docs/start/start.md"
+  navBarButtonText = "appunti start"
 
   # FlexSearch
   flexSearch = true # true (default) or false
