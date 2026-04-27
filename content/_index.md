@@ -1,6 +1,6 @@
 ---
-title: "appunti"
-description: "speriamo di vedere così ."
+title: "sito appunti"
+description: "qua saranno presenti gli appunti "
 lead: "benvenuto nel sito"
 date: 2023-09-07T16:33:54+02:00
 lastmod: 2026-02-16T16:10:57+01:00

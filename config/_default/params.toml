@@ -1,6 +1,6 @@
 # Hugo
-title = "My Docs"
-description = "Congrats on setting up a new Doks project!"
+title = "miei appunti"
+description = "sito appunti"
 images = ["cover.png"]
 
 # mainSections
@@ -80,14 +80,6 @@ mathEngine = "KaTeX"
   docsRepoSubPath = ""
 
   krokiURL = "https://kroki.io"
-
-# Homepage Hero (Il bottone centrale della prima schermata)
-[homepage.hero]
-  title = "My Docs"
-  description = "Tutti i miei appunti e documenti in un unico posto."
-  [homepage.hero.button]
-    text = "Inizia a leggere"
-    link = "https://aletorchia.github.io/docs"
 
 # Debug
 [render_hooks.image]

@@ -6,7 +6,7 @@
     </div>
     <div class="col-lg-9 col-xl-8 text-center">
       <p class="lead">{{ .Params.lead | safeHTML }}</p>
-      <a class="btn btn-primary btn-cta rounded-pill btn-lg my-3" href="/docs/" role="button">{{"docs" }}</a>
+      <a class="btn btn-primary btn-cta rounded-pill btn-lg my-3" href="/docs/" role="button">{{"clicca qua per gli appunti" }}</a>
       {{ .Content }}
     </div>
   </div>
@@ -23,9 +23,9 @@
   <section class="section section-md section-features">
     <div class="container">
         <div class="col-lg-5">
-          <h2 class="h4">nella sezione <code>codes</code> troverai gli appunti</h2>
+          <h2 class="h4">nella sezione <code class="p-1 px-2 bg-dark rounded">docs</code> troverai gli appunti</h2>
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-5  ">
           <h2 class="h4">il sito è ancora in fase di sviluppo</h2>
           <p>spesso non funzionerà, non si troveranno appunti, non andranno collegamenti .</p>
         </div>
@@ -37,13 +37,6 @@
 
 {{ define "sidebar-footer" }}
 {{ if site.Params.doks.sectionFooter -}}
-<section class="section section-md container-fluid bg-light">
-  <div class="row justify-content-center text-center">
-    <div class="col-lg-7">
-      <h2 class="mt-2">Start building with Doks today</h2>
-      <a class="btn btn-primary rounded-pill px-4 my-2" href="/docs/" role="button">{{ i18n "get-started" }}</a>
-    </div>
-  </div>
-</section>
+
 {{ end -}}
 {{ end }}
