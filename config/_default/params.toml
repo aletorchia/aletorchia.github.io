@@ -23,11 +23,6 @@ mathEngine = "KaTeX"
   navbarSticky = true
   containerBreakpoint = "fluid"
 
-  ## Button nella Barra di Navigazione (In alto a destra)
-  navBarButton = true
-  navBarButtonUrl = "https://aletorchia.github.io/docs"
-  navBarButtonText = "Vai ai Documenti"
-
   # FlexSearch
   flexSearch = true
   searchExclKinds = []
