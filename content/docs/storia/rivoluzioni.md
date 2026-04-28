@@ -94,7 +94,7 @@ Questo porta alla creazione delle **società segrete** (dove veniva organizzato 
 vengono fatti per abbattere l'antico regime
 protestavano chiedendo una manifestazione
 questi moti ottengono un risolutato immediato ma poco duraturo 
-#### 1820/21 
+### 1820/21 
 primo moto(protesta) che viene realizzato da dei militari, che facevano parte di una società segreta.
 - diversi morti per queste protesta
 - moto greco unico ad avere successo 
@@ -106,14 +106,10 @@ primo moto(protesta) che viene realizzato da dei militari, che facevano parte di
         - inizia a decadere l'impero 
         - si creano molte tensioni tra i popoli per avere i terreni.    
         - da inizio a questa questione la grecia rendendosi autonoma
-#### 1830/31
+### 1830/31
 sono organizzati da delle società segrete.
 scoppiano a partire dalla francia organizzate da militari e si diffondono anche in **Belgio** (dove si ottiene un indipendenza dai paesi bassi) ma in entrambi i casi portano scarsi risultati (inizialmente esito positivo ma successivamente i sovrani riprendono il loro potere)
-## Italia 1848:
-- anno di svolta dato che:
-    - vengono coinvolti nei moti anche le fasce più basse della popolazione
-    - partecipazione di massa
-### Mazzini
+#### Mazzini
 Mazzini era membro di un massoneria, stava riflettendo su come rendere le massonerie più efficaci trovando questi problemi:
 1) estrema segretezza 
     - non tutti i membri delle massonerie sapevano cosa dovevano fare
@@ -124,7 +120,7 @@ Mazzini era membro di un massoneria, stava riflettendo su come rendere le masson
 3) fiducia sui sovrani stranieri
     - i membri delle carbonerie erano convinti che dei sovrani stranieri li aiutino
 dati questi problemi decide di progettare una svolta (successivamente ai moti del 30/31) fondando *giovane italia* che era un'altra associazione segreta
-#### pensieri di mazzini
+##### pensieri di mazzini
 - forte religiosità
     - idea di esistenza di un Dio che guida i popoli verso il progresso
 - popolo unito
@@ -134,11 +130,35 @@ dati questi problemi decide di progettare una svolta (successivamente ai moti de
         - voleva per questa nuova italia unita una **repubblica**
         - ma come uno stato unico (no federalismo)
 chi entrava nelle organizzazioni segrete aveva l'opportunita di imparare e sentire le idee di grandi illuminsti 
-### gioberti  
-- **teoria neoguelfa**
+### Italia 1848:
+- anno di svolta dato che:
+    - vengono coinvolti nei moti anche le fasce più basse della popolazione
+    - partecipazione di massa
+    - applicata la rivoluzione di mazzini 
+    - viene eletto papa Pio IX:
+        - fa diverse riforme liberali
+        - lo seguono tutti gli stati italiani tranne il regno delle 2 sicilia 
+- scatta la insurrezione a palermo (gennaio 1848)
+    - chiedono una nuova costituzione
+#### milano 
+- insurrezioni in 5 giorni
+- tutta la popolazione di milano scende in piazza 
+- barricate contro gli austriaci (che si erano chiusi nel castello sforzesco)
+### guerra tra piemonte e austria
+dopo 5 giorni (23 marzo) dalle insurrezioni di milano Carlo Alberto (piemonte) dichiara guerra agli austriaci (dichiarazione prima guerra di indipendenza).
+#### motivazioni guerra 
+Carlo Alberto dichiara guerra per:
+- mobilitare opinione pubblica
+    - i liberali e democratici all'interno del regno di savoia sostengono la causa dei milanesi
+- timore
+    - aveva paura che gli insorti milanesi transformano milano in una parigi post rivoluzione
 
-|           | Mazzini | Gioberti | Cattaneo|
-|:------------ |:---------:|:-----------:|:---------:|
+
+#### Gioberi e Cattaneo
+elaborano delle possibili soluzioni sulla nuova italia (sull'italia unita) che si cerca con le guerre di dipendenza 
+### ideeologie 
+|           | Mazzini | Gioberti| Cattaneo|
+|:------------ |:---------:|:---------------:|:---------:|
 |repubblica o monarchia|repubblica|monarchia|repubblica
 |italia unitaria o federale|unitaria| federale|confederazione di repubbliche|
-|chi deve guidare il processo?|il popolo| chiesa | il popolo |
+|chi deve guidare il processo?|il popolo| chiesa (teoria  neoguelfa)| il popolo |
