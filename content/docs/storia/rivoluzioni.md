@@ -146,12 +146,33 @@ chi entrava nelle organizzazioni segrete aveva l'opportunita di imparare e senti
 - barricate contro gli austriaci (che si erano chiusi nel castello sforzesco)
 ### guerra tra piemonte e austria
 dopo 5 giorni (23 marzo) dalle insurrezioni di milano Carlo Alberto (piemonte) dichiara guerra agli austriaci (dichiarazione prima guerra di indipendenza).
+insieme ai Savoia entrano in guerra:
+- Ferdinando II
+- Leopoldo II
 #### motivazioni guerra 
 Carlo Alberto dichiara guerra per:
 - mobilitare opinione pubblica
     - i liberali e democratici all'interno del regno di savoia sostengono la causa dei milanesi
 - timore
     - aveva paura che gli insorti milanesi transformano milano in una parigi post rivoluzione
+- espansione
+#### guerra
+Carlo Alberto guida male la guerra, mostra i suoi intenti (aveva fatto capire che voleva espandersi ad Est).
+questo modo di guidare l'esercito fa trascinare la guerra con pochi risultati, questo porta agli alleati a ritirarsi:
+- pio IX:
+    - non porta avanti una guerra con una potenza cattolica
+- Ferdinandno II
+- Leopoldo II
+in questo momento Carlo Alberto rimane da solo, e, successivamente nella battaglia di Custoza **firma l'armistizio**.
+#### dopoguerra
+a Roma, Toscana e Venezia c'è una fortissima mobilitazione che porta alla cacciata del papa e la creazione della **Reppublica Romana** che avrà la sua costituzione.
+Carlo Alberto vista la situazione, nel marzo del 1489, riprende l'inziativa e attacca di nuovo gli austriaci ma la guerra va così male che **Carlo Alberto Abdica** facendo salire al trono Vittorio Emanuele II (figlio di Carlo Alberto).
+successivamente cade anche la reppublica romana, Venezia e la Toscana.
+questo porta ad un ritorno dei precedenti sovrani (a Roma, Venezia e Toscania).
+alla caduta della repubblica dara un'aiuto la Francia 
+##### caduta repubblica romana
+Luigi Napoleone Bonaparte sarà uno degli artefici della caduta della repubblica romana 
+
 
 
 #### Gioberi e Cattaneo
