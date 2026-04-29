@@ -8,8 +8,15 @@ weight: 1
 I protocolli di routing sono fondamentali per determinare il percorso che i dati devono seguire all'interno di una rete. Si basano principalmente su due tipi di algoritmi:
 
 ## Algoritmi di Base
-* **Distance Vector**: Utilizza la distanza e il vettore delle distanze per calcolare il percorso, non conoscono la topografia, Si basano sul **costo** (metrica) e sull'**interfaccia di uscita** (*next hop*).
-* **Link State**: Si basa sulla conoscenza completa della topologia della rete da parte di ogni router.
+### Distance Vector :
++ Utilizza la distanza e il vettore delle distanze per calcolare il percorso, non conoscono la topografia, Si basano sul **costo** (metrica) e sull'**interfaccia di uscita** (*next hop*).
++ usa la dispersione per comunicare tra router (i router vicini dicono chi hanno vicino e chi possono raggiungere con un costo specifico)   
+#### problemi:
+- routing loop
+    - viene lanciato un pacchetto per verificare il distance vector ma circola in eterno senza raggiungere destinazione
+        - questo problema in genere si risolve grazie al TTL (time to live), un contatore che si riduce ad ogni salto 
+### Link State
+- Si basa sulla conoscenza completa della topologia della rete da parte di ogni router.
 
 ---
 
