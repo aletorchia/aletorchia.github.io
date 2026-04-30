@@ -165,16 +165,13 @@ questo modo di guidare l'esercito fa trascinare la guerra con pochi risultati, q
 - Leopoldo II
 in questo momento Carlo Alberto rimane da solo, e, successivamente nella battaglia di Custoza **firma l'armistizio**.
 #### dopoguerra
-a Roma, Toscana e Venezia c'è una fortissima mobilitazione che porta alla cacciata del papa e la creazione della **Reppublica Romana** che avrà la sua costituzione.
+a Roma, Toscana e Venezia c'è una fortissima mobilitazione che porta alla cacciata del papa e la creazione della **Repubblica Romana** che avrà la sua costituzione.
 Carlo Alberto vista la situazione, nel marzo del 1489, riprende l'inziativa e attacca di nuovo gli austriaci ma la guerra va così male che **Carlo Alberto Abdica** facendo salire al trono Vittorio Emanuele II (figlio di Carlo Alberto).
-successivamente cade anche la reppublica romana, Venezia e la Toscana.
+successivamente cade anche la reppublica romana,quella di Venezia e quella Toscana.
 questo porta ad un ritorno dei precedenti sovrani (a Roma, Venezia e Toscania).
-alla caduta della repubblica dara un'aiuto la Francia 
 ##### caduta repubblica romana
-Luigi Napoleone Bonaparte sarà uno degli artefici della caduta della repubblica romana 
-
-
-
+la Francia è il paese che contribuisce alla caduta della repubblica romana, in particolare Luigi Napoleone Bonaparte (nipote di Napoleone).
+con questo gesto torna il papa. <pr>
 #### Gioberi e Cattaneo
 elaborano delle possibili soluzioni sulla nuova italia (sull'italia unita) che si cerca con le guerre di dipendenza 
 ### ideeologie 
@@ -183,3 +180,64 @@ elaborano delle possibili soluzioni sulla nuova italia (sull'italia unita) che s
 |repubblica o monarchia|repubblica|monarchia|repubblica
 |italia unitaria o federale|unitaria| federale|confederazione di repubbliche|
 |chi deve guidare il processo?|il popolo| chiesa (teoria  neoguelfa)| il popolo |
+
+# regno savoia
+dopo le cadute delle repubbliche le **costituzioni approvate vengono annulate** tutte tranne quella dello statuto Albertino.
+questo significa che lo stato dei savoia è l'unica monarchia costituzionale in italia.
+## Cavour
+Cavour era un nobile di origine piemontese.
+era un secondogenito, per questo motivo i genitori hanno deciso di fargli avviare la carriera militire, ma dato il suo animo ribelle non la continua.
+inoltre Cavour era molto appassionato di scienze, e, secondo lui scienza e tecnologie sarebbe state la chiavi per la rivouzione, ma dato che la sua famiglia era [reazionaria](https://www.treccani.it/vocabolario/reazionario/).
+
+### vita
+- nobile piemontese
+- era secondogenito
+    - avviato alla carriera militare
+    - dimostra un carattere ribelle 
+    - appasionato di scienze
+        - secondo lui scienza e tecnologie sarebbero stati la chiave per la rivoluzione 
+    - la famiglia non accetta i suoi ideali (famiglia [reazionaria](https://www.treccani.it/vocabolario/reazionario/))
+        - a Cavour non interessa
+- sostenitore del liberalismo
+- non voleva che il comando di un'eventuale rivoluzione siano al comando i democratici
+- imprenditore agricolo 
+    - usava teconologie all'avanguardia per le sue tenute
+### politica (1848)
+- inizia a fare politica tardi, come giornalista 
+- ricopre diverse cariche 
+    - ministro dell'agricoltura e del commercio
+    - presidente del consiglio 
+        - fino alla sua morte (1861)
+#### unificazione 
+- nuovo regno doveva essere monarchia
+- i Savoia dovevano guidare il processo di unificazione
+- vuole un'italia unita
+- per far si che l'unificazione avvenga bisognava fare delle **riforme economiche**
+- dopo queste riforme economiche diversi esuli vengono a rifugiarsi in Piemonte
+- per riprendere la Lombaria (che era in mano agli austriaci ) doveva trovare degli alleati affidabili 
+    - inizia a cercare l'allenza dalla francia 
+    - la Francia aveva sparato alla repubblica romana 
+    - Cavour convince Napoleone III che doveva aiutare l'italia 
+##### alleanza con la Francia 
+Cavour fa partecipare il regno dei Savoia alla guerra di Crimea 
+- penisola sul mar nero
+- apparteneva all'impero ottomano (in crisi)
+    - la russia voleva approffittare la crisi dell'impero ottomano e prendersi la crimea.<pr>
+
+data la volonta della russia, e la posizione della Crimea (posizione strategica per i commerci).
+le potenze europee mandano truppe in Crimea per far si che la russia non la ottenga, Cavour partecipa a questa guerra a fianco di Francia e Inghilterra.
+la guerra ha un esito positivo per le potenze europee.
+Cavour dopo la partecipazione alla guerra viene invitato al Congresso di Parigi del 1856, usando quest'occasione per convincere i Francesi a partecipare alla guerra contro gli austraci, descrive la situazione precaria presente in italia  (pericolosa sia per l'italia che per l'europa).
+nel 1858, Felice Orsini, un mazziniano, organiza un'attentato ai danni di Napoleone III, quest'evento farà un'enorme scalpore.
+Felice Orsini scrive una [lettera al re ](https://enricogiuseppelucamarchi.blogspot.com/2018/07/copia-mano-della-lettera-di-felice.html), questa lettera convince Napoleone III che deve fare qualcosa per sistemare l'italia. questo porta ad un'alleanza tramite gli **accordi di Plombieres** (accordi segreti) che dicevano che :
+- se qualcuno dovesse attacare l'Italia la Francia sarebbe intervenuta a difesa dell'Italia.<pr>
+
+Cavour prometteva un risarcimento se i patti fossero stati rispettati : 
+- città di Nizza
+- regione dei Savoia  
+#### 2^ guerra di indipendenza
+Cavour manda delle provocazioni sul confine con l'austria che dichiarano guerra al regno dei savoia.
+dati gli accordi di Plombieres la Francia doveva intervenire a favore dell'italia e le due potenze portano delle vittorie significative verso gli austriaci, facendo andare in difficolta gli austriaci che cominciano ad arretrare.
+Solferino gli Austriaci combattono contro i francesi, a san martino combattono contro i Savoia, di queste due battaglie quella che mette più in difficolta gli austriaci è quella di Solferino. Napoleone III prende una decisione unilaterale (data le risorse impiegate dalla Francia) e quindi chiede l'armistizio agli austriaci, senza consultare i Savoia.
+Cavour vede questo gesto come un tradimento e decide di non dare i territori promessi. 
+queste vittore portano a delle insurrezioni nel centro italia, cacciano il ducato di Toscana, a questi plebisciti viene chiesto di esserre annessi ai Savoia, che ovviamente accettano.
