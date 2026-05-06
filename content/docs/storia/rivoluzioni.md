@@ -3,6 +3,7 @@ title: "Rivoluzioni"
 type: "docs"
 weight: 1
 ---
+
 # RIVOLUZIONE AMERICANA (1775-1783)
 
 ## Contesto storico
