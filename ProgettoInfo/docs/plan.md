@@ -87,7 +87,7 @@ Creare il progetto MAUI in `src/MealWise.Mobile/`, avviarlo su Android e rendere
 **Verifiche principali**
 
 - manuale: avvio app e navigazione tra le sezioni principali;
-- automatico: `dotnet build src/MealWise.Mobile/MealWise.Mobile.csproj`.
+- automatico: `dotnet build src/MealWise.Mobile/MealWise.Mobile.csproj -c Debug /p:AndroidSdkDirectory=$HOME/.android-sdk /p:JavaSdkDirectory=$HOME/.local/share/jdk-17.0.19+10`.
 
 **Rischi**
 

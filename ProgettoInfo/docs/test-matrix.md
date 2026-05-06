@@ -12,7 +12,7 @@
 | ID | Requisito o scenario | Categoria | Manuale | Automatico ora | Automatico piu' avanti | Iterazione target | Evidenza prevista | Note |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | TM-01 | Avvio app e apertura sezione `Search` da Shell | Navigation | Si | No | No | IT-01 | Da eseguire | Smoke iniziale bootstrap MAUI |
-| TM-02 | Build progetto MAUI | Build | No | Si | No | IT-01 | `dotnet build src/MealWise.Mobile/MealWise.Mobile.csproj` | Check minimo da ripetere a ogni iterazione |
+| TM-02 | Build progetto MAUI | Build | No | Si | No | IT-01 | `dotnet build src/MealWise.Mobile/MealWise.Mobile.csproj -c Debug /p:AndroidSdkDirectory=$HOME/.android-sdk /p:JavaSdkDirectory=$HOME/.local/share/jdk-17.0.19+10` | In questa macchina si usano SDK/JDK locali |
 | TM-03 | Ricerca per ingrediente valida produce risultati leggibili | API | Si | No | Si | IT-02 | Da eseguire | Lista con immagine (se disponibile) e nome |
 | TM-04 | Ricerca per categoria valida produce risultati leggibili | API | Si | No | Si | IT-02 | Da eseguire | Verifica filtro categoria |
 | TM-05 | Input non valido (vuoto) non innesca stati incoerenti | Input | Si | Si | No | IT-02 | `dotnet test` | Test logico su ViewModel/validazione input |
