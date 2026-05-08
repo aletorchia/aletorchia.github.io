@@ -14,7 +14,7 @@
                 Text="MealWise"
                 Style="{StaticResource Headline}" />
             <Label
-                Text="Cerca ricette per ingrediente o categoria."
+                Text="Scegli ingrediente o categoria, poi inserisci il valore da cercare."
                 HorizontalTextAlignment="Center"
                 TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
         </VerticalStackLayout>
@@ -23,15 +23,18 @@
             <Picker
                 Title="Tipo ricerca"
                 ItemsSource="{Binding SearchModes}"
-                SelectedItem="{Binding SelectedSearchMode}" />
+                SelectedItem="{Binding SelectedSearchMode, Mode=TwoWay}" />
 
             <SearchBar
-                Placeholder="Esempio: chicken oppure Seafood"
+                x:Name="SearchInput"
+                Placeholder="Ingrediente: chicken | Categoria: Seafood"
                 SearchCommand="{Binding SearchCommand}"
-                Text="{Binding Query}" />
+                SearchCommandParameter="{Binding Text, Source={x:Reference SearchInput}}"
+                Text="{Binding Query, Mode=TwoWay}" />
 
             <Button
                 Command="{Binding SearchCommand}"
+                CommandParameter="{Binding Text, Source={x:Reference SearchInput}}"
                 Text="Cerca" />
 
             <ActivityIndicator
@@ -64,7 +67,8 @@
             Grid.Row="2"
             IsVisible="{Binding HasData}"
             ItemsSource="{Binding Results}"
-            SelectionMode="None">
+            SelectedItem="{Binding SelectedRecipe, Mode=TwoWay}"
+            SelectionMode="Single">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:RecipeSearchResult">
                     <Border
@@ -88,7 +92,7 @@
                                     Text="{Binding Name}" />
                                 <Label
                                     FontSize="12"
-                                    Text="{Binding MealId, StringFormat='ID ricetta: {0}'}"
+                                    Text="Tocca per aprire il dettaglio"
                                     TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
                             </VerticalStackLayout>
                         </Grid>

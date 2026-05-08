@@ -8,4 +8,12 @@ public interface IRecipeSearchService
         string query,
         RecipeSearchMode mode,
         CancellationToken cancellationToken = default);
+
+    Task<RecipeDetail?> GetDetailAsync(
+        string mealId,
+        CancellationToken cancellationToken = default);
+
+    Task<IReadOnlyList<RecipeSearchResult>> GetRandomRecipesAsync(
+        int count,
+        CancellationToken cancellationToken = default);
 }

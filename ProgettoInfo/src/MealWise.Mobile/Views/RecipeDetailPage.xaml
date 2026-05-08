@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MealWise.Mobile.Views.RecipeDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:MealWise.Mobile.Models"
+    xmlns:viewmodels="clr-namespace:MealWise.Mobile.ViewModels"
+    x:DataType="viewmodels:RecipeDetailViewModel"
+    Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="16">
+            <ActivityIndicator
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}" />
+
+            <Border
+                Padding="12"
+                BackgroundColor="{AppThemeBinding Light=#FFFFF2, Dark=#332400}"
+                IsVisible="{Binding HasError}"
+                Stroke="{AppThemeBinding Light=#F0C36D, Dark=#8A6A1F}">
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Text="{Binding ErrorMessage}"
+                        TextColor="{AppThemeBinding Light=#5C4100, Dark=#FFD98A}" />
+                    <Button
+                        Command="{Binding LoadCommand}"
+                        Text="Riprova" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                IsVisible="{Binding IsEmptyState}"
+                Text="Dettaglio ricetta non disponibile."
+                HorizontalTextAlignment="Center" />
+
+            <VerticalStackLayout
+                IsVisible="{Binding HasData}"
+                Spacing="16">
+                <Image
+                    Aspect="AspectFill"
+                    HeightRequest="220"
+                    Source="{Binding ThumbnailUrl}" />
+
+                <VerticalStackLayout Spacing="4">
+                    <Label
+                        Text="{Binding MealName}"
+                        FontFamily="OpenSansSemibold"
+                        FontSize="28"
+                        LineBreakMode="WordWrap" />
+                    <Label
+                        Text="{Binding Category, StringFormat='Categoria: {0}'}"
+                        TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+                    <Label
+                        Text="{Binding Area, StringFormat='Area: {0}'}"
+                        TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+                </VerticalStackLayout>
+
+                <Label
+                    Text="Ingredienti"
+                    FontFamily="OpenSansSemibold"
+                    FontSize="22" />
+
+                <CollectionView
+                    ItemsSource="{Binding Ingredients}"
+                    SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:RecipeIngredient">
+                            <Grid Padding="0,4" ColumnDefinitions="*,Auto">
+                                <Label Text="{Binding Name}" />
+                                <Label
+                                    Grid.Column="1"
+                                    Text="{Binding Measure}"
+                                    TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label
+                    Text="Istruzioni"
+                    FontFamily="OpenSansSemibold"
+                    FontSize="22" />
+                <Label
+                    Text="{Binding Instructions}"
+                    LineHeight="1.25" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

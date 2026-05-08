@@ -48,12 +48,15 @@ public partial class SearchViewModel : ObservableObject
     [ObservableProperty]
     private bool isEmptyState;
 
+    [ObservableProperty]
+    private RecipeSearchResult? selectedRecipe;
+
     public bool HasError => !string.IsNullOrWhiteSpace(ErrorMessage);
 
     [RelayCommand]
-    private Task SearchAsync()
+    private Task SearchAsync(string? submittedQuery)
     {
-        return SearchCoreAsync(Query, SelectedSearchMode);
+        return SearchCoreAsync(submittedQuery ?? Query, SelectedSearchMode);
     }
 
     [RelayCommand]
@@ -126,6 +129,29 @@ public partial class SearchViewModel : ObservableObject
         finally
         {
             IsBusy = false;
+        }
+    }
+
+    partial void OnSelectedRecipeChanged(RecipeSearchResult? value)
+    {
+        if (value is null)
+        {
+            return;
+        }
+
+        _ = OpenRecipeAsync(value);
+    }
+
+    private async Task OpenRecipeAsync(RecipeSearchResult recipe)
+    {
+        try
+        {
+            var mealId = Uri.EscapeDataString(recipe.MealId);
+            await Shell.Current.GoToAsync($"recipe-detail?mealId={mealId}");
+        }
+        finally
+        {
+            SelectedRecipe = null;
         }
     }
 }

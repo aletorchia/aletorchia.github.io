@@ -3,13 +3,87 @@
     x:Class="MealWise.Mobile.Views.BrowsePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:MealWise.Mobile.Models"
     xmlns:viewmodels="clr-namespace:MealWise.Mobile.ViewModels"
     x:DataType="viewmodels:BrowseViewModel"
     Title="{Binding Title}">
 
-    <VerticalStackLayout Padding="16" Spacing="12">
-        <Label Text="Browse" Style="{StaticResource Headline}" />
-        <Label Text="IT-01: placeholder Browse page (MVVM + Shell)." />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="Auto,Auto,*" Padding="16" RowSpacing="16">
+        <VerticalStackLayout Grid.Row="0" Spacing="6">
+            <Label Text="Browse" Style="{StaticResource Headline}" />
+            <Label
+                Text="Scopri ricette casuali e apri il dettaglio."
+                HorizontalTextAlignment="Center"
+                TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="1" Spacing="10">
+            <Button
+                Command="{Binding LoadRandomCommand}"
+                Text="Mostra ricette casuali" />
+
+            <ActivityIndicator
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}" />
+
+            <Border
+                Padding="12"
+                BackgroundColor="{AppThemeBinding Light=#FFFFF2, Dark=#332400}"
+                IsVisible="{Binding HasError}"
+                Stroke="{AppThemeBinding Light=#F0C36D, Dark=#8A6A1F}">
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Text="{Binding ErrorMessage}"
+                        TextColor="{AppThemeBinding Light=#5C4100, Dark=#FFD98A}" />
+                    <Button
+                        Command="{Binding LoadRandomCommand}"
+                        Text="Riprova" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                IsVisible="{Binding IsEmptyState}"
+                Text="Nessuna ricetta casuale disponibile."
+                HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+
+        <CollectionView
+            Grid.Row="2"
+            IsVisible="{Binding HasData}"
+            ItemsSource="{Binding RandomRecipes}"
+            SelectedItem="{Binding SelectedRecipe, Mode=TwoWay}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:RecipeSearchResult">
+                    <Border
+                        Margin="0,0,0,12"
+                        Padding="10"
+                        Stroke="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}">
+                        <Grid ColumnDefinitions="84,*" ColumnSpacing="12">
+                            <Image
+                                Aspect="AspectFill"
+                                HeightRequest="84"
+                                Source="{Binding ThumbnailUrl}"
+                                WidthRequest="84" />
+                            <VerticalStackLayout
+                                Grid.Column="1"
+                                Spacing="4"
+                                VerticalOptions="Center">
+                                <Label
+                                    FontFamily="OpenSansSemibold"
+                                    FontSize="18"
+                                    LineBreakMode="WordWrap"
+                                    Text="{Binding Name}" />
+                                <Label
+                                    FontSize="12"
+                                    Text="Tocca per aprire il dettaglio"
+                                    TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 
 </ContentPage>

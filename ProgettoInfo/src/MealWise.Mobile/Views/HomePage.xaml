@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MealWise.Mobile.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:MealWise.Mobile.ViewModels"
+    x:DataType="viewmodels:HomeViewModel"
+    Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="18">
+            <VerticalStackLayout Spacing="8">
+                <Label
+                    Text="MealWise"
+                    Style="{StaticResource Headline}" />
+                <Label
+                    Text="Trova ricette per ingrediente o categoria e prepara il prossimo pasto."
+                    FontSize="16"
+                    HorizontalTextAlignment="Center"
+                    TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+            </VerticalStackLayout>
+
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Text="Ricerca veloce"
+                        FontFamily="OpenSansSemibold"
+                        FontSize="20" />
+                    <Label
+                        Text="Apri la ricerca per consultare TheMealDB e vedere i risultati nella stessa schermata."
+                        TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+                    <Button
+                        Command="{Binding GoToSearchCommand}"
+                        Text="Cerca ricette" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Text="Esplora"
+                        FontFamily="OpenSansSemibold"
+                        FontSize="20" />
+                    <Label
+                        Text="Apri una selezione di ricette casuali e scegli una ricetta per vedere ingredienti e istruzioni."
+                        TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+                    <Button
+                        Command="{Binding GoToBrowseCommand}"
+                        Text="Vai a Browse" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -25,10 +25,14 @@ public static class MauiProgram
 			Timeout = TimeSpan.FromSeconds(15)
 		});
 		builder.Services.AddTransient<IRecipeSearchService, RecipeSearchService>();
+		builder.Services.AddTransient<HomeViewModel>();
 		builder.Services.AddTransient<SearchViewModel>();
 		builder.Services.AddTransient<BrowseViewModel>();
+		builder.Services.AddTransient<RecipeDetailViewModel>();
+		builder.Services.AddTransient<HomePage>();
 		builder.Services.AddTransient<SearchPage>();
 		builder.Services.AddTransient<BrowsePage>();
+		builder.Services.AddTransient<RecipeDetailPage>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

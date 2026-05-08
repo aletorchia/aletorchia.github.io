@@ -9,6 +9,11 @@
 
     <TabBar>
         <ShellContent
+            Title="Home"
+            Route="home"
+            ContentTemplate="{DataTemplate views:HomePage}" />
+
+        <ShellContent
             Title="Search"
             Route="search"
             ContentTemplate="{DataTemplate views:SearchPage}" />
