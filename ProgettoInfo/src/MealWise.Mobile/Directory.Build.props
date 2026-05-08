@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup Condition="Exists('/home/ale/.jdks/jdk-21.0.11+10/bin/java')">
+    <JavaSdkDirectory>/home/ale/.jdks/jdk-21.0.11+10</JavaSdkDirectory>
+  </PropertyGroup>
+</Project>

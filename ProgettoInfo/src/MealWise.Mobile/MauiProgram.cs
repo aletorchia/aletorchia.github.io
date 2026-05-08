@@ -1,4 +1,5 @@
 ﻿using MealWise.Mobile.ViewModels;
+using MealWise.Mobile.Services;
 using MealWise.Mobile.Views;
 using Microsoft.Extensions.Logging;
 
@@ -18,6 +19,12 @@ public static class MauiProgram
 			});
 
 		builder.Services.AddSingleton<AppShell>();
+		builder.Services.AddSingleton(_ => new HttpClient
+		{
+			BaseAddress = new Uri("https://www.themealdb.com/api/json/v1/1/"),
+			Timeout = TimeSpan.FromSeconds(15)
+		});
+		builder.Services.AddTransient<IRecipeSearchService, RecipeSearchService>();
 		builder.Services.AddTransient<SearchViewModel>();
 		builder.Services.AddTransient<BrowseViewModel>();
 		builder.Services.AddTransient<SearchPage>();
