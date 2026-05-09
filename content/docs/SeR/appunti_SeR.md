@@ -10,14 +10,20 @@ I protocolli di routing sono fondamentali per determinare il percorso che i dati
 ## Algoritmi di Base
 ### Distance Vector :
 + Utilizza la distanza e il vettore delle distanze per calcolare il percorso, non conoscono la topografia, Si basano sul **costo** (metrica) e sull'**interfaccia di uscita** (*next hop*).
-+ usa la dispersione per comunicare tra router (i router vicini dicono chi hanno vicino e chi possono raggiungere con un costo specifico)   
++ usa la dispersione per comunicare tra router (i router vicini dicono chi hanno vicino e chi possono raggiungere con un costo specifico)  
++ va in convergenza in maniera lenta dato che è basato sulla propagazioone delle distanze 
 #### problemi:
 - routing loop
     - viene lanciato un pacchetto per verificare il distance vector ma circola in eterno senza raggiungere destinazione
         - questo problema in genere si risolve grazie al TTL (time to live), un contatore che si riduce ad ogni salto 
 ### Link State
 - Si basa sulla conoscenza completa della topologia della rete da parte di ogni router.
-
+- scambia informazioni con tutti i router non solo quelli vicini 
+    - invia pacchetti chiamati LSP (link state packet) a tutte le linee.
+    - solitamente viene inviato quando c'è un cambiamento nella rete
+#### pacchetto LSP
+contiene per ogni mittente l'elenco e la distanza da ogni vicino.
+ogni router esamina il numero di sequenza del pacchetto in arrivo e se risulta minore o uguale a quello memorizzato nel database lo scarta. Se invece è maggiore lo memorizza e lo trasmette in flooding 
 ---
 
 ## Caratteristiche di un Protocollo di Routing
