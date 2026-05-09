@@ -1,7 +1,7 @@
 ---
-title: "Rivoluzioni"
+title: "Rivoluzioni chat"
 type: "docs"
-weight: 1
+weight: 2
 ---
 
 # Napoleone, Rivoluzione americana, Restaurazione, moti e Risorgimento
