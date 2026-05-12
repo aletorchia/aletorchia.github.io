@@ -35,7 +35,7 @@ Il repository contiene attualmente la documentazione di progetto e una cartella 
 | IT-02 | Ricerca ricette (ingrediente/categoria) e risultati nella pagina Search | IT-01 | medio | completata |
 | IT-03 | Navigazione al dettaglio e rendering ingredienti/istruzioni | IT-02 | medio | completata |
 | IT-04 | Hardening MVP (stati UI, errori, smoke) | IT-01, IT-02, IT-03 | medio | completata in questa build |
-| IT-05 (post-MVP) | Calendario pasti locale con persistenza locale | IT-04 | medio | completata in questa build |
+| IT-05 (post-MVP) | Calendario pasti locale con persistenza SQLite | IT-04 | medio | completata (migrazione SQLite) |
 | IT-06 (post-MVP) | Lista spesa locale derivata dal calendario | IT-05 | medio-alto | completata in questa build |
 | IT-07 (post-MVP) | Ricette salvate in locale e cache dettaglio | IT-04 | medio | pianificata |
 
@@ -294,6 +294,10 @@ Introdurre la pianificazione dei pasti su calendario (giornaliero/settimanale) c
 
 - schema dati incompleto per le estensioni successive;
 - UX troppo complessa se accoppiata troppo presto alla ricerca remota.
+
+**Nota avanzamento**
+
+In IT-05 la persistenza locale del calendario e dello stato lista spesa e' stata migrata da `Preferences` a SQLite (`sqlite-net-pcl`) con migrazione automatica dei dati legacy.
 
 ### IT-06 (post-MVP) - Lista spesa locale derivata dal calendario
 

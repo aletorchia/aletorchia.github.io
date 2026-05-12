@@ -58,6 +58,12 @@ public partial class MealCalendarViewModel : ObservableObject
             HasData = false;
             IsEmptyState = false;
         }
+        catch (Exception)
+        {
+            ErrorMessage = "Non riesco a leggere il calendario locale.";
+            HasData = false;
+            IsEmptyState = false;
+        }
         finally
         {
             IsBusy = false;
@@ -81,6 +87,12 @@ public partial class MealCalendarViewModel : ObservableObject
             await RefreshCoreAsync();
         }
         catch (JsonException)
+        {
+            ErrorMessage = "Non riesco ad aggiornare il calendario locale.";
+            HasData = false;
+            IsEmptyState = false;
+        }
+        catch (Exception)
         {
             ErrorMessage = "Non riesco ad aggiornare il calendario locale.";
             HasData = false;

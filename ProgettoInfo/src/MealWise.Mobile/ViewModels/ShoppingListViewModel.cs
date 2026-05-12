@@ -64,6 +64,12 @@ public partial class ShoppingListViewModel : ObservableObject
             HasData = false;
             IsEmptyState = false;
         }
+        catch (Exception)
+        {
+            ErrorMessage = "Non riesco a leggere la lista spesa locale.";
+            HasData = false;
+            IsEmptyState = false;
+        }
         finally
         {
             IsBusy = false;
@@ -100,6 +106,12 @@ public partial class ShoppingListViewModel : ObservableObject
             HasData = false;
             IsEmptyState = false;
         }
+        catch (Exception)
+        {
+            ErrorMessage = "Non riesco ad aggiornare la lista spesa locale.";
+            HasData = false;
+            IsEmptyState = false;
+        }
         finally
         {
             IsBusy = false;
@@ -128,6 +140,12 @@ public partial class ShoppingListViewModel : ObservableObject
             HasData = false;
             IsEmptyState = false;
         }
+        catch (Exception)
+        {
+            ErrorMessage = "Non riesco ad aggiornare lo stato della lista spesa.";
+            HasData = false;
+            IsEmptyState = false;
+        }
         finally
         {
             IsBusy = false;
@@ -151,6 +169,12 @@ public partial class ShoppingListViewModel : ObservableObject
             await RefreshCoreAsync();
         }
         catch (JsonException)
+        {
+            ErrorMessage = "Non riesco a rimuovere l'elemento dalla lista spesa.";
+            HasData = false;
+            IsEmptyState = false;
+        }
+        catch (Exception)
         {
             ErrorMessage = "Non riesco a rimuovere l'elemento dalla lista spesa.";
             HasData = false;

@@ -189,6 +189,10 @@ public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributabl
         {
             PlanningMessage = "Non riesco ad aggiornare il calendario locale.";
         }
+        catch (Exception)
+        {
+            PlanningMessage = "Non riesco ad aggiornare il calendario locale.";
+        }
         finally
         {
             IsBusy = false;

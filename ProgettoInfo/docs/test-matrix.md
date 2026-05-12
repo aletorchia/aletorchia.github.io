@@ -63,7 +63,8 @@ Per una strategia automatica piu' profonda e' opportuno passare successivamente 
 ## 6. Evidenze IT-05 e IT-06
 
 - Build automatica eseguita: `dotnet build src/MealWise.Mobile/MealWise.Mobile.csproj -c Debug`.
-- Risultato build: 0 warning, 0 errori.
-- IT-05 implementata in questa build con persistenza locale tramite `Preferences` + JSON, tab `Calendario` e aggiunta ricetta dal dettaglio.
+- Risultato build: 2 warning, 0 errori.
+- IT-05 aggiornata con migrazione storage a SQLite (`sqlite-net-pcl`) per calendario e stato lista spesa, mantenendo migrazione automatica dai dati legacy `Preferences`.
 - IT-06 implementata in questa build con tab `Spesa`, derivazione ingredienti dai pasti pianificati, spunta/rimozione e aggiunta manuale elementi.
 - Test manuali ancora da eseguire su Android/emulatore: riavvio app, persistenza calendario, generazione lista spesa da ricette pianificate, spunta/rimozione item e assenza rete.
+- Warning noto: `XA0141` su `libe_sqlite3.so` (package `SQLitePCLRaw.lib.e_sqlite3.android` 2.1.2) relativo ai requisiti page size Android 16; da monitorare con update della dipendenza.
