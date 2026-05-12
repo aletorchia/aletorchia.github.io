@@ -27,9 +27,13 @@
                 <Entry
                     Placeholder="Elemento"
                     Text="{Binding NewItemName, Mode=TwoWay}" />
+                <Picker
+                    Title="Quantita'"
+                    ItemsSource="{Binding QuantityOptions}"
+                    SelectedItem="{Binding SelectedQuantity, Mode=TwoWay}" />
                 <Entry
-                    Placeholder="Quantita' o nota"
-                    Text="{Binding NewItemMeasure, Mode=TwoWay}" />
+                    Placeholder="Nota (opzionale)"
+                    Text="{Binding NewItemNote, Mode=TwoWay}" />
                 <Button
                     Command="{Binding AddManualItemCommand}"
                     Text="Aggiungi" />

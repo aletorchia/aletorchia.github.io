@@ -18,6 +18,7 @@ public partial class ShoppingListViewModel : ObservableObject
     }
 
     public ObservableCollection<ShoppingListItem> Items { get; } = new();
+    public IReadOnlyList<int> QuantityOptions { get; } = Enumerable.Range(1, 10).ToArray();
 
     [ObservableProperty]
     private string title = "Spesa";
@@ -26,7 +27,10 @@ public partial class ShoppingListViewModel : ObservableObject
     private string newItemName = string.Empty;
 
     [ObservableProperty]
-    private string newItemMeasure = string.Empty;
+    private int selectedQuantity = 1;
+
+    [ObservableProperty]
+    private string newItemNote = string.Empty;
 
     [ObservableProperty]
     private bool isBusy;
@@ -89,9 +93,11 @@ public partial class ShoppingListViewModel : ObservableObject
 
         try
         {
-            await mealPlanService.AddManualShoppingItemAsync(NewItemName, NewItemMeasure);
+            var measure = BuildManualItemMeasure();
+            await mealPlanService.AddManualShoppingItemAsync(NewItemName, measure);
             NewItemName = string.Empty;
-            NewItemMeasure = string.Empty;
+            SelectedQuantity = 1;
+            NewItemNote = string.Empty;
             await RefreshCoreAsync();
         }
         catch (InvalidOperationException ex)
@@ -198,5 +204,14 @@ public partial class ShoppingListViewModel : ObservableObject
 
         HasData = Items.Count > 0;
         IsEmptyState = Items.Count == 0;
+    }
+
+    private string BuildManualItemMeasure()
+    {
+        var quantityPart = $"x{SelectedQuantity}";
+        var notePart = NewItemNote.Trim();
+        return string.IsNullOrWhiteSpace(notePart)
+            ? quantityPart
+            : $"{quantityPart} - {notePart}";
     }
 }
