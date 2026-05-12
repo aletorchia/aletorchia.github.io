@@ -59,3 +59,11 @@ Per una strategia automatica piu' profonda e' opportuno passare successivamente 
 - TM-08 resta da verificare manualmente su device o emulatore Android: ricerca valida, tap su risultato, apertura detail e back navigation.
 - TM-09 coperta a livello di codice con fallback leggibili per categoria, area, istruzioni e lista ingredienti vuota; resta consigliato un test unitario quando verra' introdotto un progetto test.
 - TM-10 resta da verificare con test automatici o mock handler dedicato in una iterazione di testing.
+
+## 6. Evidenze IT-05 e IT-06
+
+- Build automatica eseguita: `dotnet build src/MealWise.Mobile/MealWise.Mobile.csproj -c Debug`.
+- Risultato build: 0 warning, 0 errori.
+- IT-05 implementata in questa build con persistenza locale tramite `Preferences` + JSON, tab `Calendario` e aggiunta ricetta dal dettaglio.
+- IT-06 implementata in questa build con tab `Spesa`, derivazione ingredienti dai pasti pianificati, spunta/rimozione e aggiunta manuale elementi.
+- Test manuali ancora da eseguire su Android/emulatore: riavvio app, persistenza calendario, generazione lista spesa da ricette pianificate, spunta/rimozione item e assenza rete.

@@ -10,11 +10,16 @@ namespace MealWise.Mobile.ViewModels;
 public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributable
 {
     private readonly IRecipeSearchService recipeSearchService;
+    private readonly IMealPlanService mealPlanService;
     private string mealId = string.Empty;
+    private RecipeDetail? currentDetail;
 
-    public RecipeDetailViewModel(IRecipeSearchService recipeSearchService)
+    public RecipeDetailViewModel(
+        IRecipeSearchService recipeSearchService,
+        IMealPlanService mealPlanService)
     {
         this.recipeSearchService = recipeSearchService;
+        this.mealPlanService = mealPlanService;
     }
 
     public ObservableCollection<RecipeIngredient> Ingredients { get; } = new();
@@ -53,7 +58,16 @@ public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributabl
     [ObservableProperty]
     private bool isIngredientListEmpty;
 
+    [ObservableProperty]
+    private DateTime selectedPlanDate = DateTime.Today;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasPlanningMessage))]
+    private string? planningMessage;
+
     public bool HasError => !string.IsNullOrWhiteSpace(ErrorMessage);
+
+    public bool HasPlanningMessage => !string.IsNullOrWhiteSpace(PlanningMessage);
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
@@ -102,6 +116,7 @@ public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributabl
                 return;
             }
 
+            currentDetail = detail;
             Title = detail.Name;
             MealName = detail.Name;
             ThumbnailUrl = detail.ThumbnailUrl;
@@ -144,8 +159,45 @@ public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributabl
         }
     }
 
+    [RelayCommand]
+    private async Task AddToCalendarAsync()
+    {
+        if (IsBusy)
+        {
+            return;
+        }
+
+        if (currentDetail is null)
+        {
+            PlanningMessage = "Carica il dettaglio prima di aggiungere la ricetta al calendario.";
+            return;
+        }
+
+        IsBusy = true;
+        PlanningMessage = null;
+
+        try
+        {
+            await mealPlanService.AddMealAsync(SelectedPlanDate, currentDetail);
+            PlanningMessage = $"Ricetta aggiunta al calendario per il {SelectedPlanDate:dd/MM/yyyy}.";
+        }
+        catch (InvalidOperationException ex)
+        {
+            PlanningMessage = ex.Message;
+        }
+        catch (JsonException)
+        {
+            PlanningMessage = "Non riesco ad aggiornare il calendario locale.";
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
     private void ClearDetail()
     {
+        currentDetail = null;
         Title = "Dettaglio";
         MealName = null;
         ThumbnailUrl = null;
@@ -153,6 +205,7 @@ public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributabl
         Area = null;
         Instructions = null;
         IsIngredientListEmpty = false;
+        PlanningMessage = null;
         Ingredients.Clear();
     }
 }

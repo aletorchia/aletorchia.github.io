@@ -19,4 +19,16 @@ public partial class HomeViewModel : ObservableObject
     {
         return Shell.Current.GoToAsync("//browse");
     }
+
+    [RelayCommand]
+    private Task GoToCalendarAsync()
+    {
+        return Shell.Current.GoToAsync("//calendar");
+    }
+
+    [RelayCommand]
+    private Task GoToShoppingAsync()
+    {
+        return Shell.Current.GoToAsync("//shopping");
+    }
 }

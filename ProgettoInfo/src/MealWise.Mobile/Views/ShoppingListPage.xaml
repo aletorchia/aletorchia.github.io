@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MealWise.Mobile.Views.ShoppingListPage"
+    x:Name="ShoppingPageRoot"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:MealWise.Mobile.Models"
+    xmlns:viewmodels="clr-namespace:MealWise.Mobile.ViewModels"
+    x:DataType="viewmodels:ShoppingListViewModel"
+    Title="{Binding Title}">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="16" RowSpacing="16">
+        <VerticalStackLayout Grid.Row="0" Spacing="6">
+            <Label Text="Lista spesa" Style="{StaticResource Headline}" />
+            <Label
+                Text="Ingredienti derivati dal calendario e voci aggiunte manualmente."
+                HorizontalTextAlignment="Center"
+                TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+        </VerticalStackLayout>
+
+        <Border Grid.Row="1" Padding="12">
+            <VerticalStackLayout Spacing="10">
+                <Label
+                    Text="Aggiunta manuale"
+                    FontFamily="OpenSansSemibold"
+                    FontSize="18" />
+                <Entry
+                    Placeholder="Elemento"
+                    Text="{Binding NewItemName, Mode=TwoWay}" />
+                <Entry
+                    Placeholder="Quantita' o nota"
+                    Text="{Binding NewItemMeasure, Mode=TwoWay}" />
+                <Button
+                    Command="{Binding AddManualItemCommand}"
+                    Text="Aggiungi" />
+            </VerticalStackLayout>
+        </Border>
+
+        <VerticalStackLayout Grid.Row="2" Spacing="10">
+            <Button
+                Command="{Binding LoadCommand}"
+                Text="Aggiorna lista" />
+
+            <ActivityIndicator
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}" />
+
+            <Border
+                Padding="12"
+                BackgroundColor="{AppThemeBinding Light=#FFFFF2, Dark=#332400}"
+                IsVisible="{Binding HasError}"
+                Stroke="{AppThemeBinding Light=#F0C36D, Dark=#8A6A1F}">
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Text="{Binding ErrorMessage}"
+                        TextColor="{AppThemeBinding Light=#5C4100, Dark=#FFD98A}" />
+                    <Button
+                        Command="{Binding LoadCommand}"
+                        Text="Riprova" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                IsVisible="{Binding IsEmptyState}"
+                Text="Lista spesa vuota."
+                HorizontalTextAlignment="Center"
+                TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+        </VerticalStackLayout>
+
+        <CollectionView
+            Grid.Row="3"
+            IsVisible="{Binding HasData}"
+            ItemsSource="{Binding Items}"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:ShoppingListItem">
+                    <Border
+                        Margin="0,0,0,12"
+                        Padding="12"
+                        Stroke="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}">
+                        <VerticalStackLayout Spacing="8">
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                <VerticalStackLayout Spacing="3">
+                                    <Label
+                                        Text="{Binding Name}"
+                                        FontFamily="OpenSansSemibold"
+                                        FontSize="18"
+                                        LineBreakMode="WordWrap" />
+                                    <Label
+                                        Text="{Binding Measure}"
+                                        TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+                                    <Label
+                                        Text="{Binding SourceText}"
+                                        FontSize="12"
+                                        TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
+                                </VerticalStackLayout>
+                                <Label
+                                    Grid.Column="1"
+                                    Text="{Binding StatusText}"
+                                    FontFamily="OpenSansSemibold"
+                                    VerticalOptions="Start" />
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                                <Button
+                                    Command="{Binding BindingContext.ToggleItemCommand, Source={x:Reference ShoppingPageRoot}}"
+                                    CommandParameter="{Binding .}"
+                                    Text="{Binding ToggleActionText}" />
+                                <Button
+                                    Grid.Column="1"
+                                    Command="{Binding BindingContext.RemoveItemCommand, Source={x:Reference ShoppingPageRoot}}"
+                                    CommandParameter="{Binding .}"
+                                    Text="Rimuovi" />
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>

@@ -34,9 +34,9 @@ Il repository contiene attualmente la documentazione di progetto e una cartella 
 | IT-01 | Bootstrap del progetto MAUI e Shell di base | Nessuna | medio | completata |
 | IT-02 | Ricerca ricette (ingrediente/categoria) e risultati nella pagina Search | IT-01 | medio | completata |
 | IT-03 | Navigazione al dettaglio e rendering ingredienti/istruzioni | IT-02 | medio | completata |
-| IT-04 | Hardening MVP (stati UI, errori, smoke) | IT-01, IT-02, IT-03 | medio | pianificata |
-| IT-05 (post-MVP) | Calendario pasti locale con SQLite | IT-04 | medio | pianificata |
-| IT-06 (post-MVP) | Lista spesa locale derivata dal calendario | IT-05 | medio-alto | pianificata |
+| IT-04 | Hardening MVP (stati UI, errori, smoke) | IT-01, IT-02, IT-03 | medio | in corso |
+| IT-05 (post-MVP) | Calendario pasti locale con persistenza locale | IT-04 | medio | completata in questa build |
+| IT-06 (post-MVP) | Lista spesa locale derivata dal calendario | IT-05 | medio-alto | completata in questa build |
 | IT-07 (post-MVP) | Ricette salvate in locale e cache dettaglio | IT-04 | medio | pianificata |
 
 ## 3. Dettaglio iterazioni

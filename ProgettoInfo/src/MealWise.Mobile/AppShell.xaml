@@ -22,6 +22,16 @@
             Title="Browse"
             Route="browse"
             ContentTemplate="{DataTemplate views:BrowsePage}" />
+
+        <ShellContent
+            Title="Calendario"
+            Route="calendar"
+            ContentTemplate="{DataTemplate views:MealCalendarPage}" />
+
+        <ShellContent
+            Title="Spesa"
+            Route="shopping"
+            ContentTemplate="{DataTemplate views:ShoppingListPage}" />
     </TabBar>
 
 </Shell>

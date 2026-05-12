@@ -56,6 +56,23 @@
                         TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
                 </VerticalStackLayout>
 
+                <Border Padding="12">
+                    <VerticalStackLayout Spacing="10">
+                        <Label
+                            Text="Calendario"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="18" />
+                        <DatePicker Date="{Binding SelectedPlanDate, Mode=TwoWay}" />
+                        <Button
+                            Command="{Binding AddToCalendarCommand}"
+                            Text="Aggiungi al calendario" />
+                        <Label
+                            IsVisible="{Binding HasPlanningMessage}"
+                            Text="{Binding PlanningMessage}"
+                            TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+                    </VerticalStackLayout>
+                </Border>
+
                 <Label
                     Text="Ingredienti"
                     FontFamily="OpenSansSemibold"

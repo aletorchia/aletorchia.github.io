@@ -49,6 +49,27 @@
                         Text="Vai a Browse" />
                 </VerticalStackLayout>
             </Border>
+
+            <Border Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Text="Pianificazione"
+                        FontFamily="OpenSansSemibold"
+                        FontSize="20" />
+                    <Label
+                        Text="Consulta i pasti aggiunti dal dettaglio ricetta e prepara la spesa locale."
+                        TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <Button
+                            Command="{Binding GoToCalendarCommand}"
+                            Text="Calendario" />
+                        <Button
+                            Grid.Column="1"
+                            Command="{Binding GoToShoppingCommand}"
+                            Text="Spesa" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
         </VerticalStackLayout>
     </ScrollView>
 
