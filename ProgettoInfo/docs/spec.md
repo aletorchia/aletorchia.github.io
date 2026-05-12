@@ -92,6 +92,13 @@ Un utente pianifica i pasti della settimana nel calendario e l'app genera una li
 - FR-07: le schermate che caricano dati remoti devono sempre esporre uno stato tra loading, success, empty o error.
 - FR-08: l'app deve gestire errori di rete o indisponibilità del servizio con messaggi comprensibili e possibilità di retry.
 
+### Requisiti funzionali post-MVP
+
+- FR-09: l'app dovra' consentire la pianificazione locale dei pasti associando una ricetta a un giorno.
+- FR-10: l'app dovra' generare una lista spesa locale a partire dalle ricette pianificate, mantenendola modificabile manualmente.
+- FR-11: l'app dovra' consentire il salvataggio locale di ricette dal dettaglio, con consultazione successiva dei dati principali anche senza rete.
+- FR-12: i dati post-MVP di calendario, lista spesa e ricette salvate dovranno persistere sul dispositivo senza richiedere account o sincronizzazione cloud.
+
 ## 5. Epic, user stories e criteri di accettazione
 
 ### EPIC-01 - Ricerca ricette e lista risultati
@@ -188,7 +195,7 @@ Consentire all'utente di salvare alcune ricette in locale per ritrovarle rapidam
 ### Privacy e dati
 
 - Nel MVP non è prevista autenticazione né invio di dati personali a backend proprietari.
-- Nel post-MVP, calendario e lista spesa devono essere memorizzati localmente sul dispositivo.
+- Nel post-MVP, calendario, lista spesa e ricette salvate devono essere memorizzati localmente sul dispositivo.
 
 ## 7. Vincoli tecnici di progetto
 
@@ -198,7 +205,7 @@ Consentire all'utente di salvare alcune ricette in locale per ritrovarle rapidam
 - `CommunityToolkit.Mvvm` per la gestione dei ViewModel.
 - `HttpClient` asincrono per le chiamate remote.
 - `System.Text.Json` per il parsing delle risposte API.
-- Persistenza locale con SQLite per calendario e lista spesa (post-MVP); `Preferences` solo per esigenze leggere eventuali.
+- Persistenza locale con SQLite per calendario, lista spesa e ricette salvate (post-MVP); `Preferences` solo per esigenze leggere eventuali.
 - Gestione esplicita di `IsBusy`, error state, empty state e presenza dati nei ViewModel.
 - Nessuna logica REST o business logic nei code-behind.
 - Search e risultati nello stesso flusso di pagina; Detail come vista dedicata nel MVP.
@@ -216,12 +223,12 @@ Consentire all'utente di salvare alcune ricette in locale per ritrovarle rapidam
 - I dati restituiti da TheMealDB possono essere incompleti o incoerenti tra ricette diverse.
 - Le immagini remote possono essere assenti, lente o di qualità variabile.
 - La forma dei campi ingredienti/misure nel dettaglio richiede parsing difensivo.
-- L'espansione verso calendario e lista spesa introduce complessità di modello dati e persistenza.
+- L'espansione verso calendario, lista spesa e ricette salvate introduce complessità di modello dati e persistenza.
 
 ### Dipendenze
 
 - Disponibilità di TheMealDB e connettività Internet per ricerca e dettaglio nel MVP.
-- (Post-MVP) Disponibilità di un layer di persistenza SQLite affidabile per dati locali (calendario e lista spesa).
+- (Post-MVP) Disponibilità di un layer di persistenza SQLite affidabile per dati locali (calendario, lista spesa e ricette salvate).
 
 ### Questioni aperte o `TBD`
 

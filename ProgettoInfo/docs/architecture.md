@@ -7,7 +7,7 @@ Costruire una app `.NET MAUI` Android-first che resti semplice da spiegare, este
 - UI XAML e navigazione;
 - logica di stato nei ViewModels;
 - integrazione remota con TheMealDB;
-- persistenza locale (post-MVP) per calendario pasti e lista spesa.
+- persistenza locale (post-MVP) per calendario pasti, lista spesa e ricette salvate.
 
 L'architettura deve supportare il MVP (ricerca + dettaglio ricette) senza anticipare troppo il post-MVP, ma lasciando confini sufficienti per introdurre database SQLite e feature locali senza refactor invasivi.
 
@@ -48,6 +48,7 @@ Post-MVP (non nel MVP):
 
 - `MealCalendarPage`: calendario pasti.
 - `ShoppingListPage`: lista spesa locale.
+- `SavedRecipesPage`: ricette salvate e consultabili localmente.
 
 ### ViewModels
 
@@ -58,6 +59,7 @@ Post-MVP:
 
 - `MealCalendarViewModel`: gestione planning pasti e persistenza locale.
 - `ShoppingListViewModel`: aggregazione/modifica lista spesa e persistenza locale.
+- `SavedRecipesViewModel`: elenco ricette salvate, rimozione e apertura del dettaglio locale.
 
 Ogni ViewModel dovrà esporre proprietà di stato esplicite come `IsBusy`, `ErrorMessage` e un indicatore di contenuto (es. `HasData` / `IsEmpty`).
 
@@ -74,6 +76,7 @@ Post-MVP:
 - servizio database locale basato su `sqlite-net-pcl`, responsabile di creare e condividere una singola `SQLiteAsyncConnection`.
 - repository calendario.
 - repository lista spesa.
+- repository ricette salvate/cache dettaglio.
 
 ## 5. Navigazione
 
@@ -84,7 +87,7 @@ Post-MVP:
 
 Post-MVP:
 
-- `Calendar` e `Shopping` come sezioni principali aggiuntive.
+- `Calendar`, `Shopping` e `Saved` come sezioni principali aggiuntive.
 
 ### Parametri di navigazione
 
@@ -148,8 +151,9 @@ Post-MVP:
 ## 10. Decisioni confermate
 
 - Provider MVP: TheMealDB.
-- MVP senza persistenza locale per calendario/spesa; questi entrano nel post-MVP.
+- MVP senza persistenza locale per calendario/spesa/ricette salvate; questi entrano nel post-MVP.
 - Post-MVP: SQLite come storage locale con `sqlite-net-pcl` (una sola `SQLiteAsyncConnection` condivisa).
+- Ricette salvate e cache dettaglio sono una feature locale distinta dal supporto offline completo: non sostituiscono la ricerca remota.
 
 TBD:
 

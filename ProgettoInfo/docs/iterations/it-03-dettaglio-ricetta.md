@@ -62,3 +62,7 @@ Completare la navigazione dal risultato di ricerca alla pagina dettaglio ricetta
 ## Esito
 
 IT-03 completata a livello di codice e documentazione. Restano da eseguire smoke manuale su device/emulatore Android e test automatici dedicati al mapping/detail quando verra' introdotto un progetto test.
+
+## Addendum post-MVP
+
+Su richiesta successiva, calendario/lista spesa e salvataggio ricette in locale sono stati esplicitati nella roadmap post-MVP. Non vengono assorbiti in IT-03 perche' richiedono persistenza locale, nuove schermate e repository dedicati; sono tracciati come iterazioni separate in `docs/plan.md`.

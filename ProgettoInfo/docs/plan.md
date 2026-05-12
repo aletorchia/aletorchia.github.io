@@ -37,6 +37,7 @@ Il repository contiene attualmente la documentazione di progetto e una cartella 
 | IT-04 | Hardening MVP (stati UI, errori, smoke) | IT-01, IT-02, IT-03 | medio | pianificata |
 | IT-05 (post-MVP) | Calendario pasti locale con SQLite | IT-04 | medio | pianificata |
 | IT-06 (post-MVP) | Lista spesa locale derivata dal calendario | IT-05 | medio-alto | pianificata |
+| IT-07 (post-MVP) | Ricette salvate in locale e cache dettaglio | IT-04 | medio | pianificata |
 
 ## 3. Dettaglio iterazioni
 
@@ -336,6 +337,62 @@ Derivare e gestire una lista spesa locale a partire dal calendario pasti, con pe
 - logica di aggregazione ingredienti non deterministica;
 - gestione misure unita' non coerente (dipende dai dati del provider).
 
+### IT-07 (post-MVP) - Ricette salvate in locale e cache dettaglio
+
+**Obiettivo verificabile**
+
+Consentire all'utente di salvare una ricetta dal dettaglio e ritrovarla in una sezione locale, mantenendo i dati principali disponibili dopo il riavvio dell'app.
+
+**In scope**
+
+- aggiungere azione "salva/rimuovi" nel dettaglio ricetta;
+- definire modello locale per ricetta salvata e ingredienti associati;
+- repository SQLite per ricette salvate e cache del dettaglio gia' consultato;
+- schermata ricette salvate con `CollectionView`, stati loading/empty/error/success e navigazione al dettaglio salvato;
+- gestione idempotente del salvataggio: salvare due volte la stessa ricetta non deve creare duplicati.
+
+**Out of scope**
+
+- sincronizzazione cloud;
+- condivisione social;
+- caching completo delle ricerche remote;
+- supporto offline completo per nuove ricerche.
+
+**File o aree probabili**
+
+- `src/MealWise.Mobile/Views/SavedRecipesPage.xaml`
+- `src/MealWise.Mobile/ViewModels/SavedRecipesViewModel.cs`
+- `src/MealWise.Mobile/Services/`
+- `src/MealWise.Mobile/Models/`
+- `src/MealWise.Mobile/AppShell.xaml`
+- `src/MealWise.Mobile/MauiProgram.cs`
+- `docs/test-matrix.md`
+- `docs/iterations/`
+
+**Dipendenze**
+
+- completamento di IT-04;
+- scelta e introduzione controllata di `sqlite-net-pcl` o repository SQLite gia' disponibile da IT-05.
+
+**Criteri di accettazione**
+
+- [ ] Dal dettaglio l'utente puo' salvare e rimuovere una ricetta locale.
+- [ ] Una ricetta salvata compare in una sezione dedicata.
+- [ ] Dopo riavvio app, le ricette salvate restano disponibili.
+- [ ] Aprendo una ricetta salvata, i dati principali sono consultabili anche se la rete non e' disponibile.
+- [ ] Salvare piu' volte la stessa ricetta non crea duplicati.
+
+**Verifiche principali**
+
+- manuale: salva da dettaglio, riavvio app, apertura sezione salvati, rimozione e assenza rete;
+- automatico: `dotnet build src/MealWise.Mobile/MealWise.Mobile.csproj` e test repository su salvataggio idempotente, lettura, rimozione e mapping cache.
+
+**Rischi**
+
+- introdurre duplicazione tra dettaglio remoto e dettaglio salvato;
+- schema SQLite troppo rigido per ingredienti/misure parziali;
+- confondere cache locale con supporto offline completo.
+
 ## 4. Roadmap post-MVP
 
 Le estensioni oltre il MVP devono mantenere l'ordine deciso in `docs/spec.md`:
@@ -345,4 +402,4 @@ Le estensioni oltre il MVP devono mantenere l'ordine deciso in `docs/spec.md`:
 3. ricette salvate/caching locale;
 4. filtri extra e miglioramenti UX.
 
-Queste fasi non devono essere assorbite dentro le iterazioni MVP sopra elencate.
+Queste fasi non devono essere assorbite dentro le iterazioni MVP sopra elencate. Calendario/lista spesa e ricette salvate vanno implementate come iterazioni post-MVP separate, per mantenere il codice spiegabile e verificabile.

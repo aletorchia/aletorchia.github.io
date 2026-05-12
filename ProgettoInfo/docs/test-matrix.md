@@ -25,6 +25,8 @@
 | TM-12 | Modalita' senza rete: Search fallisce bene (error + retry) | Device | Si | No | Si | IT-04 | Da eseguire | Conferma gestione error state |
 | TM-13 (post-MVP) | Pianificazione calendario persiste dopo riavvio app | Persistence | Si | Si | No | IT-05 | `dotnet test` | Repository SQLite testabile |
 | TM-14 (post-MVP) | Lista spesa generata e modifiche persistenti | Persistence | Si | Si | No | IT-06 | `dotnet test` | Aggregazione ingredienti + CRUD locale |
+| TM-15 (post-MVP) | Ricetta salvata resta disponibile dopo riavvio e senza rete | Persistence | Si | Si | No | IT-07 | `dotnet test` | Repository ricette salvate/cache dettaglio |
+| TM-16 (post-MVP) | Salvataggio ripetuto della stessa ricetta non crea duplicati | Persistence | Si | Si | No | IT-07 | `dotnet test` | Vincolo idempotenza su `mealId` |
 
 ## 3. Aree minime da coprire
 
@@ -32,6 +34,7 @@
 - API: successo, risposta vuota, timeout, assenza campi opzionali, errore provider.
 - UI: loading, error, empty, success su Search e Detail.
 - Navigation: apertura Detail da Search e back.
+- Persistence: salvataggio calendario, lista spesa, ricette salvate, riavvio app.
 - Device: smoke Android, assenza rete, rendering base.
 
 ## 4. Note su test automatici
