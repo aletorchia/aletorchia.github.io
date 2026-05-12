@@ -73,6 +73,22 @@
                     </VerticalStackLayout>
                 </Border>
 
+                <Border Padding="12">
+                    <VerticalStackLayout Spacing="10">
+                        <Label
+                            Text="Lista spesa"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="18" />
+                        <Button
+                            Command="{Binding AddIngredientsToShoppingListCommand}"
+                            Text="Aggiungi ingredienti alla spesa" />
+                        <Label
+                            IsVisible="{Binding HasShoppingMessage}"
+                            Text="{Binding ShoppingMessage}"
+                            TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}" />
+                    </VerticalStackLayout>
+                </Border>
+
                 <Label
                     Text="Ingredienti"
                     FontFamily="OpenSansSemibold"

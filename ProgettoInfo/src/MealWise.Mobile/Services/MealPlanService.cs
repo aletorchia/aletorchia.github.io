@@ -201,6 +201,58 @@ public sealed class MealPlanService : IMealPlanService
         await database.InsertAsync(row);
     }
 
+    public async Task AddRecipeIngredientsToShoppingListAsync(
+        RecipeDetail recipe,
+        CancellationToken cancellationToken = default)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        await EnsureInitializedAsync(cancellationToken);
+
+        if (string.IsNullOrWhiteSpace(recipe.MealId) || string.IsNullOrWhiteSpace(recipe.Name))
+        {
+            throw new InvalidOperationException("La ricetta non contiene dati sufficienti per la lista spesa.");
+        }
+
+        var ingredients = recipe.Ingredients
+            .Where(ingredient => !string.IsNullOrWhiteSpace(ingredient.Name))
+            .Select(ingredient => new
+            {
+                Name = ingredient.Name.Trim(),
+                Measure = ingredient.Measure?.Trim() ?? string.Empty
+            })
+            .ToList();
+
+        if (ingredients.Count == 0)
+        {
+            throw new InvalidOperationException("La ricetta non contiene ingredienti da aggiungere.");
+        }
+
+        var existingManualRows = await database.Table<ManualShoppingItemRow>().ToListAsync();
+
+        foreach (var ingredient in ingredients)
+        {
+            var exists = existingManualRows.Any(row =>
+                row.Name.Equals(ingredient.Name, StringComparison.OrdinalIgnoreCase)
+                && row.Measure.Equals(ingredient.Measure, StringComparison.OrdinalIgnoreCase));
+
+            if (exists)
+            {
+                continue;
+            }
+
+            var row = new ManualShoppingItemRow
+            {
+                Id = $"manual:{Guid.NewGuid():N}",
+                Name = ingredient.Name,
+                Measure = ingredient.Measure,
+                IsChecked = false
+            };
+
+            await database.InsertAsync(row);
+            existingManualRows.Add(row);
+        }
+    }
+
     public async Task RemoveShoppingItemAsync(string itemId, CancellationToken cancellationToken = default)
     {
         cancellationToken.ThrowIfCancellationRequested();

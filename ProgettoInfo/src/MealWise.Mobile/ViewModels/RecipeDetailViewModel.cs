@@ -65,9 +65,15 @@ public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributabl
     [NotifyPropertyChangedFor(nameof(HasPlanningMessage))]
     private string? planningMessage;
 
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasShoppingMessage))]
+    private string? shoppingMessage;
+
     public bool HasError => !string.IsNullOrWhiteSpace(ErrorMessage);
 
     public bool HasPlanningMessage => !string.IsNullOrWhiteSpace(PlanningMessage);
+
+    public bool HasShoppingMessage => !string.IsNullOrWhiteSpace(ShoppingMessage);
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
@@ -199,6 +205,42 @@ public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributabl
         }
     }
 
+    [RelayCommand]
+    private async Task AddIngredientsToShoppingListAsync()
+    {
+        if (IsBusy)
+        {
+            return;
+        }
+
+        if (currentDetail is null)
+        {
+            ShoppingMessage = "Carica il dettaglio prima di aggiornare la lista spesa.";
+            return;
+        }
+
+        IsBusy = true;
+        ShoppingMessage = null;
+
+        try
+        {
+            await mealPlanService.AddRecipeIngredientsToShoppingListAsync(currentDetail);
+            ShoppingMessage = "Ingredienti aggiunti alla lista spesa.";
+        }
+        catch (InvalidOperationException ex)
+        {
+            ShoppingMessage = ex.Message;
+        }
+        catch (Exception)
+        {
+            ShoppingMessage = "Non riesco ad aggiornare la lista spesa.";
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
     private void ClearDetail()
     {
         currentDetail = null;
@@ -210,6 +252,7 @@ public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributabl
         Instructions = null;
         IsIngredientListEmpty = false;
         PlanningMessage = null;
+        ShoppingMessage = null;
         Ingredients.Clear();
     }
 }

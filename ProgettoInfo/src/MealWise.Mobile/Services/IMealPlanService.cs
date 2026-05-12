@@ -16,5 +16,7 @@ public interface IMealPlanService
 
     Task AddManualShoppingItemAsync(string name, string? measure, CancellationToken cancellationToken = default);
 
+    Task AddRecipeIngredientsToShoppingListAsync(RecipeDetail recipe, CancellationToken cancellationToken = default);
+
     Task RemoveShoppingItemAsync(string itemId, CancellationToken cancellationToken = default);
 }
