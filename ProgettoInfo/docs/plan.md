@@ -31,9 +31,9 @@ Il repository contiene attualmente la documentazione di progetto e una cartella 
 
 | Iterazione | Obiettivo verificabile | Dipendenze | Rischio | Stato |
 | --- | --- | --- | --- | --- |
-| IT-01 | Bootstrap del progetto MAUI e Shell di base | Nessuna | medio | pianificata |
-| IT-02 | Ricerca ricette (ingrediente/categoria) e risultati nella pagina Search | IT-01 | medio | pianificata |
-| IT-03 | Navigazione al dettaglio e rendering ingredienti/istruzioni | IT-02 | medio | pianificata |
+| IT-01 | Bootstrap del progetto MAUI e Shell di base | Nessuna | medio | completata |
+| IT-02 | Ricerca ricette (ingrediente/categoria) e risultati nella pagina Search | IT-01 | medio | completata |
+| IT-03 | Navigazione al dettaglio e rendering ingredienti/istruzioni | IT-02 | medio | completata |
 | IT-04 | Hardening MVP (stati UI, errori, smoke) | IT-01, IT-02, IT-03 | medio | pianificata |
 | IT-05 (post-MVP) | Calendario pasti locale con SQLite | IT-04 | medio | pianificata |
 | IT-06 (post-MVP) | Lista spesa locale derivata dal calendario | IT-05 | medio-alto | pianificata |
@@ -132,7 +132,7 @@ Consentire all'utente di cercare ricette per ingrediente principale o categoria 
 **Criteri di accettazione**
 
 - [ ] Inserendo una query valida, la pagina Search avvia la richiesta remota e mostra subito il loading state.
-- [ ] In caso di successo, la lista mostra almeno copertina, titolo e autore per ogni libro.
+- [ ] In caso di successo, la lista mostra almeno immagine e nome ricetta per ogni risultato.
 - [ ] In caso di risposta vuota, la UI mostra uno stato empty esplicito.
 - [ ] In caso di errore o timeout, la UI mostra un messaggio comprensibile e una azione di retry.
 - [ ] L'assenza della copertina o di altri campi opzionali non genera crash della UI.
@@ -178,7 +178,7 @@ Permettere l'apertura del dettaglio di una ricetta dalla lista risultati, carica
 **Dipendenze**
 
 - completamento di IT-02;
-- disponibilità dell'ID volume proveniente dalla ricerca.
+- disponibilita' del `mealId` proveniente dalla ricerca.
 
 **Criteri di accettazione**
 
@@ -189,7 +189,7 @@ Permettere l'apertura del dettaglio di una ricetta dalla lista risultati, carica
 
 **Verifiche principali**
 
-- manuale: apertura dettaglio da più risultati, inclusi libri con metadati incompleti;
+- manuale: apertura dettaglio da piu' risultati, incluse ricette con metadati incompleti;
 - automatico: `dotnet build src/MealWise.Mobile/MealWise.Mobile.csproj` e controlli unitari del mapping del dettaglio se introdotti.
 
 **Rischi**

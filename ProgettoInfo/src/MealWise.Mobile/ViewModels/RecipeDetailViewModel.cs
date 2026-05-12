@@ -50,18 +50,24 @@ public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributabl
     [ObservableProperty]
     private bool isEmptyState;
 
+    [ObservableProperty]
+    private bool isIngredientListEmpty;
+
     public bool HasError => !string.IsNullOrWhiteSpace(ErrorMessage);
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
         if (!query.TryGetValue("mealId", out var value))
         {
+            ClearDetail();
+            HasData = false;
+            IsEmptyState = false;
             ErrorMessage = "Ricetta non valida.";
             return;
         }
 
         mealId = Uri.UnescapeDataString(value?.ToString() ?? string.Empty);
-        LoadCommand.Execute(null);
+        _ = LoadCommand.ExecuteAsync(null);
     }
 
     [RelayCommand]
@@ -74,6 +80,7 @@ public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributabl
 
         if (string.IsNullOrWhiteSpace(mealId))
         {
+            ClearDetail();
             ErrorMessage = "Ricetta non valida.";
             HasData = false;
             IsEmptyState = false;
@@ -84,18 +91,13 @@ public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributabl
         ErrorMessage = null;
         HasData = false;
         IsEmptyState = false;
-        Ingredients.Clear();
+        ClearDetail();
 
         try
         {
             var detail = await recipeSearchService.GetDetailAsync(mealId);
             if (detail is null)
             {
-                MealName = null;
-                ThumbnailUrl = null;
-                Category = null;
-                Area = null;
-                Instructions = null;
                 IsEmptyState = true;
                 return;
             }
@@ -103,15 +105,18 @@ public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributabl
             Title = detail.Name;
             MealName = detail.Name;
             ThumbnailUrl = detail.ThumbnailUrl;
-            Category = detail.Category;
-            Area = detail.Area;
-            Instructions = detail.Instructions;
+            Category = string.IsNullOrWhiteSpace(detail.Category) ? "Non indicata" : detail.Category.Trim();
+            Area = string.IsNullOrWhiteSpace(detail.Area) ? "Non indicata" : detail.Area.Trim();
+            Instructions = string.IsNullOrWhiteSpace(detail.Instructions)
+                ? "Istruzioni non disponibili."
+                : detail.Instructions.Trim();
 
             foreach (var ingredient in detail.Ingredients)
             {
                 Ingredients.Add(ingredient);
             }
 
+            IsIngredientListEmpty = Ingredients.Count == 0;
             HasData = true;
             IsEmptyState = false;
         }
@@ -137,5 +142,17 @@ public partial class RecipeDetailViewModel : ObservableObject, IQueryAttributabl
         {
             IsBusy = false;
         }
+    }
+
+    private void ClearDetail()
+    {
+        Title = "Dettaglio";
+        MealName = null;
+        ThumbnailUrl = null;
+        Category = null;
+        Area = null;
+        Instructions = null;
+        IsIngredientListEmpty = false;
+        Ingredients.Clear();
     }
 }
