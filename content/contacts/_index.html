@@ -59,6 +59,16 @@
       padding: clamp(42px, 7vh, 82px) 0 56px;
     }
 
+    .card-only-page {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    .card-only {
+      justify-self: center;
+    }
+
     .hero {
       min-height: auto;
       display: grid;
@@ -360,75 +370,51 @@
   </style>
 </head>
 <body>
-  <main class="page">
-    <section class="hero" aria-label="Contatti">
-      <div class="intro">
-        <div class="eyebrow"><span class="dot"></span> NFC contact card</div>
-        <h1><span class="gradient-text">Contacts</span><br />without the boring part.</h1>
-        <p class="lead">
-          Scansiona la card, scegli come contattarmi e salva il mio contatto in rubrica con un tap.
-        </p>
+  <main class="page card-only-page">
+    <div class="phone-wrap card-only">
+      <div class="glow" aria-hidden="true"></div>
 
-        <div class="quick-actions" aria-label="Azioni rapide">
-          <a class="pill" href="mailto:alessandrotorchia@proton.me">✉️ Email</a>
-          <a class="pill" href="https://wa.me/393921492843" target="_blank" rel="noopener">💬 WhatsApp</a>
-          <a class="pill" href="https://instagram.com/alessandro.torchia8" target="_blank" rel="noopener">📸 Instagram</a>
+      <section class="card">
+        <div class="top-row">
+          <span class="badge">✨ digital card</span>
+          <span class="nfc" aria-label="NFC">⌁</span>
         </div>
-      </div>
 
-      <div class="phone-wrap">
-        <div class="glow" aria-hidden="true"></div>
+        <div class="identity">
+          <h1 class="name">Alessandro<br />Torchia</h1>
+          <p class="bio">
+            scegli come contattarmi e salva il contatto in rubrica
+          </p>
+        </div>
 
-        <section class="card">
-          <div class="top-row">
-            <span class="badge">✨ digital card</span>
-            <span class="nfc" aria-label="NFC">⌁</span>
-          </div>
+        <div class="links">
+          <button class="btn primary" type="button" onclick="downloadVCard()">
+            <span class="left"><span class="icon">📇</span> Salva contatto</span>
+            <span class="arrow">↓</span>
+          </button>
 
-          <div class="identity">
-            <h2 class="name">Alessandro<br />Torchia</h2>
-            <div class="meta">
-              @alessandro.torchia8<br />
-              alessandrotorchia@proton.me
-            </div>
-            <p class="bio">
-              Ciao, sono Ale. Qui trovi i miei contatti, social e link utili.
-            </p>
-          </div>
+          <a class="btn" href="mailto:alessandrotorchia@proton.me">
+            <span class="left"><span class="icon">✉️</span> Email</span>
+            <span class="arrow">→</span>
+          </a>
 
-          <div class="links">
-            <button class="btn primary" type="button" onclick="downloadVCard()">
-              <span class="left"><span class="icon">📇</span> Salva contatto</span>
-              <span class="arrow">↓</span>
-            </button>
+          <a class="btn" href="https://wa.me/393921492843" target="_blank" rel="noopener">
+            <span class="left"><span class="icon">💬</span> WhatsApp</span>
+            <span class="arrow">→</span>
+          </a>
 
-            <a class="btn" href="mailto:alessandrotorchia@proton.me">
-              <span class="left"><span class="icon">✉️</span> Email</span>
-              <span class="arrow">→</span>
-            </a>
+          <a class="btn" href="https://instagram.com/alessandro.torchia8" target="_blank" rel="noopener">
+            <span class="left"><span class="icon">📸</span> Instagram</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
 
-            <a class="btn" href="https://wa.me/393921492843" target="_blank" rel="noopener">
-              <span class="left"><span class="icon">💬</span> WhatsApp</span>
-              <span class="arrow">→</span>
-            </a>
-
-            <a class="btn" href="https://instagram.com/alessandro.torchia8" target="_blank" rel="noopener">
-              <span class="left"><span class="icon">📸</span> Instagram</span>
-              <span class="arrow">→</span>
-            </a>
-          </div>
-
-          <div class="note">
-            <span>💡</span>
-            <span>Scrivi sulla tag NFC il link di questa pagina. Se cambi contatti, aggiorni solo il sito.</span>
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <footer>
-      Tap NFC → contatti sempre aggiornati
-    </footer>
+        <div class="note">
+          <span>💡</span>
+          <span>Scrivi sulla tag NFC il link di questa pagina. Se cambi contatti, aggiorni solo il sito.</span>
+        </div>
+      </section>
+    </div>
   </main>
 
   <script>
@@ -439,7 +425,7 @@
       phone: "+393921492843",
       email: "alessandrotorchia@proton.me",
       instagram: "https://instagram.com/alessandro.torchia8",
-      note: "Contatto salvato dalla mia card NFC."
+      note: ""
     };
 
     function escapeVCard(value) {
