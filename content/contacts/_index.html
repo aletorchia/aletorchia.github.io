@@ -1,35 +1,33 @@
-
 <!doctype html>
 <html lang="it">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ale Torchia — Contatti</title>
-  <meta name="description" content="Contatti, social e portfolio di  Alessandro Torchia." />
+  <title>Alessandro Torchia — Contatti</title>
+  <meta name="description" content="Contatti, social e link utili di Alessandro Torchia." />
 
-  <!-- Open Graph preview quando condividi il link -->
-  <meta property="og:title" content="Ale Torhc — Contatti" />
-  <meta property="og:description" content="Contatti, social e portfolio." />
+  <meta property="og:title" content="Alessandro Torchia — Contatti" />
+  <meta property="og:description" content="Contatti, social e link utili." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="avatar.jpg" />
 
   <style>
     :root {
-      --bg: #0f1117;
-      --card: rgba(255,255,255,0.08);
-      --card-border: rgba(255,255,255,0.14);
-      --text: #f6f7fb;
-      --muted: #b8bfcc;
+      --bg: #121318;
+      --panel: rgba(255,255,255,0.055);
+      --panel-strong: rgba(255,255,255,0.09);
+      --line: rgba(255,255,255,0.11);
+      --text: #f5f7fb;
+      --muted: #aeb6c8;
+      --soft: #7d8495;
       --accent: #7c5cff;
-      --accent-2: #00d4ff;
-      --button: rgba(255,255,255,0.10);
-      --button-hover: rgba(255,255,255,0.18);
-      --shadow: 0 24px 80px rgba(0,0,0,0.45);
+      --accent-2: #1fb6ff;
+      --radius: 30px;
+      --shadow: 0 30px 90px rgba(0,0,0,0.38);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -37,174 +35,382 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(124,92,255,0.55), transparent 34rem),
-        radial-gradient(circle at bottom right, rgba(0,212,255,0.30), transparent 28rem),
-        var(--bg);
+        radial-gradient(circle at 18% 12%, rgba(124,92,255,0.22), transparent 30rem),
+        radial-gradient(circle at 82% 72%, rgba(31,182,255,0.14), transparent 28rem),
+        linear-gradient(180deg, #15161c 0%, #101116 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, black, transparent 78%);
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0 64px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 120px);
       display: grid;
-      place-items: center;
-      padding: 24px;
+      grid-template-columns: minmax(0, 1.1fr) minmax(340px, 440px);
+      align-items: center;
+      gap: clamp(28px, 6vw, 86px);
     }
 
-    .wrap {
-      width: 100%;
-      max-width: 480px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 32px;
-      padding: 28px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-    }
-
-    .profile {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .avatar {
-      width: 112px;
-      height: 112px;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #dfe4ff;
+      background: rgba(124,92,255,0.13);
+      border: 1px solid rgba(124,92,255,0.25);
+      padding: 8px 12px;
       border-radius: 999px;
-      object-fit: cover;
-      border: 3px solid rgba(255,255,255,0.32);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+      font-size: 0.92rem;
+      font-weight: 650;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 18px rgba(31,182,255,0.8);
     }
 
     h1 {
-      font-size: 2rem;
-      line-height: 1.1;
-      margin: 18px 0 6px;
-      letter-spacing: -0.04em;
+      font-size: clamp(3rem, 7vw, 6.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.075em;
+      margin: 0;
+      max-width: 780px;
     }
 
-    .handle {
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 10%, #cfd6ff 46%, #8be3ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
       color: var(--muted);
-      margin: 0 0 14px;
+      font-size: clamp(1.05rem, 1.9vw, 1.32rem);
+      line-height: 1.65;
+      margin: 24px 0 0;
+      max-width: 620px;
+    }
+
+    .quick-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.055);
+      padding: 12px 15px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .pill:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .phone-wrap {
+      position: relative;
+      justify-self: end;
+      width: min(100%, 420px);
+    }
+
+    .glow {
+      position: absolute;
+      inset: 12% -8% 6% -8%;
+      background: linear-gradient(135deg, rgba(124,92,255,0.38), rgba(31,182,255,0.22));
+      filter: blur(60px);
+      border-radius: 999px;
+      opacity: 0.9;
+    }
+
+    .card {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.095), rgba(255,255,255,0.045));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.16), transparent 16rem);
+      pointer-events: none;
+    }
+
+    .card > * { position: relative; }
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .nfc {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+    }
+
+    .identity {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .name {
+      font-size: clamp(2.1rem, 4vw, 3.05rem);
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+      margin: 0;
+    }
+
+    .meta {
+      color: var(--muted);
+      line-height: 1.45;
       font-size: 1rem;
+      word-break: break-word;
     }
 
     .bio {
       color: var(--muted);
-      line-height: 1.55;
-      margin: 0 auto;
-      max-width: 34ch;
+      line-height: 1.6;
+      margin: 0;
     }
 
     .links {
       display: grid;
       gap: 12px;
-      margin-top: 22px;
+      margin-top: 24px;
     }
 
     .btn {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
       width: 100%;
       padding: 15px 16px;
       border-radius: 18px;
-      background: var(--button);
       color: var(--text);
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.075);
+      border: 1px solid var(--line);
       transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
-      font-weight: 650;
-      cursor: pointer;
       font: inherit;
+      font-weight: 760;
+      cursor: pointer;
+      text-align: left;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      background: var(--button-hover);
-      border-color: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.24);
     }
 
     .btn.primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
-      border: 0;
+      border-color: transparent;
+      box-shadow: 0 18px 40px rgba(31,182,255,0.18);
     }
 
     .left {
       display: flex;
       align-items: center;
       gap: 12px;
+      min-width: 0;
     }
 
     .icon {
-      width: 28px;
-      height: 28px;
+      width: 34px;
+      height: 34px;
       display: grid;
       place-items: center;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.12);
       flex: 0 0 auto;
+      border-radius: 13px;
+      background: rgba(255,255,255,0.13);
     }
 
     .arrow {
-      color: rgba(255,255,255,0.62);
+      color: rgba(255,255,255,0.64);
+      font-size: 1.15rem;
+    }
+
+    .note {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--soft);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.075);
     }
 
     footer {
-      text-align: center;
-      color: rgba(255,255,255,0.55);
-      font-size: 0.85rem;
-      margin-top: 16px;
+      color: rgba(255,255,255,0.48);
+      font-size: 0.9rem;
+      margin-top: 28px;
     }
 
-    @media (max-width: 420px) {
-      .card {
-        padding: 22px;
-        border-radius: 28px;
+    @media (max-width: 860px) {
+      .page {
+        padding: 34px 0 44px;
       }
 
-      h1 {
-        font-size: 1.75rem;
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .phone-wrap {
+        justify-self: stretch;
+        width: 100%;
+      }
+
+      .lead {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .page {
+        width: min(100% - 22px, 1120px);
+      }
+
+      .card {
+        padding: 18px;
+        border-radius: 25px;
+      }
+
+      .quick-actions {
+        display: grid;
+      }
+
+      .pill {
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="card" aria-label="Scheda contatto">
-      <div class="profile">
-
-        <h1>Alessandro Torchia</h1>
-        <p class="handle">@alessandrotorchia@proton.me</p>
-        <p class="bio">
-          Ciao, sono Ale. Qui trovi i miei contatti, social e link utili.
-          <!-- Personalizza questa bio con una frase più tua. -->
+  <main class="page">
+    <section class="hero" aria-label="Contatti">
+      <div class="intro">
+        <div class="eyebrow"><span class="dot"></span> NFC contact card</div>
+        <h1><span class="gradient-text">Contacts</span><br />without the boring part.</h1>
+        <p class="lead">
+          Scansiona la card, scegli come contattarmi e salva il mio contatto in rubrica con un tap.
         </p>
+
+        <div class="quick-actions" aria-label="Azioni rapide">
+          <a class="pill" href="mailto:alessandrotorchia@proton.me">✉️ Email</a>
+          <a class="pill" href="https://wa.me/393921492843" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <a class="pill" href="https://instagram.com/alessandro.torchia8" target="_blank" rel="noopener">📸 Instagram</a>
+        </div>
       </div>
 
-      <div class="links">
-        <button class="btn primary" type="button" onclick="downloadVCard()">
-          <span class="left"><span class="icon">📇</span> Salva contatto</span>
-          <span class="arrow">↓</span>
-        </button>
+      <div class="phone-wrap">
+        <div class="glow" aria-hidden="true"></div>
 
-        <a class="btn" href="mailto:alessandrotorchia@proton.me">
-          <span class="left"><span class="icon">✉️</span> Email</span>
-          <span class="arrow">→</span>
-        </a>
+        <section class="card">
+          <div class="top-row">
+            <span class="badge">✨ digital card</span>
+            <span class="nfc" aria-label="NFC">⌁</span>
+          </div>
 
-        <!-- Sostituisci 39XXXXXXXXXX col tuo numero, senza +, spazi o trattini -->
-        <a class="btn" href="https://wa.me/393921492843" target="_blank" rel="noopener">
-          <span class="left"><span class="icon">💬</span> WhatsApp</span>
-          <span class="arrow">→</span>
-        </a>
+          <div class="identity">
+            <h2 class="name">Alessandro<br />Torchia</h2>
+            <div class="meta">
+              @alessandro.torchia8<br />
+              alessandrotorchia@proton.me
+            </div>
+            <p class="bio">
+              Ciao, sono Ale. Qui trovi i miei contatti, social e link utili.
+            </p>
+          </div>
 
-        <!-- Cambia gli username/URL qui sotto -->
-        <a class="btn" href="https://instagram.com/Alessandro.torchia8" target="_blank" rel="noopener">
-          <span class="left"><span class="icon">📸</span> Instagram</span>
-          <span class="arrow">→</span>
-        </a>
+          <div class="links">
+            <button class="btn primary" type="button" onclick="downloadVCard()">
+              <span class="left"><span class="icon">📇</span> Salva contatto</span>
+              <span class="arrow">↓</span>
+            </button>
 
+            <a class="btn" href="mailto:alessandrotorchia@proton.me">
+              <span class="left"><span class="icon">✉️</span> Email</span>
+              <span class="arrow">→</span>
+            </a>
+
+            <a class="btn" href="https://wa.me/393921492843" target="_blank" rel="noopener">
+              <span class="left"><span class="icon">💬</span> WhatsApp</span>
+              <span class="arrow">→</span>
+            </a>
+
+            <a class="btn" href="https://instagram.com/alessandro.torchia8" target="_blank" rel="noopener">
+              <span class="left"><span class="icon">📸</span> Instagram</span>
+              <span class="arrow">→</span>
+            </a>
+          </div>
+
+          <div class="note">
+            <span>💡</span>
+            <span>Scrivi sulla tag NFC il link di questa pagina. Se cambi contatti, aggiorni solo il sito.</span>
+          </div>
+        </section>
       </div>
     </section>
 
@@ -214,7 +420,6 @@
   </main>
 
   <script>
-    // Personalizza questi dati: saranno usati per creare il file contatto .vcf
     const contact = {
       firstName: "Alessandro",
       lastName: "Torchia",
@@ -244,10 +449,7 @@
         `NICKNAME:${escapeVCard(contact.nickname)}`,
         `TEL;TYPE=CELL:${escapeVCard(contact.phone)}`,
         `EMAIL;TYPE=INTERNET:${escapeVCard(contact.email)}`,
-        `URL:${escapeVCard(contact.website)}`,
         `X-SOCIALPROFILE;TYPE=instagram:${escapeVCard(contact.instagram)}`,
-        `X-SOCIALPROFILE;TYPE=linkedin:${escapeVCard(contact.linkedin)}`,
-        `X-SOCIALPROFILE;TYPE=github:${escapeVCard(contact.github)}`,
         `NOTE:${escapeVCard(contact.note)}`,
         "END:VCARD"
       ].join("\n");
