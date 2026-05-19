@@ -280,3 +280,30 @@ Manzoni dedica ampio spazio alla storia di Geltrude, nonostante stesse deviando 
 * **Il dramma della monacazione forzata:** Il padre voleva che diventasse monaca per non intaccare il patrimonio destinato ai figli maschi.
 * **La figura della vittima:** Inizialmente viene descritta come una vittima del sistema familiare.
 * **Il comportamento del padre:** Veniva trattata male in casa, e il padre diventava "affettuoso" solo strategicamente, quando doveva convincerla a proseguire la vita religiosa.
+# Il cambiamento dei personaggi in Manzoni: l’esempio di Renzo
+
+I personaggi delle opere di Manzoni cambiano continuamente nel corso della narrazione. Un esempio importante è **Renzo**, che all’inizio appare come un personaggio ingenuo.
+
+## L’ingenuità di Renzo
+
+Renzo commette un errore dopo l’altro, soprattutto al suo arrivo a Milano. Qui viene coinvolto nella **rivolta del pane** e, a causa del suo comportamento impulsivo, finisce per essere accusato di essere uno dei capi della sommossa.
+
+Quando Renzo vede la rivolta, si indigna e decide di mettersi in mezzo alla folla per cercare di evitare il peggio. Segue quindi il popolo che si dirige verso la casa del **vicario di provvisione**, considerato dalla folla il principale responsabile della carestia e del male comune.
+
+## La rivolta del pane
+
+A un certo punto arriva **Ferrer**, che cerca di calmare il popolo dicendo che i fornai nascondono il pane per far aumentare il prezzo. Si tratta però di una notizia falsa, usata per tranquillizzare la folla e distogliere l’attenzione dal vicario.
+
+Gli animi, infatti, iniziano a calmarsi. In quel momento Renzo sale sopra una cassa e comincia a fare un discorso contro i potenti, accusandoli di approfittarsi dei più deboli. Nel suo discorso mescola ciò che sta vedendo con la sua esperienza personale.
+
+## L’errore di Renzo
+
+Renzo però non capisce che la Milano del Seicento è una città occupata e controllata da un potere molto sospettoso verso ogni forma di opposizione. Tra la folla è presente anche una spia, che lo nota e lo porta in un’osteria.
+
+Qui Renzo viene fatto ubriacare e, il giorno dopo, viene arrestato. Tuttavia, mentre lo stanno portando in carcere, riesce a fuggire.
+
+## L’inizio del cambiamento
+
+La fuga rappresenta l’inizio del processo di cambiamento e di maturazione di Renzo. Da quel momento diventa un fuggiasco e un ricercato, quindi non può più comportarsi come faceva prima.
+
+Questa esperienza lo costringe a diventare più prudente e più furbo, segnando l’inizio della sua crescita personale.
