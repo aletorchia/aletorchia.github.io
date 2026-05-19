@@ -307,3 +307,12 @@ Qui Renzo viene fatto ubriacare e, il giorno dopo, viene arrestato. Tuttavia, me
 La fuga rappresenta l’inizio del processo di cambiamento e di maturazione di Renzo. Da quel momento diventa un fuggiasco e un ricercato, quindi non può più comportarsi come faceva prima.
 
 Questa esperienza lo costringe a diventare più prudente e più furbo, segnando l’inizio della sua crescita personale.
+# Non lieto fine
+
+Quando Renzo e Lucia si ritrovano, non si può parlare di un vero **lieto fine**.
+
+Lucia, infatti, aveva fatto un voto, che poi viene sciolto. Dopo un anno i due hanno la prima figlia, che Renzo decide di chiamare **Maria**, come aveva promesso.
+
+Renzo racconta ai figli le sue peripezie, sostenendo che molte di esse siano state causate da lui stesso. Lucia, però, non è d’accordo: secondo lei, le disgrazie che ha vissuto non dipendevano dal suo comportamento.
+
+Da questo nasce una riflessione importante: anche comportandosi nel modo migliore possibile, non è garantito che non arrivino guai o problemi. Quando questi arrivano, non sempre c’è un modo per evitarli o uscirne facilmente; tuttavia, la **fede in Dio** può aiutare a sopportarli e a renderli più dolci.

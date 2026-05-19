@@ -3,7 +3,7 @@ title: "pratica routing"
 type: "docs"
 weight: 2
 ---
-ip route --> statica
+ip route --> routing static </br>
 dinamica --> ospf
 per entrare in ospf:
 ```cisco
