@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ale Torhc — Contatti</title>
+  <meta name="description" content="Contatti, social e portfolio di Ale Torhc." />
+
+  <!-- Open Graph preview quando condividi il link -->
+  <meta property="og:title" content="Ale Torhc — Contatti" />
+  <meta property="og:description" content="Contatti, social e portfolio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="avatar.jpg" />
+
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: rgba(255,255,255,0.08);
+      --card-border: rgba(255,255,255,0.14);
+      --text: #f6f7fb;
+      --muted: #b8bfcc;
+      --accent: #7c5cff;
+      --accent-2: #00d4ff;
+      --button: rgba(255,255,255,0.10);
+      --button-hover: rgba(255,255,255,0.18);
+      --shadow: 0 24px 80px rgba(0,0,0,0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(124,92,255,0.55), transparent 34rem),
+        radial-gradient(circle at bottom right, rgba(0,212,255,0.30), transparent 28rem),
+        var(--bg);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 32px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .profile {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .avatar {
+      width: 112px;
+      height: 112px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,0.32);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    h1 {
+      font-size: 2rem;
+      line-height: 1.1;
+      margin: 18px 0 6px;
+      letter-spacing: -0.04em;
+    }
+
+    .handle {
+      color: var(--muted);
+      margin: 0 0 14px;
+      font-size: 1rem;
+    }
+
+    .bio {
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0 auto;
+      max-width: 34ch;
+    }
+
+    .links {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 18px;
+      background: var(--button);
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.10);
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+      font-weight: 650;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--button-hover);
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      border: 0;
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.12);
+      flex: 0 0 auto;
+    }
+
+    .arrow {
+      color: rgba(255,255,255,0.62);
+    }
+
+    footer {
+      text-align: center;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.85rem;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 420px) {
+      .card {
+        padding: 22px;
+        border-radius: 28px;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card" aria-label="Scheda contatto">
+      <div class="profile">
+        <!-- Metti una tua foto nella repo chiamata avatar.jpg, oppure cambia il nome qui sotto -->
+        <img class="avatar" src="avatar.jpg" alt="Foto profilo di Ale Torhc" onerror="this.style.display='none'" />
+
+        <h1>Ale Torhc</h1>
+        <p class="handle">@dadorpapi</p>
+        <p class="bio">
+          Ciao, sono Ale. Qui trovi i miei contatti, social e link utili.
+          <!-- Personalizza questa bio con una frase più tua. -->
+        </p>
+      </div>
+
+      <div class="links">
+        <button class="btn primary" type="button" onclick="downloadVCard()">
+          <span class="left"><span class="icon">📇</span> Salva contatto</span>
+          <span class="arrow">↓</span>
+        </button>
+
+        <a class="btn" href="mailto:dadorpapi@gmail.com">
+          <span class="left"><span class="icon">✉️</span> Email</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Sostituisci 39XXXXXXXXXX col tuo numero, senza +, spazi o trattini -->
+        <a class="btn" href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener">
+          <span class="left"><span class="icon">💬</span> WhatsApp</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Cambia gli username/URL qui sotto -->
+        <a class="btn" href="https://instagram.com/tuo_username" target="_blank" rel="noopener">
+          <span class="left"><span class="icon">📸</span> Instagram</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="btn" href="https://www.linkedin.com/in/tuo_username" target="_blank" rel="noopener">
+          <span class="left"><span class="icon">💼</span> LinkedIn</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="btn" href="https://github.com/tuo_username" target="_blank" rel="noopener">
+          <span class="left"><span class="icon">💻</span> GitHub / Portfolio</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="btn" href="https://calendly.com/tuo_username" target="_blank" rel="noopener">
+          <span class="left"><span class="icon">📅</span> Prenota una call</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      Tap NFC → contatti sempre aggiornati
+    </footer>
+  </main>
+
+  <script>
+    // Personalizza questi dati: saranno usati per creare il file contatto .vcf
+    const contact = {
+      firstName: "Ale",
+      lastName: "Torhc",
+      nickname: "dadorpapi",
+      phone: "+39XXXXXXXXXX",
+      email: "dadorpapi@gmail.com",
+      website: "https://tuosito.github.io/", // cambia con il tuo vero link GitHub Pages
+      instagram: "https://instagram.com/tuo_username",
+      linkedin: "https://www.linkedin.com/in/tuo_username",
+      github: "https://github.com/tuo_username",
+      note: "Contatto salvato dalla mia card NFC."
+    };
+
+    function escapeVCard(value) {
+      return String(value || "")
+        .replace(/\\/g, "\\\\")
+        .replace(/\n/g, "\\n")
+        .replace(/,/g, "\\,")
+        .replace(/;/g, "\\;");
+    }
+
+    function downloadVCard() {
+      const fullName = `${contact.firstName} ${contact.lastName}`.trim();
+
+      const vcard = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        `N:${escapeVCard(contact.lastName)};${escapeVCard(contact.firstName)};;;`,
+        `FN:${escapeVCard(fullName)}`,
+        `NICKNAME:${escapeVCard(contact.nickname)}`,
+        `TEL;TYPE=CELL:${escapeVCard(contact.phone)}`,
+        `EMAIL;TYPE=INTERNET:${escapeVCard(contact.email)}`,
+        `URL:${escapeVCard(contact.website)}`,
+        `X-SOCIALPROFILE;TYPE=instagram:${escapeVCard(contact.instagram)}`,
+        `X-SOCIALPROFILE;TYPE=linkedin:${escapeVCard(contact.linkedin)}`,
+        `X-SOCIALPROFILE;TYPE=github:${escapeVCard(contact.github)}`,
+        `NOTE:${escapeVCard(contact.note)}`,
+        "END:VCARD"
+      ].join("\n");
+
+      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${contact.firstName}-${contact.lastName}.vcf`.replace(/\s+/g, "-");
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
