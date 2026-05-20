@@ -10,6 +10,14 @@
   <meta property="og:description" content="Contatti, social e link utili." />
   <meta property="og:type" content="website" />
 
+  <script>
+    document.documentElement.classList.add("contact-card-page");
+    document.body?.classList.add("contact-card-page");
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("contact-card-page");
+    });
+  </script>
+
   <style>
     :root {
       --bg: #121318;
@@ -41,7 +49,24 @@
       overflow-x: hidden;
     }
 
-    /* Nasconde navbar/icone del tema SOLO in questa pagina */
+    /* Nasconde navbar/icone/titolo del tema SOLO in questa pagina */
+    html.contact-card-page header,
+    html.contact-card-page nav,
+    html.contact-card-page .navbar,
+    html.contact-card-page .site-header,
+    html.contact-card-page .site-nav,
+    html.contact-card-page .topbar,
+    html.contact-card-page .app-header,
+    html.contact-card-page .hextra-navbar,
+    html.contact-card-page .hx-sticky,
+    html.contact-card-page .search,
+    html.contact-card-page .search-button,
+    html.contact-card-page .search-toggle,
+    html.contact-card-page [role="search"],
+    html.contact-card-page .theme-toggle,
+    html.contact-card-page .color-mode-toggle,
+    html.contact-card-page .github,
+    html.contact-card-page .github-link,
     body.contact-card-page header,
     body.contact-card-page nav,
     body.contact-card-page .navbar,
@@ -49,13 +74,27 @@
     body.contact-card-page .site-nav,
     body.contact-card-page .topbar,
     body.contact-card-page .app-header,
+    body.contact-card-page .hextra-navbar,
+    body.contact-card-page .hx-sticky,
     body.contact-card-page .search,
     body.contact-card-page .search-button,
     body.contact-card-page .search-toggle,
+    body.contact-card-page [role="search"],
     body.contact-card-page .theme-toggle,
     body.contact-card-page .color-mode-toggle,
     body.contact-card-page .github,
     body.contact-card-page .github-link {
+      display: none !important;
+    }
+
+    html.contact-card-page body > main > h1:first-child,
+    html.contact-card-page body > main .content > h1:first-child,
+    html.contact-card-page body > main article > h1:first-child,
+    html.contact-card-page body > main .hx-text-4xl:first-child,
+    body.contact-card-page > main > h1:first-child,
+    body.contact-card-page > main .content > h1:first-child,
+    body.contact-card-page > main article > h1:first-child,
+    body.contact-card-page > main .hx-text-4xl:first-child {
       display: none !important;
     }
 
