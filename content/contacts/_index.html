@@ -41,6 +41,24 @@
       overflow-x: hidden;
     }
 
+    /* Nasconde navbar/icone del tema SOLO in questa pagina */
+    body.contact-card-page header,
+    body.contact-card-page nav,
+    body.contact-card-page .navbar,
+    body.contact-card-page .site-header,
+    body.contact-card-page .site-nav,
+    body.contact-card-page .topbar,
+    body.contact-card-page .app-header,
+    body.contact-card-page .search,
+    body.contact-card-page .search-button,
+    body.contact-card-page .search-toggle,
+    body.contact-card-page .theme-toggle,
+    body.contact-card-page .color-mode-toggle,
+    body.contact-card-page .github,
+    body.contact-card-page .github-link {
+      display: none !important;
+    }
+
     body::before {
       content: "";
       position: fixed;
@@ -65,98 +83,13 @@
       place-items: center;
     }
 
-    .card-only {
-      justify-self: center;
-    }
-
-    .hero {
-      min-height: auto;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(330px, 410px);
-      align-items: center;
-      gap: clamp(36px, 7vw, 96px);
-    }
-
-    .intro {
-      min-width: 0;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #dfe4ff;
-      background: rgba(124,92,255,0.14);
-      border: 1px solid rgba(124,92,255,0.28);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 0.92rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .eyebrow .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 18px rgba(31,182,255,0.8);
-    }
-
-    h1 {
-      font-size: clamp(3.1rem, 6.4vw, 5.8rem);
-      line-height: 0.96;
-      letter-spacing: -0.075em;
-      margin: 0;
-      max-width: 670px;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #fff 8%, #d9ddff 48%, #8be3ff 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .lead {
-      color: var(--muted);
-      font-size: clamp(1.03rem, 1.45vw, 1.22rem);
-      line-height: 1.65;
-      margin: 24px 0 0;
-      max-width: 540px;
-    }
-
-    .quick-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text);
-      text-decoration: none;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.055);
-      padding: 12px 15px;
-      border-radius: 999px;
-      font-weight: 750;
-      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
-    }
-
-    .pill:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.22);
-    }
-
     .phone-wrap {
       position: relative;
-      justify-self: end;
       width: min(100%, 410px);
+    }
+
+    .card-only {
+      justify-self: center;
     }
 
     .glow {
@@ -194,7 +127,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .badge {
@@ -202,8 +135,14 @@
       align-items: center;
       gap: 8px;
       color: var(--muted);
-      font-size: 0.92rem;
-      font-weight: 750;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 800;
     }
 
     .nfc {
@@ -214,40 +153,35 @@
       border-radius: 14px;
       background: var(--panel-strong);
       border: 1px solid var(--line);
+      color: var(--muted);
     }
 
     .identity {
       text-align: center;
       display: grid;
-      gap: 10px;
-      margin-bottom: 24px;
+      gap: 16px;
+      margin-bottom: 34px;
     }
 
     .name {
-      font-size: clamp(2.35rem, 4vw, 3.1rem);
-      line-height: 0.95;
+      font-size: clamp(2.65rem, 9vw, 3.4rem);
+      line-height: 0.98;
       letter-spacing: -0.065em;
       margin: 0;
     }
 
-    .meta {
-      color: var(--muted);
-      line-height: 1.45;
-      font-size: 1rem;
-      word-break: break-word;
-    }
-
     .bio {
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.55;
       margin: 0 auto;
-      max-width: 30ch;
+      max-width: 28ch;
+      font-size: 1rem;
     }
 
     .links {
       display: grid;
       gap: 12px;
-      margin-top: 24px;
+      margin-top: 0;
     }
 
     .btn {
@@ -264,7 +198,7 @@
       border: 1px solid var(--line);
       transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
       font: inherit;
-      font-weight: 760;
+      font-weight: 780;
       cursor: pointer;
       text-align: left;
     }
@@ -289,13 +223,63 @@
     }
 
     .icon {
-      width: 34px;
-      height: 34px;
+      width: 42px;
+      height: 42px;
       display: grid;
       place-items: center;
       flex: 0 0 auto;
-      border-radius: 13px;
-      background: rgba(255,255,255,0.13);
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 10px 24px rgba(0,0,0,0.18);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .icon svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: none;
+      overflow: visible;
+    }
+
+    .icon-save {
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(255,255,255,0.24), rgba(255,255,255,0.10));
+    }
+
+    .icon-email {
+      color: #4aa8ff;
+      background: radial-gradient(circle at 30% 20%, rgba(74,168,255,0.32), rgba(255,255,255,0.07));
+      border-color: rgba(74,168,255,0.28);
+    }
+
+    .icon-whatsapp {
+      color: #25d366;
+      background: rgba(37,211,102,0.14);
+      border-color: rgba(37,211,102,0.26);
+    }
+
+    .icon-whatsapp svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 1.9;
+      transform: translateX(0.5px);
+    }
+
+    .icon-instagram {
+      color: #ff4b7d;
+      background:
+        radial-gradient(circle at 28% 110%, rgba(255,193,7,0.28), transparent 42%),
+        radial-gradient(circle at 76% 18%, rgba(124,92,255,0.34), transparent 38%),
+        radial-gradient(circle at 30% 20%, rgba(255,45,85,0.32), rgba(255,255,255,0.07));
+      border-color: rgba(255,75,125,0.30);
     }
 
     .arrow {
@@ -303,63 +287,10 @@
       font-size: 1.15rem;
     }
 
-    .note {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      color: var(--soft);
-      font-size: 0.92rem;
-      line-height: 1.5;
-      margin-top: 18px;
-      padding: 14px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.045);
-      border: 1px solid rgba(255,255,255,0.075);
-    }
-
-    footer {
-      color: rgba(255,255,255,0.48);
-      font-size: 0.9rem;
-      margin-top: 28px;
-    }
-
-    @media (max-width: 980px) {
-      .hero {
-        grid-template-columns: 1fr;
-        gap: 34px;
-      }
-
-      .phone-wrap {
-        justify-self: stretch;
-        width: 100%;
-        max-width: 470px;
-      }
-
-      h1 {
-        max-width: 760px;
-      }
-
-      .lead {
-        max-width: 640px;
-      }
-    }
-
     @media (max-width: 560px) {
       .page {
         width: min(100% - 22px, 1080px);
-        padding: 30px 0 40px;
-      }
-
-      h1 {
-        font-size: clamp(3rem, 17vw, 4.8rem);
-      }
-
-      .quick-actions {
-        display: grid;
-      }
-
-      .pill {
-        justify-content: center;
+        padding: 28px 0;
       }
 
       .card {
@@ -369,49 +300,42 @@
     }
   </style>
 </head>
-<body>
+<body class="contact-card-page">
   <main class="page card-only-page">
     <div class="phone-wrap card-only">
       <div class="glow" aria-hidden="true"></div>
 
-      <section class="card">
+      <section class="card" aria-label="Scheda contatto">
         <div class="top-row">
-          <span class="badge">✨ digital card</span>
+          <span class="badge">✨ Digital card</span>
           <span class="nfc" aria-label="NFC">⌁</span>
         </div>
 
         <div class="identity">
           <h1 class="name">Alessandro<br />Torchia</h1>
-          <p class="bio">
-            scegli come contattarmi e salva il contatto in rubrica
-          </p>
+          <p class="bio">scegli come contattarmi e salva il contatto in rubrica</p>
         </div>
 
         <div class="links">
           <button class="btn primary" type="button" onclick="downloadVCard()">
-            <span class="left"><span class="icon">📇</span> Salva contatto</span>
+            <span class="left"><span class="icon icon-save"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"></path><path d="M9 8h6"></path><path d="M9 12h6"></path><path d="M9 16h3"></path><path d="M16 15v4"></path><path d="M14 17h4"></path></svg></span> Salva contatto</span>
             <span class="arrow">↓</span>
           </button>
 
           <a class="btn" href="mailto:alessandrotorchia@proton.me">
-            <span class="left"><span class="icon">✉️</span> Email</span>
+            <span class="left"><span class="icon icon-email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16v11H4z"></path><path d="M4.8 7.3 12 13l7.2-5.7"></path><path d="m4.8 16.7 5.2-4.2"></path><path d="m19.2 16.7-5.2-4.2"></path></svg></span> Email</span>
             <span class="arrow">→</span>
           </a>
 
           <a class="btn" href="https://wa.me/393921492843" target="_blank" rel="noopener">
-            <span class="left"><span class="icon">💬</span> WhatsApp</span>
+            <span class="left"><span class="icon icon-whatsapp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.7a7.8 7.8 0 0 1-11.2 7l-3.3.8.9-3.2A7.8 7.8 0 1 1 20 11.7Z"></path><path d="M9.3 10.2h5.4"></path><path d="M9.3 13.1h3.7"></path></svg></span> WhatsApp</span>
             <span class="arrow">→</span>
           </a>
 
           <a class="btn" href="https://instagram.com/alessandro.torchia8" target="_blank" rel="noopener">
-            <span class="left"><span class="icon">📸</span> Instagram</span>
+            <span class="left"><span class="icon icon-instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.8" y="4.8" width="14.4" height="14.4" rx="4.4"></rect><circle cx="12" cy="12" r="3.4"></circle><circle cx="16.7" cy="7.4" r="1"></circle></svg></span> Instagram</span>
             <span class="arrow">→</span>
           </a>
-        </div>
-
-        <div class="note">
-          <span>💡</span>
-          <span>Scrivi sulla tag NFC il link di questa pagina. Se cambi contatti, aggiorni solo il sito.</span>
         </div>
       </section>
     </div>
@@ -425,7 +349,7 @@
       phone: "+393921492843",
       email: "alessandrotorchia@proton.me",
       instagram: "https://instagram.com/alessandro.torchia8",
-      note: ""
+      note: "Contatto salvato dalla mia card NFC."
     };
 
     function escapeVCard(value) {
