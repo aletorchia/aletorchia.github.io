@@ -2,7 +2,7 @@
 title: "Italiano"
 type: "docs"
 bookCollapseSection: true
-weight: 1
+weight: 3
 ---
 
 # Appunti di Italiano

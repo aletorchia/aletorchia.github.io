@@ -1,3 +1,8 @@
+---
+title: "impresa dei mille (WIP)"
+type: "docs"
+weight: 2
+---
 # L’impresa dei Mille
 
 Nel **1860** l’**impresa dei Mille** portò all’annessione del **Sud Italia** al Regno di Sardegna, contribuendo al processo di unificazione italiana.

@@ -1,5 +1,5 @@
 ---
-title: "Giacomo Leopardi"
+title: "Giacomo Leopardi (WIP)"
 type: "docs"
 weight: 2
 ---
