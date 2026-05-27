@@ -33,7 +33,7 @@ Dopo queste esperienze Manzoni torna in Italia con la moglie, si trova in un per
 Decide di scrivere opere con degli ideali romantici e negli anni 20 compone le sue opere più importanti <br>
 ## morte
 
-Muore molto anziano dopo aver ricevuto molti omaggi, muore nel 1773 cadendo uscendo dalla chiesa (non sul colpo)
+Muore molto anziano dopo aver ricevuto molti omaggi, muore nel 1873 cadendo uscendo dalla chiesa (non sul colpo)
 
 ----
 

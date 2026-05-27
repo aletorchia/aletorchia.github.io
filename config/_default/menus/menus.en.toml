@@ -29,15 +29,10 @@
   url = "/tutorial/lorem/"
 
 [[main]]
-  name = "Docs"
+  name = "appunti"
   url = "/docs/"
 # url = "/docs/"
   weight = 10
-
-[[main]]
-  name = "Blog"
-  url = "/blog/"
-  weight = 30
 
 # [[social]]
 #   name = "Twitter"

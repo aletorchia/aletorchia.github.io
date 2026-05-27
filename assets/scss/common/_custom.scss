@@ -2,3 +2,23 @@
 .docs-navigation {
   display: none !important;
 }
+@media (max-width: 1024px) {
+  .flyoutbar,
+  .flyout,
+  .sidebar,
+  .menu,
+  .navigation,
+  .docs-sidebar {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+/* Nasconde i bottoni Prev / Next in fondo alle pagine */
+.pagination,
+.docs-pagination,
+.page-nav,
+.navigation,
+.nav-links {
+  display: none !important;
+}

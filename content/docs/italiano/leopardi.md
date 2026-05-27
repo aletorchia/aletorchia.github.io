@@ -1,7 +1,7 @@
 ---
 title: "Giacomo Leopardi (WIP)"
 type: "docs"
-weight: 2
+weight: 3   
 ---
 # Giacomo Leopardi – appunti sistemati
 

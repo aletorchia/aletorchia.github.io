@@ -101,3 +101,5 @@ copyRight = "Copyright (c) 2020-2026 Thulite"
   hint = "photo"
   quality = 85
   resampleFilter = "Lanczos"
+[security]
+allowContent = ['.*']
