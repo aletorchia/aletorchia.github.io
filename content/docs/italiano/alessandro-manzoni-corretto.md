@@ -33,7 +33,7 @@ Manzoni torna in Italia con la moglie nel **1810**, negli anni in cui inizia il 
 
 Decide di scrivere opere ispirate agli ideali romantici. Contribuisce anche al **Risorgimento**, soprattutto attraverso due aspetti:
 
-- **La lingua**: lavora sull'italiano e sostiene la diffusione di una lingua comune, anche attraverso l'insegnamento nelle scuole e l'uso del fiorentino.
+- **La lingua**: lavora sull'italiano e sostiene la diffusione di una lingua comune, anche attraverso l'insegnamento nelle scuole e l'uso del fiorentino (dato che era la più parlata ).
 - **L'oppressione politica**: nei *Promessi Sposi* racconta una Milano oppressa, ma sposta la vicenda nel Seicento e usa come oppressori gli Spagnoli, così da evitare la censura austriaca.
 
 L'espressione **"sciacquare i panni in Arno"** indica il lavoro di revisione linguistica fatto da Manzoni: decide di avvicinare la lingua del romanzo al fiorentino parlato.

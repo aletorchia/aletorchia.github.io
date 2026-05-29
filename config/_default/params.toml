@@ -1,7 +1,7 @@
 # Hugo
 title = "miei appunti"
 description = "sito appunti"
-images = ["cover.png"]
+images = ["favicon.png"]
 
 # mainSections
 mainSections = ["docs"]
@@ -112,16 +112,17 @@ mathEngine = "KaTeX"
     suffix = ""
   [seo.description]
     summaryFallback = ""
-  [seo.favicons]
-    icon = "favicon.png"
-    svgIcon = "favicon.svg"
-  [seo.schemas]
-    type = "Organization"
-    logo = "favicon-512x512.png"
-    name = "Thulite"
-    sameAs = []
-    images = ["cover.png"]
-    article = []
-    newsArticle = []
-    blogPosting = ["blog"]
-    product = []
+[seo.favicons]
+  icon = "favicon.png"
+  svgIcon = ""
+
+[seo.schemas]
+  type = "Organization"
+  logo = "favicon-512x512.png"
+  name = "miei appunti"
+  sameAs = []
+  images = ["favicon.png"]
+  article = []
+  newsArticle = []
+  blogPosting = ["blog"]
+  product = []
