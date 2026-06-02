@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Linux Cheatsheet | CachyOS KDE</title>
+  <meta name="description" content="Comandi Linux utili per CachyOS, Arch Linux e KDE Plasma." />
+
+  <style>
+    :root {
+      --bg: #0d0f0e;
+      --panel: #101310;
+      --panel-2: #151915;
+      --border: #263226;
+      --text: #f2fff0;
+      --muted: #a9b6a6;
+      --dim: #5f6d5b;
+      --green: #39ff14;
+      --green-soft: #c8ffc0;
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.45);
+      --mono: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+      --sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 50% 8%, rgba(57, 255, 20, 0.09), transparent 30rem),
+        linear-gradient(180deg, #101211 0%, #0b0d0c 45%, #0d0f0e 100%);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(57,255,20,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57,255,20,0.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: .22;
+      pointer-events: none;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      min-height: 58px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(13, 15, 14, 0.92);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .terminal-icon {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 5px;
+      background: #050805;
+      border: 1px solid #1e2a1e;
+      color: var(--green);
+      box-shadow: inset 0 0 18px rgba(57,255,20,.08);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(16px, 3vw, 34px);
+      color: var(--green-soft);
+      flex-wrap: wrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .resume {
+      padding: 10px 16px;
+      border: 1px solid var(--green-soft);
+      color: var(--green-soft);
+      background: transparent;
+      font-family: var(--mono);
+      font-weight: 800;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: calc(100vh - 58px);
+      padding: clamp(80px, 12vh, 150px) 0 90px;
+      display: grid;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-inner {
+      width: min(900px, 100%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .release {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--green-soft);
+      background: rgba(255,255,255,.03);
+      font: 800 12px var(--mono);
+      letter-spacing: .06em;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 16px var(--green);
+    }
+
+    h1 {
+      max-width: 100%;
+      color: var(--green-soft);
+      font-size: clamp(54px, 10vw, 122px);
+      letter-spacing: clamp(-5px, -0.7vw, -2px);
+      line-height: .88;
+      text-shadow: 0 0 28px rgba(57,255,20,.13);
+      margin-bottom: 28px;
+      overflow-wrap: anywhere;
+    }
+
+    .cursor {
+      color: var(--green);
+      animation: blink 1s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .hero p {
+      width: min(760px, 100%);
+      margin: 0 auto;
+      color: #dce6d9;
+      line-height: 1.75;
+      font-size: clamp(15px, 2vw, 17px);
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+    }
+
+    .primary {
+      min-width: 220px;
+      padding: 14px 22px;
+      color: var(--green);
+      background: transparent;
+      border: 2px solid var(--green);
+      font-weight: 900;
+      transition: .2s ease;
+      text-align: center;
+    }
+
+    .primary:hover {
+      color: #061006;
+      background: var(--green);
+      box-shadow: 0 0 35px rgba(57,255,20,.2);
+      transform: translateY(-2px);
+    }
+
+    .ghost {
+      color: var(--green-soft);
+      opacity: .92;
+      padding: 12px 0;
+      white-space: nowrap;
+    }
+
+    .ghost:hover {
+      color: var(--green);
+    }
+
+    .fake-terminal {
+      position: absolute;
+      left: 0;
+      bottom: 42px;
+      width: min(560px, 90vw);
+      text-align: left;
+      color: rgba(207, 222, 202, .42);
+      font: 13px var(--mono);
+      line-height: 1.55;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 78px;
+      align-items: center;
+      padding: 80px 0 56px;
+    }
+
+    .section-title {
+      color: var(--green-soft);
+      font-size: clamp(30px, 4vw, 42px);
+      letter-spacing: -1.5px;
+      margin-bottom: 18px;
+    }
+
+    .section-title::before {
+      content: "|";
+      color: var(--green);
+      margin-right: 12px;
+    }
+
+    .about p {
+      color: #dbe7d8;
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .bullets {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+      color: var(--green-soft);
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    .bullets li {
+      list-style: none;
+    }
+
+    .bullets li::before {
+      content: "$ ";
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .screen {
+      border-radius: 6px;
+      border: 1px solid #202820;
+      background: #050605;
+      box-shadow: var(--shadow);
+      padding: 8px;
+      transform: rotate(-1deg);
+    }
+
+    .screen-inner {
+      min-height: 360px;
+      padding: 24px;
+      border: 1px solid #1f251f;
+      background:
+        linear-gradient(rgba(255,255,255,.03), rgba(255,255,255,0)),
+        repeating-linear-gradient(0deg, rgba(57,255,20,.02) 0 1px, transparent 1px 4px);
+      font-family: var(--mono);
+      color: var(--green-soft);
+      overflow: hidden;
+    }
+
+    .screen-inner code {
+      display: block;
+      color: #d8ffd2;
+      white-space: pre-wrap;
+      line-height: 1.7;
+      font-size: 13px;
+    }
+
+    .projects-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin: 64px 0 28px;
+      gap: 20px;
+      font-family: var(--mono);
+    }
+
+    .projects-head h2 {
+      color: var(--green-soft);
+      font-size: clamp(34px, 5vw, 48px);
+      letter-spacing: -2px;
+      font-family: var(--sans);
+    }
+
+    .view-all {
+      color: var(--green-soft);
+      font-size: 12px;
+      text-decoration: underline;
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      background: rgba(12,14,13,.85);
+      border-radius: 7px;
+      overflow: hidden;
+      min-height: 260px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.22);
+    }
+
+    .project-card.big {
+      min-height: 320px;
+    }
+
+    .window-bar {
+      height: 32px;
+      background: #191d19;
+      border-bottom: 1px solid #293229;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 7px;
+      padding: 0 13px;
+    }
+
+    .window-bar span {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+    }
+
+    .window-bar span:nth-child(1) { background: #ff4b4b; }
+    .window-bar span:nth-child(2) { background: #ffb84b; }
+    .window-bar span:nth-child(3) { background: var(--green); }
+
+    .card-content {
+      padding: 22px;
+    }
+
+    .path {
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .project-card h3 {
+      font-size: 28px;
+      color: var(--green-soft);
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: #d8e4d5;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .terminal-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .cmd-line {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 9px 10px;
+      border: 1px solid rgba(57,255,20,.13);
+      background: rgba(0,0,0,.25);
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 12px;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+
+    .prompt {
+      color: var(--green);
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    code {
+      color: #f1ffee;
+      font-family: var(--mono);
+      white-space: pre;
+    }
+
+    .wide {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .logs {
+      width: min(920px, calc(100% - 40px));
+      margin: 90px auto 0;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+
+    .logs h2 {
+      text-align: center;
+      color: var(--green-soft);
+      font-family: var(--mono);
+      font-size: clamp(28px, 4vw, 38px);
+      margin-bottom: 40px;
+      overflow-wrap: anywhere;
+    }
+
+    .log-entry {
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr);
+      gap: 22px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .log-date {
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: 12px;
+      padding-top: 5px;
+    }
+
+    .log-entry h3 {
+      color: #f4fff1;
+      font-size: 22px;
+      margin-bottom: 8px;
+      letter-spacing: -.5px;
+    }
+
+    .log-entry p {
+      color: #d7e3d4;
+      line-height: 1.55;
+      margin-bottom: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .mini-code {
+      display: grid;
+      gap: 7px;
+    }
+
+    footer {
+      margin-top: 90px;
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      color: var(--green-soft);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1050px) {
+      h1 {
+        font-size: clamp(48px, 11vw, 96px);
+      }
+
+      .fake-terminal {
+        position: static;
+        margin: 40px auto 0;
+        width: min(640px, 100%);
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        flex-wrap: wrap;
+        padding: 10px 0;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 18px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 78px;
+      }
+
+      .about,
+      .grid,
+      .wide {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .primary {
+        width: min(100%, 320px);
+      }
+
+      .ghost {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .wrap,
+      .nav,
+      .footer-inner,
+      .logs {
+        width: min(100% - 24px, 1120px);
+      }
+
+      h1 {
+        font-size: clamp(44px, 17vw, 72px);
+        letter-spacing: -2px;
+      }
+
+      .brand span:last-child {
+        display: none;
+      }
+
+      .resume {
+        padding: 9px 12px;
+      }
+
+      .log-entry {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .screen-inner {
+        min-height: 260px;
+        padding: 16px;
+      }
+
+      .projects-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="#">
+        <span class="terminal-icon">&gt;_</span>
+        <span>ROOT@CACHYOS:~</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#commands">Commands</a>
+        <a href="#logs">Logs</a>
+        <a href="#danger">Safety</a>
+      </div>
+
+      <a class="resume" href="#commands">CHEATSHEET</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-inner">
+        <h1>Linux<br>Cheatsheet<span class="cursor">|</span></h1>
+        <p>
+          Comandi rapidi per CachyOS, Arch Linux e KDE Plasma.
+          Una pagina stile terminale per aggiornare il sistema, gestire pacchetti,
+          controllare rete, audio, GRUB, Git e risolvere problemi al volo.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary" href="#commands">▣ View Commands</a>
+          <a class="ghost" href="#logs">&gt; Read Command Logs</a>
+        </div>
+      </div>
+
+      <div class="fake-terminal">
+        <p>root@cachyos:~$ uname -a</p>
+        <p>Linux cachyos 6.x.x-cachyos x86_64 GNU/Linux</p>
+        <p>root@cachyos:~$ sudo pacman -Syu</p>
+        <p>:: Synchronizing package databases...</p>
+        <p>:: Starting full system upgrade...</p>
+      </div>
+    </section>
+
+    <section id="about" class="about wrap">
+      <div>
+        <h2 class="section-title">system_info.sh</h2>
+        <p>
+          Questa pagina raccoglie i comandi più utili per usare e sistemare
+          un sistema Linux basato su CachyOS / Arch Linux con KDE Plasma.
+        </p>
+        <ul class="bullets">
+          <li>Aggiornamento sistema e pacchetti AUR</li>
+          <li>Controllo hardware, rete, audio e Bluetooth</li>
+          <li>Comandi per KDE Plasma, GRUB, Git e log</li>
+          <li>Note di sicurezza per evitare comandi distruttivi</li>
+        </ul>
+      </div>
+
+      <div class="screen">
+        <div class="screen-inner">
+          <code>root@cachyos:~$ fastfetch
+
+OS: CachyOS x86_64
+DE: KDE Plasma
+Kernel: Linux CachyOS
+Shell: fish / bash
+
+root@cachyos:~$ ls ./commands
+pacman  paru  kde  network
+audio   grub  git   logs</code>
+        </div>
+      </div>
+    </section>
+
+    <section id="commands" class="wrap">
+      <div class="projects-head">
+        <h2>ls ./commands/</h2>
+        <a class="view-all" href="#logs">view_all()</a>
+      </div>
+
+      <div class="grid">
+
+      <article class="project-card big">
+        <div class="window-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="card-content">
+          <p class="path">./commands/aggiornare-il-sistema</p>
+          <h3>Aggiornare il sistema</h3>
+          <p>Aggiorna tutti i pacchetti installati:</p>
+          <div class="terminal-list">
+            <div class="cmd-line"><span class="prompt">$</span><code>sudo pacman -Syu</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>paru -Syu</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>sudo cachyos-rate-mirrors</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="project-card">
+        <div class="window-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="card-content">
+          <p class="path">./commands/installare-e-rimuovere-programmi</p>
+          <h3>Installare e rimuovere programmi</h3>
+          <p>Installare un programma dai repository ufficiali:</p>
+          <div class="terminal-list">
+            <div class="cmd-line"><span class="prompt">$</span><code>sudo pacman -S nome_pacchetto</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>sudo pacman -S fastfetch</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>sudo pacman -R nome_pacchetto</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>sudo pacman -Rns nome_pacchetto</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="project-card">
+        <div class="window-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="card-content">
+          <p class="path">./commands/pulizia-del-sistema</p>
+          <h3>Pulizia del sistema</h3>
+          <p>Pulire la cache dei pacchetti vecchi:</p>
+          <div class="terminal-list">
+            <div class="cmd-line"><span class="prompt">$</span><code>sudo pacman -Sc</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>sudo pacman -Scc</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>sudo pacman -Rns $(pacman -Qtdq)</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="project-card">
+        <div class="window-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="card-content">
+          <p class="path">./commands/informazioni-sul-sistema</p>
+          <h3>Informazioni sul sistema</h3>
+          <p>Mostrare informazioni rapide del PC:</p>
+          <div class="terminal-list">
+            <div class="cmd-line"><span class="prompt">$</span><code>fastfetch</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>uname -r</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>hostnamectl</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>lspci | grep -E &quot;VGA|3D&quot;</code></div>
+          </div>
+        </div>
+      </article>
+
+      </div>
+
+      <div class="wide">
+
+      <article class="project-card">
+        <div class="window-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="card-content">
+          <p class="path">./commands/processi-e-prestazioni</p>
+          <h3>Processi e prestazioni</h3>
+          <p>Vedere i processi attivi:</p>
+          <div class="terminal-list">
+            <div class="cmd-line"><span class="prompt">$</span><code>top</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>htop</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>sudo pacman -S htop</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>ps aux --sort=-%mem | head</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="project-card">
+        <div class="window-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="card-content">
+          <p class="path">./commands/kde-plasma</p>
+          <h3>KDE Plasma</h3>
+          <p>Riavviare Plasma senza riavviare il PC:</p>
+          <div class="terminal-list">
+            <div class="cmd-line"><span class="prompt">$</span><code>systemctl --user restart plasma-plasmashell</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>systemsettings</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>kcmshell6 kcm_networkmanagement</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>kcmshell6 kcm_bluetooth
+kcmshell6 kcm_pulseaudio
+kcmshell6 kcm_powerdevilprofilesconfig</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="project-card">
+        <div class="window-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="card-content">
+          <p class="path">./commands/rete</p>
+          <h3>Rete</h3>
+          <p>Vedere indirizzo IP:</p>
+          <div class="terminal-list">
+            <div class="cmd-line"><span class="prompt">$</span><code>ip a</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>ip route</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>ping google.com</code></div>
+<div class="cmd-line"><span class="prompt">$</span><code>resolvectl status</code></div>
+          </div>
+        </div>
+      </article>
+
+      </div>
+    </section>
+
+    <section id="logs" class="logs">
+      <h2>cat /var/log/commands</h2>
+
+      <article class="log-entry">
+        <div class="log-date">CMD</div>
+        <div>
+          <h3>Processi e prestazioni</h3>
+          <p>Vedere i processi attivi:</p>
+          <div class="mini-code">
+            <div class="cmd-line"><span class="prompt">$</span><code>top</code></div><div class="cmd-line"><span class="prompt">$</span><code>htop</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="log-entry">
+        <div class="log-date">CMD</div>
+        <div>
+          <h3>KDE Plasma</h3>
+          <p>Riavviare Plasma senza riavviare il PC:</p>
+          <div class="mini-code">
+            <div class="cmd-line"><span class="prompt">$</span><code>systemctl --user restart plasma-plasmashell</code></div><div class="cmd-line"><span class="prompt">$</span><code>systemsettings</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="log-entry">
+        <div class="log-date">CMD</div>
+        <div>
+          <h3>Rete</h3>
+          <p>Vedere indirizzo IP:</p>
+          <div class="mini-code">
+            <div class="cmd-line"><span class="prompt">$</span><code>ip a</code></div><div class="cmd-line"><span class="prompt">$</span><code>ip route</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="log-entry">
+        <div class="log-date">CMD</div>
+        <div>
+          <h3>Bluetooth</h3>
+          <p>Controllare stato Bluetooth:</p>
+          <div class="mini-code">
+            <div class="cmd-line"><span class="prompt">$</span><code>systemctl status bluetooth</code></div><div class="cmd-line"><span class="prompt">$</span><code>sudo systemctl start bluetooth</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="log-entry">
+        <div class="log-date">CMD</div>
+        <div>
+          <h3>Audio</h3>
+          <p>Aprire impostazioni audio di KDE:</p>
+          <div class="mini-code">
+            <div class="cmd-line"><span class="prompt">$</span><code>kcmshell6 kcm_pulseaudio</code></div><div class="cmd-line"><span class="prompt">$</span><code>pactl list short sinks</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="log-entry">
+        <div class="log-date">CMD</div>
+        <div>
+          <h3>File e cartelle</h3>
+          <p>Entrare in una cartella:</p>
+          <div class="mini-code">
+            <div class="cmd-line"><span class="prompt">$</span><code>cd nome_cartella</code></div><div class="cmd-line"><span class="prompt">$</span><code>cd</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="log-entry">
+        <div class="log-date">CMD</div>
+        <div>
+          <h3>Permessi</h3>
+          <p>Rendere eseguibile uno script:</p>
+          <div class="mini-code">
+            <div class="cmd-line"><span class="prompt">$</span><code>chmod +x script.sh</code></div><div class="cmd-line"><span class="prompt">$</span><code>./script.sh</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="log-entry">
+        <div class="log-date">CMD</div>
+        <div>
+          <h3>Log ed errori</h3>
+          <p>Vedere log del sistema:</p>
+          <div class="mini-code">
+            <div class="cmd-line"><span class="prompt">$</span><code>journalctl -xe</code></div><div class="cmd-line"><span class="prompt">$</span><code>journalctl -b</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="log-entry">
+        <div class="log-date">CMD</div>
+        <div>
+          <h3>GRUB</h3>
+          <p>Aggiornare configurazione di GRUB:</p>
+          <div class="mini-code">
+            <div class="cmd-line"><span class="prompt">$</span><code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code></div><div class="cmd-line"><span class="prompt">$</span><code>sudo efibootmgr</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="log-entry">
+        <div class="log-date">CMD</div>
+        <div>
+          <h3>Git</h3>
+          <p>Configurare nome utente:</p>
+          <div class="mini-code">
+            <div class="cmd-line"><span class="prompt">$</span><code>git config --global user.name &quot;Nome Cognome&quot;</code></div><div class="cmd-line"><span class="prompt">$</span><code>git config --global user.email &quot;email@example.com&quot;</code></div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="log-entry">
+        <div class="log-date">CMD</div>
+        <div>
+          <h3>Comandi utili da ricordare</h3>
+          <p>Spegnere il PC:</p>
+          <div class="mini-code">
+            <div class="cmd-line"><span class="prompt">$</span><code>systemctl poweroff</code></div><div class="cmd-line"><span class="prompt">$</span><code>systemctl reboot</code></div>
+          </div>
+        </div>
+      </article>
+
+
+
+    </section>
+
+    <section id="danger" class="logs">
+      <h2>cat /var/log/safety</h2>
+      <article class="log-entry">
+        <div class="log-date">WARN</div>
+        <div>
+          <h3>Occhio ai comandi trovati online</h3>
+          <p>
+  Prima di copiare comandi trovati online, è meglio capire cosa fanno;
+  usa <a href="https://explainshell.com/" target="_blank" rel="noopener noreferrer">questo sito</a>
+  per analizzarli: prova ad analizzare questo codice, ma NON eseguirlo   .
+</p>
+          <div class="mini-code">
+            <div class="cmd-line"><span class="prompt">$</span><code>rm -rf /</code></div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+
+      <div>
+        <a href="#commands">Commands</a> ·
+        <a href="#logs">Logs</a> ·
+        <a href="#about">System Info</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
