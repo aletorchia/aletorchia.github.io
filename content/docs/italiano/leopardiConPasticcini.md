@@ -2,7 +2,7 @@
  title: "Giacomo Leopardi (fatto con palla)"
  type: "docs"
  weight: 4
- ---
+---
 # leopardi 
 ## vita 
 ha una grossa passione per lo studio che lo porta ad avere problemi a relazionarsi con gli altri, inoltre dato che passava tanto tempo a casa aveva problemi di salute.
