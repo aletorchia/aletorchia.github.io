@@ -1,5 +1,5 @@
 ---
- title: "Giacomo Leopardi (WIP)"
+ title: "Giacomo Leopardi (fatto con palla)"
  type: "docs"
  weight: 4
  ---

@@ -15,7 +15,7 @@ Sono gli anni successivi alla Rivoluzione francese, dato che Recanati è un ambi
 
 ## 2. La famiglia
 
-Leopardi è il **figlio primogenito** di una famiglia nobile, ma economicamente in difficoltà.
+Leopardi è il **figlio primogenito** di una famiglia nobile, ma economicamente in difficoltà dato che il padre aveva sperperato il patrimonio della famiglia quidni la madre si era imposta di risanare le finanze.
 
 La famiglia Leopardi è caratterizzata da **rigide tradizioni conservatrici** e da una forte educazione religiosa.
 
@@ -63,3 +63,6 @@ Tra questi ci sono:
 - dolori e difficoltà fisiche.
 
 Questi problemi contribuiscono al suo isolamento e alla sua sofferenza, influenzando anche la sua visione pessimistica della vita.
+# OPERE
+## l'infinito
+
