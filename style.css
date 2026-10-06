@@ -523,3 +523,412 @@ footer {
     }
 }
 
+/* ==============================
+   PAGINE APPUNTI
+   ============================== */
+
+.note-page {
+    max-width: 1000px;
+}
+
+
+/* Card degli appunti */
+
+.note-card {
+    margin-bottom: 20px;
+
+    padding: 40px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.20);
+}
+
+
+/* Numero della sezione */
+
+.note-number {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #a78bfa;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.15em;
+}
+
+
+/* Titoli */
+
+.note-card h2 {
+    margin-bottom: 20px;
+
+    font-size: 2rem;
+
+    letter-spacing: -0.03em;
+}
+
+.note-card h3 {
+    margin-top: 35px;
+    margin-bottom: 12px;
+
+    font-size: 1.15rem;
+
+    color: #e4e4e7;
+}
+
+
+/* Testo */
+
+.note-card p {
+    margin-bottom: 18px;
+
+    color: #a1a1aa;
+
+    line-height: 1.75;
+}
+
+.note-card strong {
+    color: #e4e4e7;
+}
+
+
+/* Liste */
+
+.note-card ul,
+.note-card ol {
+    margin: 15px 0 20px;
+
+    padding-left: 25px;
+
+    color: #a1a1aa;
+
+    line-height: 1.8;
+}
+
+.note-card li {
+    margin-bottom: 5px;
+}
+
+
+/* Codice inline */
+
+.note-card code {
+    padding: 3px 7px;
+
+    color: #c4b5fd;
+
+    background: rgba(124, 58, 237, 0.10);
+
+    border: 1px solid rgba(124, 58, 237, 0.15);
+
+    border-radius: 6px;
+
+    font-family:
+        "JetBrains Mono",
+        "Fira Code",
+        monospace;
+
+    font-size: 0.85em;
+}
+
+
+/* Blocchi di codice */
+
+.note-card pre {
+    margin: 20px 0 25px;
+
+    padding: 22px;
+
+    overflow-x: auto;
+
+    background: #050507;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 12px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.note-card pre code {
+    padding: 0;
+
+    color: #e4e4e7;
+
+    background: transparent;
+
+    border: none;
+
+    font-size: 0.85rem;
+
+    line-height: 1.7;
+}
+
+
+/* Indice */
+
+.note-links {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+}
+
+.note-links a {
+    padding: 14px 16px;
+
+    color: #a1a1aa;
+
+    text-decoration: none;
+
+    background: rgba(255, 255, 255, 0.03);
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    border-radius: 10px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.note-links a:hover {
+    color: #ffffff;
+
+    background: rgba(124, 58, 237, 0.08);
+
+    border-color: rgba(167, 139, 250, 0.25);
+
+    transform: translateY(-2px);
+}
+
+
+/* Box DDL / DML / DCL */
+
+.sql-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.sql-box {
+    padding: 22px;
+
+    background: rgba(255, 255, 255, 0.03);
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 14px;
+}
+
+.sql-box strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #a78bfa;
+
+    font-size: 1.3rem;
+}
+
+.sql-box span {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #71717a;
+
+    font-size: 0.75rem;
+}
+
+.sql-box p {
+    margin: 0;
+
+    color: #d4d4d8;
+
+    font-size: 0.85rem;
+}
+
+
+/* Citazioni */
+
+.note-card blockquote {
+    margin: 25px 0;
+
+    padding: 18px 20px;
+
+    color: #a1a1aa;
+
+    background: rgba(124, 58, 237, 0.06);
+
+    border-left: 3px solid #8b5cf6;
+
+    border-radius: 0 10px 10px 0;
+}
+
+
+/* Tabelle */
+
+.note-card table {
+    width: 100%;
+
+    margin: 25px 0;
+
+    border-collapse: collapse;
+
+    overflow: hidden;
+
+    font-size: 0.9rem;
+}
+
+.note-card th,
+.note-card td {
+    padding: 14px 16px;
+
+    text-align: left;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.note-card th {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    font-weight: 600;
+}
+
+.note-card td {
+    color: #a1a1aa;
+}
+
+
+/* Link finale */
+
+.back-link {
+    margin: 30px 0;
+
+    text-align: center;
+}
+
+.back-link a {
+    color: #a78bfa;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+
+    transition: color 0.2s ease;
+}
+
+.back-link a:hover {
+    color: #ffffff;
+}
+
+
+/* ==============================
+   MOBILE
+   ============================== */
+
+@media (max-width: 700px) {
+
+    .note-card {
+        padding: 25px 20px;
+
+        border-radius: 16px;
+    }
+
+    .note-card h2 {
+        font-size: 1.6rem;
+    }
+
+    .note-card h3 {
+        font-size: 1rem;
+    }
+
+    .note-links {
+        grid-template-columns: 1fr;
+    }
+
+    .sql-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .note-card table {
+        display: block;
+
+        overflow-x: auto;
+
+        white-space: nowrap;
+    }
+
+    .note-card pre {
+        padding: 16px;
+
+        font-size: 0.8rem;
+    }
+}
+/* =========================
+   CODE BLOCKS
+   ========================= */
+
+.code-block {
+    position: relative;
+}
+
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    padding: 6px 10px;
+
+    color: #a1a1aa;
+    background: rgba(255, 255, 255, 0.05);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 7px;
+
+    font-family: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.copy-button:hover {
+    color: #ffffff;
+    background: rgba(124, 58, 237, 0.15);
+    border-color: rgba(167, 139, 250, 0.3);
+}
+
+.copy-button.copied {
+    color: #c4b5fd;
+    background: rgba(124, 58, 237, 0.12);
+}
+
+.code-block pre {
+    padding-top: 45px;
+}

@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOCKER | Ale Torchia</title>
+
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+    <div class="background-glow"></div>
+
+
+    <!-- ==============================
+         NAVBAR
+         ============================== -->
+
+    <header class="navbar">
+
+        <a href="../../" class="logo">
+            ALE TORCHIA
+        </a>
+
+        <nav>
+            <a href="../../">Home</a>
+            <a href="../">Appunti</a>
+            <a href="../../progetti/">Progetti</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ==============================
+         CONTENUTO
+         ============================== -->
+
+    <main class="page note-page">
+
+
+        <!-- INTRODUZIONE -->
+
+        <div class="page-header">
+
+            <span class="eyebrow">
+                APPUNTI / INFORMATICA / DOCKER
+            </span>
+
+            <h1>
+                Docker<span>.</span>
+            </h1>
+
+            <p>
+                Appunti su virtualizzazione, container,
+                Docker, networking, storage e principali comandi.
+            </p>
+
+        </div>
+
+
+        <!-- ==============================
+             INDICE
+             ============================== -->
+
+        <section class="note-card">
+
+            <h2>Indice</h2>
+
+            <div class="note-links">
+
+                <a href="#virtualizzazione">
+                    Virtualizzazione
+                </a>
+
+                <a href="#hypervisor">
+                    Hypervisor
+                </a>
+
+                <a href="#container">
+                    Container
+                </a>
+
+                <a href="#docker-internals">
+                    Docker Internals
+                </a>
+
+                <a href="#nginx">
+                    Test con NGINX
+                </a>
+
+                <a href="#networking">
+                    Docker Networking
+                </a>
+
+                <a href="#storage">
+                    Docker Storage
+                </a>
+
+                <a href="#wsl">
+                    Comandi WSL
+                </a>
+
+                <a href="#comandi">
+                    Comandi Docker
+                </a>
+
+                <a href="#estensioni">
+                    Estensioni dei comandi
+                </a>
+
+                <a href="#server">
+                    Comandi imparati dal server
+                </a>
+
+                <a href="#esempi">
+                    Esempi pratici
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             VIRTUALIZZAZIONE
+             ============================== -->
+
+        <section class="note-card" id="virtualizzazione">
+
+            <span class="note-number">01</span>
+
+            <h2>Introduzione alla virtualizzazione</h2>
+
+            <h3>VM — Virtual Machine</h3>
+
+            <p>
+                Le VM sono emulatori di architetture che permettono
+                di far girare un sistema operativo partendo da un file
+                <code>.ISO</code>.
+            </p>
+
+            <p>
+                L'<strong>hypervisor</strong> è il tramite tra
+                sistema operativo e macchina virtuale.
+            </p>
+
+            <p>
+                Le VM non sono generalmente utilizzate per il deployment
+                di una singola applicazione perché ogni VM deve eseguire
+                anche un sistema operativo completo, richiedendo quindi
+                più risorse.
+            </p>
+
+        </section>
+
+
+        <!-- ==============================
+             HYPERVISOR
+             ============================== -->
+
+        <section class="note-card" id="hypervisor">
+
+            <span class="note-number">02</span>
+
+            <h2>Tipi di Hypervisor</h2>
+
+            <p>
+                Gli hypervisor si dividono principalmente in due categorie:
+            </p>
+
+            <div class="sql-grid">
+
+                <div class="sql-box">
+
+                    <strong>Tipo 1</strong>
+
+                    <span>Bare Metal</span>
+
+                    <p>
+                        L'hypervisor gira direttamente sull'hardware.
+                    </p>
+
+                </div>
+
+                <div class="sql-box">
+
+                    <strong>Tipo 2</strong>
+
+                    <span>Hosted</span>
+
+                    <p>
+                        L'hypervisor gira sopra un sistema operativo host.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <h3>Ring di privilegio</h3>
+
+            <p>
+                Le architetture x86 aggiungono quattro livelli
+                di privilegio chiamati <strong>ring</strong>.
+            </p>
+
+            <ul>
+                <li><code>Ring 0</code> → Kernel</li>
+                <li><code>Ring 1</code> → Device Driver</li>
+                <li><code>Ring 2</code> → System Services</li>
+                <li><code>Ring 3</code> → User Mode</li>
+            </ul>
+
+            <p>
+                Più il livello è basso, maggiori sono i privilegi.
+            </p>
+
+
+            <h3>Bare Metal</h3>
+
+            <p>
+                Gli hypervisor bare metal fanno girare le VM come
+                intermediari diretti verso l'hardware.
+            </p>
+
+            <p>
+                Un esempio è <strong>KVM</strong>.
+            </p>
+
+            <pre><code>Hardware fisico
+       │
+       ▼
+Hypervisor Tipo 1
+       │
+       ├── VM 1 → Guest OS → Applicazioni
+       ├── VM 2 → Guest OS → Applicazioni
+       └── VM 3 → Guest OS → Applicazioni</code></pre>
+
+
+            <h3>Hosted</h3>
+
+            <p>
+                Gli hypervisor hosted operano all'interno del sistema
+                operativo host e hanno meno privilegi.
+            </p>
+
+            <p>
+                Esempi:
+            </p>
+
+            <ul>
+                <li>VMware</li>
+                <li>VirtualBox</li>
+            </ul>
+
+            <pre><code>Hardware fisico
+       │
+       ▼
+Sistema operativo Host
+       │
+       ▼
+Hypervisor Tipo 2
+       │
+       ├── VM 1 → Guest OS → Applicazioni
+       └── VM 2 → Guest OS → Applicazioni</code></pre>
+
+        </section>
+
+
+        <!-- ==============================
+             CONTAINER
+             ============================== -->
+
+        <section class="note-card" id="container">
+
+            <span class="note-number">03</span>
+
+            <h2>Container</h2>
+
+            <p>
+                Con i container basta utilizzare un
+                <strong>container engine</strong>.
+            </p>
+
+            <p>
+                Il container engine permette di far girare i container.
+            </p>
+
+            <h3>Container Engine</h3>
+
+            <ul>
+                <li>Docker — scritto in Go</li>
+                <li>Podman</li>
+            </ul>
+
+
+            <p>
+                Un container è formato dall'applicazione necessaria
+                e dalle sue <strong>dipendenze</strong>, come ad esempio
+                le librerie.
+            </p>
+
+            <p>
+                I container hanno il vantaggio di funzionare su diversi
+                computer e di fornire un ambiente <strong>isolato</strong>.
+            </p>
+
+
+            <h3>Vantaggi dei container</h3>
+
+            <ul>
+                <li>
+                    <strong>Efficienza</strong> →
+                    sono più leggeri perché non includono un sistema
+                    operativo completo.
+                </li>
+
+                <li>
+                    <strong>Velocità</strong>
+                </li>
+
+                <li>
+                    <strong>Portabilità</strong>
+                </li>
+
+                <li>
+                    <strong>Riproducibilità</strong> →
+                    l'ambiente è immutabile e riproducibile.
+                </li>
+            </ul>
+
+
+            <h3>Architettura Docker</h3>
+
+            <pre><code>Utente
+   │
+   ▼
+Docker Client
+   │
+   │ API
+   ▼
+Docker Daemon
+   │
+   ├── Immagini
+   │
+   ├── Container
+   │
+   └── Registry
+        │
+        └── Docker Hub</code></pre>
+
+
+            <p>
+                L'<strong>immagine</strong> è il file che contiene
+                le istruzioni necessarie per creare un container.
+            </p>
+
+            <p>
+                Un <strong>daemon</strong> in ambiente Linux è un servizio
+                che viene eseguito in background.
+            </p>
+
+            <p>
+                Da Docker Hub è possibile effettuare il pull di numerosi
+                container e servizi, come NGINX e altri software.
+            </p>
+
+        </section>
+
+
+        <!-- ==============================
+             DOCKER INTERNALS
+             ============================== -->
+
+        <section class="note-card" id="docker-internals">
+
+            <span class="note-number">04</span>
+
+            <h2>Docker Internals</h2>
+
+            <p>
+                I container sono ambienti isolati dal sistema host.
+            </p>
+
+            <ul>
+
+                <li>
+                    Ogni container vede solamente il proprio
+                    file system.
+                </li>
+
+                <li>
+                    Ogni container possiede il proprio stack di rete
+                    isolato.
+                </li>
+
+                <li>
+                    Ogni container possiede i propri processi
+                    e il proprio PID.
+                </li>
+
+                <li>
+                    I processi dei container sono isolati da quelli
+                    del sistema host.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- ==============================
+             NGINX
+             ============================== -->
+
+        <section class="note-card" id="nginx">
+
+            <span class="note-number">05</span>
+
+            <h2>Test con NGINX</h2>
+
+            <pre><code>docker run --name some-nginx \
+-v 'C:\Users\path\to\static-website-example:/usr/share/nginx/html:ro' \
+-d -p 8080:80 nginx</code></pre>
+
+
+            <h3>Cosa significa?</h3>
+
+            <ul>
+
+                <li>
+                    <code>--name</code> →
+                    assegna un nome al container.
+                </li>
+
+                <li>
+                    <code>-v</code> →
+                    effettua un mount tra host e container.
+                </li>
+
+                <li>
+                    <code>-d</code> →
+                    esegue il container in background.
+                </li>
+
+                <li>
+                    <code>-p 8080:80</code> →
+                    collega la porta 8080 dell'host
+                    alla porta 80 del container.
+                </li>
+
+                <li>
+                    <code>nginx</code> →
+                    immagine utilizzata.
+                </li>
+
+            </ul>
+
+
+            <h3>Bind Mount</h3>
+
+            <pre><code>docker run --name some-nginx \
+-v '&lt;percorso host&gt;:&lt;percorso container&gt;' \
+-d -p 8080:80 nginx</code></pre>
+
+            <p>
+                Il percorso dell'host viene scritto prima,
+                seguito dal percorso all'interno del container.
+            </p>
+
+            <p>
+                L'opzione <code>:ro</code> indica che il mount
+                è in modalità <strong>read only</strong>.
+            </p>
+
+
+            <blockquote>
+                Per uscire da un container senza terminarlo:
+                <br><br>
+                <code>CTRL + P</code> → <code>CTRL + Q</code>
+            </blockquote>
+
+        </section>
+
+
+        <!-- ==============================
+             NETWORKING
+             ============================== -->
+
+        <section class="note-card" id="networking">
+
+            <span class="note-number">06</span>
+
+            <h2>Docker Networking</h2>
+
+            <p>
+                Il container utilizza una rete virtuale.
+                Il bridge rappresenta il gateway attraverso il quale
+                passa la rete del container.
+            </p>
+
+            <h3>Tipi di bridge</h3>
+
+            <ul>
+
+                <li>
+                    <strong>Default bridge</strong> →
+                    viene creato automaticamente.
+                </li>
+
+                <li>
+                    <strong>User defined bridge</strong> →
+                    viene creato dall'utente e permette anche
+                    di gestire il DNS.
+                </li>
+
+            </ul>
+
+
+            <h3>Driver di rete</h3>
+
+            <div class="sql-grid">
+
+                <div class="sql-box">
+                    <strong>bridge</strong>
+                    <p>
+                        Rete virtuale privata.
+                    </p>
+                </div>
+
+                <div class="sql-box">
+                    <strong>host</strong>
+                    <p>
+                        Stack di rete condiviso con l'host.
+                    </p>
+                </div>
+
+                <div class="sql-box">
+                    <strong>overlay</strong>
+                    <p>
+                        Unisce più daemon Docker
+                        su host differenti.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="sql-grid">
+
+                <div class="sql-box">
+
+                    <strong>macvlan</strong>
+
+                    <p>
+                        Permette al container di avere
+                        un indirizzo MAC proprio.
+                    </p>
+
+                </div>
+
+                <div class="sql-box">
+
+                    <strong>ipvlan</strong>
+
+                    <p>
+                        Permette di assegnare un indirizzo IP
+                        al container.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <h3>Visualizzare le reti</h3>
+
+            <pre><code>docker network ls</code></pre>
+
+        </section>
+
+
+        <!-- ==============================
+             STORAGE
+             ============================== -->
+
+        <section class="note-card" id="storage">
+
+            <span class="note-number">07</span>
+
+            <h2>Docker Storage</h2>
+
+            <p>
+                Docker utilizza principalmente due metodi
+                per gestire i dati persistenti.
+            </p>
+
+
+            <div class="sql-grid">
+
+                <div class="sql-box">
+
+                    <strong>Volumes</strong>
+
+                    <p>
+                        File system gestito e montato
+                        dal Docker Engine.
+                    </p>
+
+                </div>
+
+                <div class="sql-box">
+
+                    <strong>Bind Mounts</strong>
+
+                    <p>
+                        Collegamento tra una cartella dell'host
+                        e una cartella del container.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <p>
+                L'opzione utilizzata per entrambi è:
+            </p>
+
+            <pre><code>-v</code></pre>
+
+
+            <h3>Visualizzare i volumi</h3>
+
+            <pre><code>docker volume ls</code></pre>
+
+
+            <h3>Struttura di un mount</h3>
+
+            <pre><code>-v /some/content:/usr/share/nginx/html</code></pre>
+
+            <ul>
+
+                <li>
+                    <code>/some/content</code> →
+                    percorso sul computer che esegue Docker.
+                </li>
+
+                <li>
+                    <code>/usr/share/nginx/html</code> →
+                    percorso all'interno del container.
+                </li>
+
+                <li>
+                    I due parametri sono separati da <code>:</code>.
+                </li>
+
+            </ul>
+
+            <p>
+                Se viene indicato un percorso dell'host si utilizza
+                un <strong>Bind Mount</strong>.
+            </p>
+
+            <p>
+                Se viene indicato il nome di un volume si utilizza
+                un <strong>Volume</strong>.
+            </p>
+
+
+            <h3>Entrare nella bash di un container</h3>
+
+            <pre><code>docker exec -it &lt;container_id&gt; /bin/bash
+
+# oppure
+
+docker exec -it &lt;container_name&gt; /bin/bash</code></pre>
+
+        </section>
+
+
+        <!-- ==============================
+             WSL
+             ============================== -->
+
+        <section class="note-card" id="wsl">
+
+            <span class="note-number">08</span>
+
+            <h2>Comandi basilari WSL</h2>
+
+            <pre><code>wsl -d &lt;nome_wsl&gt;</code></pre>
+
+            <p>
+                Avvia la WSL con il sistema operativo specificato.
+            </p>
+
+        </section>
+
+
+        <!-- ==============================
+             COMANDI DOCKER
+             ============================== -->
+
+        <section class="note-card" id="comandi">
+
+            <span class="note-number">09</span>
+
+            <h2>Comandi basilari Docker</h2>
+
+
+            <div class="command-list">
+
+                <div class="command-item">
+                    <code>docker run hello-world</code>
+                    <span>
+                        Cerca l'immagine localmente e,
+                        se non presente, effettua il pull.
+                    </span>
+                </div>
+
+
+                <div class="command-item">
+                    <code>docker ps</code>
+                    <span>
+                        Mostra i container attualmente in esecuzione.
+                    </span>
+                </div>
+
+
+                <div class="command-item">
+                    <code>docker ps -a</code>
+                    <span>
+                        Mostra tutti i container, anche quelli terminati.
+                    </span>
+                </div>
+
+
+                <div class="command-item">
+                    <code>docker exec</code>
+                    <span>
+                        Esegue un comando all'interno di un container.
+                    </span>
+                </div>
+
+
+                <div class="command-item">
+                    <code>docker run</code>
+                    <span>
+                        Crea un nuovo container.
+                    </span>
+                </div>
+
+
+                <div class="command-item">
+                    <code>docker stop &lt;container_id&gt;</code>
+                    <span>
+                        Ferma un container.
+                    </span>
+                </div>
+
+
+                <div class="command-item">
+                    <code>docker start &lt;container_id&gt;</code>
+                    <span>
+                        Avvia un container fermato.
+                    </span>
+                </div>
+
+
+                <div class="command-item">
+                    <code>docker rm &lt;container_id&gt;</code>
+                    <span>
+                        Rimuove un container.
+                    </span>
+                </div>
+
+
+                <div class="command-item">
+                    <code>docker rmi &lt;image&gt;</code>
+                    <span>
+                        Rimuove un'immagine.
+                    </span>
+                </div>
+
+
+                <div class="command-item">
+                    <code>docker attach</code>
+                    <span>
+                        Permette di collegarsi a un container attivo.
+                    </span>
+                </div>
+
+
+                <div class="command-item">
+                    <code>docker detach</code>
+                    <span>
+                        Permette di scollegarsi senza interrompere
+                        il container.
+                    </span>
+                </div>
+
+
+                <div class="command-item">
+                    <code>docker inspect &lt;nome_container&gt;</code>
+                    <span>
+                        Mostra le informazioni dettagliate
+                        del container in formato JSON.
+                    </span>
+                </div>
+
+            </div>
+
+
+            <h3>Detached e auto-remove</h3>
+
+            <pre><code>docker run -d --rm</code></pre>
+
+            <ul>
+
+                <li>
+                    <code>-d</code> →
+                    esecuzione detached, quindi in background.
+                </li>
+
+                <li>
+                    <code>--rm</code> →
+                    elimina automaticamente il container
+                    quando termina.
+                </li>
+
+            </ul>
+
+
+            <h3>Mapping delle porte</h3>
+
+            <pre><code>docker run -d -p 8080:8080 kodeklpud/simple-webapp</code></pre>
+
+            <p>
+                <code>-p</code> collega la porta dell'host
+                alla porta del container.
+            </p>
+
+
+            <h3>Restart policy</h3>
+
+            <pre><code>--restart unless-stopped</code></pre>
+
+            <p>
+                Permette a Docker di provare a riavviare
+                automaticamente il container in caso di crash.
+            </p>
+
+        </section>
+
+
+        <!-- ==============================
+             ESTENSIONI
+             ============================== -->
+
+        <section class="note-card" id="estensioni">
+
+            <span class="note-number">10</span>
+
+            <h2>Estensioni dei comandi</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Opzione</th>
+                        <th>Funzione</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><code>-i</code></td>
+                        <td>Accesso al canale standard di input.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>-t</code></td>
+                        <td>Utilizza un pseudo-terminale.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>-e</code></td>
+                        <td>Passa variabili d'ambiente al container.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>-d</code></td>
+                        <td>Esegue il container in background.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>-v</code></td>
+                        <td>Collega un volume o un mount.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>-b</code></td>
+                        <td>Permette di selezionare il driver di rete.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>--rm</code></td>
+                        <td>Elimina il container al termine.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>-p</code></td>
+                        <td>Mappa una porta host/container.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>--name</code></td>
+                        <td>Assegna un nome al container.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>--network</code></td>
+                        <td>Collega il container a una rete Docker.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>--restart</code></td>
+                        <td>Definisce la politica di riavvio.</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- ==============================
+             SERVER
+             ============================== -->
+
+        <section class="note-card" id="server">
+
+            <span class="note-number">11</span>
+
+            <h2>Comandi Docker e chicche dal server</h2>
+
+            <pre><code>docker stats</code></pre>
+
+            <p>
+                Mostra il consumo di risorse di tutti i container attivi.
+            </p>
+
+            <pre><code>docker stats &lt;id_container&gt;</code></pre>
+
+            <p>
+                Mostra il consumo di risorse del container specificato.
+            </p>
+
+            <pre><code>docker stats &lt;nome_container&gt;</code></pre>
+
+            <p>
+                Come sopra, ma utilizzando il nome del container.
+            </p>
+
+            <pre><code>docker images</code></pre>
+
+            <p>
+                Mostra le immagini presenti localmente.
+            </p>
+
+            <p>
+                Il simbolo <code>\</code> permette di andare a capo
+                nei comandi Docker molto lunghi.
+            </p>
+
+        </section>
+
+
+        <!-- ==============================
+             ESEMPI
+             ============================== -->
+
+        <section class="note-card" id="esempi">
+
+            <span class="note-number">12</span>
+
+            <h2>Esempi pratici</h2>
+
+            <pre><code>docker run -itd \
+-v dbstore_volume:/dbdata \
+--name dbstore \
+ubuntu \
+/bin/bash</code></pre>
+
+            <p>
+                Questo comando avvia un container Ubuntu chiamato
+                <code>dbstore</code> in modalità detached,
+                collegato alla bash del container e con un volume
+                chiamato <code>dbstore_volume</code> montato
+                nella directory <code>/dbdata</code>.
+            </p>
+
+        </section>
+
+
+        <!-- ==============================
+             TORNA INDIETRO
+             ============================== -->
+
+        <div class="back-link">
+
+            <a href="./">
+                ← Torna agli appunti di Informatica
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Ale Torchia
+        </p>
+
+    </footer>
+<script src="../../script.js"></script>
+</body>
+
+</html>

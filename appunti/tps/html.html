@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HTML | Ale Torchia</title>
+
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+    <div class="background-glow"></div>
+
+    <!-- Navbar -->
+    <header class="navbar">
+
+        <a href="../../" class="logo">
+            ALE TORCHIA
+        </a>
+
+        <nav>
+            <a href="../../">Home</a>
+            <a href="../">Appunti</a>
+            <a href="../../progetti/">Progetti</a>
+        </nav>
+
+    </header>
+
+    <main class="page note-page">
+
+        <!-- Titolo -->
+        <div class="page-header">
+
+            <span class="eyebrow">
+                APPUNTI / TPS / HTML
+            </span>
+
+            <h1>
+                HTML<span>.</span>
+            </h1>
+
+            <p>
+                Appunti sulle basi di HTML e sulla struttura di una pagina web.
+            </p>
+
+        </div>
+
+
+        <!-- INDICE -->
+        <section class="note-card">
+
+            <span class="note-number">INDICE</span>
+
+            <h2>Argomenti</h2>
+
+            <div class="note-links">
+
+                <a href="#html">
+                    HTML
+                </a>
+
+                <a href="#head">
+                    Head
+                </a>
+
+                <a href="#meta">
+                    Tag meta
+                </a>
+
+                <a href="#body">
+                    Body
+                </a>
+
+                <a href="#dom">
+                    DOM
+                </a>
+
+                <a href="#img">
+                    Immagini
+                </a>
+
+                <a href="#div">
+                    Div
+                </a>
+
+                <a href="#attributi">
+                    Attributi
+                </a>
+
+                <a href="#link">
+                    Link
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- HTML -->
+        <section class="note-card" id="html">
+
+            <span class="note-number">01</span>
+
+            <h2>HTML</h2>
+
+            <p>
+                HTML è il linguaggio utilizzato per strutturare una pagina web.
+            </p>
+
+            <p>
+                La dichiarazione iniziale serve a far capire al browser
+                quale tipo di documento sta leggendo.
+            </p>
+
+            <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+
+            <p>
+                Serve a indicare al browser che il documento utilizza HTML.
+            </p>
+
+            <p>
+                Il tag <code>html</code> contiene tutto il documento.
+            </p>
+
+            <pre><code>&lt;html lang="it"&gt;
+
+&lt;/html&gt;</code></pre>
+
+        </section>
+
+
+        <!-- HEAD -->
+        <section class="note-card" id="head">
+
+            <span class="note-number">02</span>
+
+            <h2>Head</h2>
+
+            <p>
+                Nel tag <code>head</code> vengono inserite le informazioni
+                relative alla pagina, come gli script, il titolo visualizzato
+                nella scheda del browser e altri metadati.
+            </p>
+
+            <pre><code>&lt;head&gt;
+
+    &lt;title&gt;Spiegazione HTML&lt;/title&gt;
+
+&lt;/head&gt;</code></pre>
+
+            <p>
+                Il contenuto del <code>head</code> non viene normalmente
+                visualizzato direttamente all'interno della pagina.
+            </p>
+
+        </section>
+
+
+        <!-- META -->
+        <section class="note-card" id="meta">
+
+            <span class="note-number">03</span>
+
+            <h2>Tag meta</h2>
+
+            <p>
+                I tag <code>meta</code> vengono inseriti all'interno di
+                <code>head</code> e servono per definire i metadati,
+                cioè informazioni che i browser possono leggere per
+                conoscere caratteristiche della pagina.
+            </p>
+
+            <h3>Charset</h3>
+
+            <pre><code>&lt;meta charset="UTF-8"&gt;</code></pre>
+
+            <p>
+                Specifica la codifica dei caratteri utilizzata dalla pagina.
+            </p>
+
+            <h3>Viewport</h3>
+
+            <pre><code>&lt;meta name="viewport"&gt;</code></pre>
+
+            <p>
+                Il tag <code>viewport</code> serve a rendere il sito
+                responsivo e a gestire la presentazione della pagina
+                sui diversi dispositivi.
+            </p>
+
+        </section>
+
+
+        <!-- BODY -->
+        <section class="note-card" id="body">
+
+            <span class="note-number">04</span>
+
+            <h2>Body</h2>
+
+            <p>
+                Nel <code>body</code> viene inserito il contenuto della pagina,
+                come testo, titoli, immagini e altri elementi.
+            </p>
+
+            <p>
+                Per inserire un titolo si utilizza il tag <code>h1</code>.
+            </p>
+
+            <p>
+                I tag heading vanno da <code>h1</code> a <code>h6</code>,
+                diventando progressivamente più piccoli.
+            </p>
+
+            <p>
+                Per andare a capo si può utilizzare il tag <code>br</code>.
+            </p>
+
+            <p>
+                Il tag <code>p</code> permette invece di organizzare
+                il testo all'interno di un paragrafo.
+            </p>
+
+            <pre><code>&lt;body&gt;
+
+    &lt;h1&gt;Titolo&lt;/h1&gt;
+
+    testo
+    &lt;br&gt;
+    ora è andato a capo
+
+    &lt;p&gt;
+        Questo è un paragrafo.
+    &lt;/p&gt;
+
+&lt;/body&gt;</code></pre>
+
+        </section>
+
+
+        <!-- DOM -->
+        <section class="note-card" id="dom">
+
+            <span class="note-number">05</span>
+
+            <h2>DOM</h2>
+
+            <p>
+                La pagina è strutturata tramite il
+                <strong>DOM (Document Object Model)</strong>.
+            </p>
+
+            <p>
+                Il documento si divide principalmente in
+                <code>head</code> e <code>body</code>.
+            </p>
+
+            <pre><code>Documento
+│
+├── head
+│   └── title
+│
+└── body
+    ├── h1
+    ├── div
+    ├── span
+    ├── img
+    └── img</code></pre>
+
+            <p>
+                L'ordine in cui gli elementi vengono inseriti nel documento
+                influisce sulla struttura della pagina.
+            </p>
+
+        </section>
+
+
+        <!-- IMMAGINI -->
+        <section class="note-card" id="img">
+
+            <span class="note-number">06</span>
+
+            <h2>Immagini</h2>
+
+            <p>
+                Le immagini hanno bisogno di un percorso, che può essere
+                relativo oppure assoluto.
+            </p>
+
+            <pre><code>&lt;img src="/assets/screenaura.png"&gt;</code></pre>
+
+            <h3>Attributo alt</h3>
+
+            <p>
+                Il tag <code>img</code> può contenere anche l'attributo
+                <code>alt</code>, che contiene il testo alternativo
+                dell'immagine nel caso in cui questa non venga visualizzata.
+            </p>
+
+            <pre><code>&lt;img
+    src="/assets/screenaura.png"
+    alt="Qui va la descrizione dell'immagine"
+&gt;</code></pre>
+
+            <h3>Dimensioni</h3>
+
+            <p>
+                Per ridimensionare un'immagine si possono utilizzare
+                gli attributi <code>width</code> e <code>height</code>.
+            </p>
+
+            <p>
+                Se viene impostata solamente una delle due dimensioni,
+                l'altra viene adattata di conseguenza.
+            </p>
+
+        </section>
+
+
+        <!-- DIV -->
+        <section class="note-card" id="div">
+
+            <span class="note-number">07</span>
+
+            <h2>Div</h2>
+
+            <p>
+                Il tag <code>div</code> serve per dividere la pagina
+                in vari blocchi.
+            </p>
+
+            <p>
+                A differenza di elementi come <code>span</code>,
+                il <code>div</code> viene visualizzato come un blocco.
+            </p>
+
+            <pre><code>&lt;div&gt;
+
+    contenuto del blocco
+
+&lt;/div&gt;</code></pre>
+
+        </section>
+
+
+        <!-- ATTRIBUTI -->
+        <section class="note-card" id="attributi">
+
+            <span class="note-number">08</span>
+
+            <h2>Attributi</h2>
+
+            <p>
+                I tag possono contenere degli attributi.
+            </p>
+
+            <p>
+                Gli attributi hanno dei valori che possono essere
+                modificati per cambiare il comportamento o le
+                caratteristiche dell'elemento.
+            </p>
+
+            <pre><code>&lt;tag attributo="valore"&gt;
+    contenuto
+&lt;/tag&gt;</code></pre>
+
+        </section>
+
+
+        <!-- LINK -->
+        <section class="note-card" id="link">
+
+            <span class="note-number">09</span>
+
+            <h2>href</h2>
+
+            <p>
+                Il tag <code>a</code> serve per creare un link.
+            </p>
+
+            <p>
+                All'interno del link si può inserire del testo oppure
+                un'immagine.
+            </p>
+
+            <pre><code>&lt;a href="riferimento-url"&gt;
+    testo o immagine
+&lt;/a&gt;</code></pre>
+
+            <p>
+                L'attributo <code>href</code> contiene il riferimento
+                alla pagina o alla risorsa da aprire.
+            </p>
+
+        </section>
+
+
+        <!-- RITORNO -->
+        <div class="back-link">
+
+            <a href="./">
+                ← Torna a TPS
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+        <p>© 2026 Ale Torchia</p>
+    </footer>
+
+
+    <!-- Script per i pulsanti "Copia" -->
+    <script src="../../script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SQL | Ale Torchia</title>
+
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+    <!-- Sfondo -->
+    <div class="background-glow"></div>
+
+
+    <!-- Navbar -->
+    <header class="navbar">
+
+        <a href="../../" class="logo">
+            ALE TORCHIA
+        </a>
+
+        <nav>
+            <a href="../../">Home</a>
+            <a href="../">Appunti</a>
+            <a href="../../progetti/">Progetti</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Contenuto principale -->
+    <main class="page note-page">
+
+        <!-- Intestazione -->
+        <div class="page-header">
+
+            <span class="eyebrow">
+                APPUNTI / INFORMATICA / SQL
+            </span>
+
+            <h1>
+                My<span>SQL.</span>
+            </h1>
+
+            <p>
+                Appunti su MySQL, SQL, MariaDB, comandi,
+                tabelle, vincoli e gestione dei database.
+            </p>
+
+        </div>
+
+
+        <!-- Indice -->
+        <section class="note-card">
+
+            <h2>Indice</h2>
+
+            <div class="note-links">
+
+                <a href="#mysql">MySQL</a>
+
+                <a href="#caratteristiche">
+                    SQL e caratteristiche
+                </a>
+
+                <a href="#comandi">
+                    Comandi base SQL
+                </a>
+
+                <a href="#tipi">
+                    Tipi in SQL
+                </a>
+
+                <a href="#foreign-key">
+                    Foreign Key
+                </a>
+
+                <a href="#chiocciole">
+                    Le @
+                </a>
+
+                <a href="#esercitazione">
+                    Esercitazione SQL
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             MYSQL
+             ============================== -->
+
+        <section class="note-card" id="mysql">
+
+            <span class="note-number">01</span>
+
+            <h2>MySQL</h2>
+
+            <p>
+                In Linux il database lato server è detto SQLD.
+                MySQLD è un backend in grado di gestire più database.
+            </p>
+
+            <p>
+                Dentro MySQL posso quindi gestire più database.
+            </p>
+
+            <h3>Esempio</h3>
+
+            <ul>
+                <li>DBScuola</li>
+                <li>DBAzienda</li>
+            </ul>
+
+            <p>
+                Entrambi possono essere gestiti dallo stesso SQLD.
+            </p>
+
+
+            <h3>Client e server</h3>
+
+            <p>
+                Per collegarmi al server ho bisogno di un'applicazione
+                Client che si colleghi ad esso.
+            </p>
+
+            <p>
+                Il client è un applicativo che permette di interrogare
+                il database.
+            </p>
+
+            <p>
+                Tra client e server può esserci anche Internet:
+                non devono essere fisicamente collegati.
+            </p>
+
+            <p>
+                Tutto questo vale anche per MariaDB.
+            </p>
+
+
+            <h3>Accesso a MySQL</h3>
+
+            <pre><code>mysql -u root -p</code></pre>
+
+            <ul>
+                <li>
+                    <code>-u</code> → specifica l'utente che sta effettuando il login
+                </li>
+
+                <li>
+                    <code>-p</code> → richiede la password dell'utente
+                </li>
+            </ul>
+
+            <p>
+                Dopo aver effettuato il login ci si ritrova nella CLI di MySQL.
+            </p>
+
+
+            <h3>Visualizzare i database</h3>
+
+            <pre><code>SHOW DATABASES;</code></pre>
+
+            <p>
+                Il comando permette di visualizzare i database presenti
+                nel server.
+            </p>
+
+
+            <h3>Visualizzare utenti e host</h3>
+
+            <pre><code>SELECT user, host FROM mysql.user;</code></pre>
+
+
+            <h3>Uscire dalla CLI</h3>
+
+            <pre><code>exit</code></pre>
+
+            <p>
+                Il comando <code>exit</code> permette di uscire dalla modalità
+                interattiva del client MySQL senza terminare il container.
+            </p>
+
+
+            <h3>Connessione tramite IP</h3>
+
+            <pre><code>mysql -u root -h 127.0.0.1 -p</code></pre>
+
+            <ul>
+                <li>
+                    <code>-u</code> → permette di specificare l'utente
+                </li>
+
+                <li>
+                    <code>-h</code> → permette di specificare l'indirizzo IP
+                </li>
+
+                <li>
+                    <code>-p</code> → richiede la password
+                </li>
+            </ul>
+
+
+            <h3>Client MySQL</h3>
+
+            <p>
+                Esistono diversi client che possono collegarsi al server,
+                ad esempio:
+            </p>
+
+            <ul>
+                <li>Estensione MySQL di VS Code</li>
+                <li>MySQL Workbench</li>
+                <li>Altri applicativi compatibili</li>
+            </ul>
+
+        </section>
+
+
+        <!-- ==============================
+             CARATTERISTICHE SQL
+             ============================== -->
+
+        <section class="note-card" id="caratteristiche">
+
+            <span class="note-number">02</span>
+
+            <h2>SQL e caratteristiche SQL</h2>
+
+            <p>
+                SQL è un linguaggio dichiarativo ed è lo standard per
+                la comunicazione con i database relazionali.
+            </p>
+
+            <ul>
+                <li>Definizione dello schema logico</li>
+                <li>Aggiornamento e interrogazione dei dati</li>
+                <li>Gestione della sicurezza del DBMS</li>
+            </ul>
+
+
+            <h3>Privilegi</h3>
+
+            <p>
+                L'utente <code>root</code> ha il massimo livello di privilegi.
+            </p>
+
+
+            <h3>Modalità di utilizzo</h3>
+
+            <p>SQL può essere utilizzato in due modi:</p>
+
+            <ul>
+                <li>
+                    <strong>Modalità interattiva</strong> →
+                    tramite un interprete di comandi o un'interfaccia
+                    grafica che permette di gestire e visualizzare
+                    i risultati delle query.
+                </li>
+
+                <li>
+                    <strong>Modalità programma</strong> →
+                    SQL viene utilizzato all'interno di un altro
+                    linguaggio, denominato host, ad esempio PHP o Java.
+                </li>
+            </ul>
+
+
+            <h3>Componenti di SQL</h3>
+
+            <p>
+                Il linguaggio SQL è formato da tre componenti principali:
+            </p>
+
+            <div class="sql-grid">
+
+                <div class="sql-box">
+                    <strong>DDL</strong>
+                    <span>Data Definition Language</span>
+                    <p>CREATE, ALTER</p>
+                </div>
+
+                <div class="sql-box">
+                    <strong>DML</strong>
+                    <span>Data Manipulation Language</span>
+                    <p>SELECT, INSERT, UPDATE, DELETE</p>
+                </div>
+
+                <div class="sql-box">
+                    <strong>DCL</strong>
+                    <span>Data Control Language</span>
+                    <p>GRANT, DENY, REVOKE</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             COMANDI BASE
+             ============================== -->
+
+        <section class="note-card" id="comandi">
+
+            <span class="note-number">03</span>
+
+            <h2>Comandi base SQL</h2>
+
+
+            <h3>CREATE DATABASE</h3>
+
+            <pre><code>CREATE DATABASE [IF NOT EXISTS] database_name
+[CHARACTER SET charset_name]
+[COLLATE collation_name];</code></pre>
+
+            <p>
+                Le parentesi quadre indicano parametri opzionali.
+            </p>
+
+            <p>
+                <code>IF NOT EXISTS</code> permette di creare il database
+                solo se non esiste già, evitando errori.
+            </p>
+
+
+            <h3>CREATE TABLE</h3>
+
+            <pre><code>CREATE TABLE IF NOT EXISTS studenti (
+    Matricola MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    Cognome VARCHAR(30) NOT NULL,
+    Nome VARCHAR(30) NOT NULL,
+    DataNascita DATE NOT NULL,
+    Genere ENUM('M','F') NOT NULL,
+    Nazione VARCHAR(30) NOT NULL DEFAULT 'Italia',
+    EMail VARCHAR(50),
+    PRIMARY KEY (Matricola),
+    UNIQUE KEY CognomeNomeDataN(Cognome, Nome, DataNascita)
+) ENGINE=InnoDB;</code></pre>
+
+
+            <h3>USE</h3>
+
+            <pre><code>USE &lt;database&gt;;</code></pre>
+
+            <p>
+                Permette di selezionare il database sul quale lavorare.
+            </p>
+
+
+            <h3>SHOW TABLES</h3>
+
+            <pre><code>SHOW TABLES;</code></pre>
+
+            <p>
+                Mostra le tabelle presenti nel database selezionato.
+            </p>
+
+
+            <h3>DESCRIBE</h3>
+
+            <pre><code>DESCRIBE &lt;table_name&gt;;</code></pre>
+
+            <p>
+                Mostra la struttura della tabella selezionata.
+            </p>
+
+
+            <h3>DROP TABLE</h3>
+
+            <pre><code>DROP TABLE &lt;nome_tabella&gt;;</code></pre>
+
+            <p>
+                Elimina la tabella specificata.
+            </p>
+
+
+            <h3>INSERT INTO</h3>
+
+            <pre><code>INSERT INTO studenti
+(Cognome, Nome, DataNascita, Genere, Nazione, EMail)
+VALUES
+('Verdi', 'Alessandro', '2010-02-24',
+'M', 'Argentina', 'you@ymail.com');</code></pre>
+
+            <p>
+                Permette di inserire dati all'interno della tabella.
+            </p>
+
+
+            <h3>SELECT</h3>
+
+            <pre><code>SELECT &lt;parametri&gt;
+FROM &lt;tabella&gt;;</code></pre>
+
+            <p>
+                Permette di selezionare i dati desiderati da una tabella.
+            </p>
+
+            <p>
+                Se viene utilizzato <code>*</code>, vengono selezionate
+                tutte le colonne.
+            </p>
+
+
+            <h3>SHOW CREATE TABLE</h3>
+
+            <pre><code>SHOW CREATE TABLE studenti\G</code></pre>
+
+            <p>
+                Mostra il comando necessario per ricreare la tabella.
+                L'utilizzo di <code>\G</code> permette di visualizzare
+                il risultato in modo più leggibile.
+            </p>
+
+
+            <h3>AS</h3>
+
+            <p>
+                L'operatore <code>AS</code> permette di rinominare
+                temporaneamente una colonna nel risultato.
+            </p>
+
+            <pre><code>SELECT Nome AS 'Nome Studente',
+       Cognome,
+       DataNascita
+FROM studenti;</code></pre>
+
+
+            <h3>UPDATE</h3>
+
+            <pre><code>UPDATE studenti
+SET Nazione = 'Argentina'
+WHERE Matricola = 232
+LIMIT 1;</code></pre>
+
+            <p>
+                In questo caso viene modificata la nazionalità
+                di una sola matricola.
+            </p>
+
+
+            <h3>DELETE</h3>
+
+            <pre><code>DELETE FROM studenti
+WHERE Matricola = 233
+LIMIT 1;</code></pre>
+
+            <p>
+                Permette di eliminare un dato dalla tabella.
+            </p>
+
+
+            <h3>ALTER TABLE</h3>
+
+            <pre><code>ALTER TABLE &lt;tabella&gt; ADD &lt;colonna&gt; &lt;tipo&gt;;
+
+ALTER TABLE &lt;tabella&gt; MODIFY &lt;colonna&gt; &lt;tipo&gt;;
+
+ALTER TABLE &lt;tabella&gt; CHANGE COLUMN
+&lt;nome originale&gt; &lt;nuovo nome&gt; &lt;tipo&gt;;
+
+ALTER TABLE &lt;tabella&gt; DROP COLUMN &lt;colonna&gt;;
+
+ALTER TABLE &lt;tabella&gt; RENAME TO &lt;nuovo nome&gt;;</code></pre>
+
+        </section>
+
+
+        <!-- ==============================
+             TIPI
+             ============================== -->
+
+        <section class="note-card" id="tipi">
+
+            <span class="note-number">04</span>
+
+            <h2>Tipi in SQL</h2>
+
+            <ul>
+                <li>
+                    <code>INT UNSIGNED</code> →
+                    permette di utilizzare valori positivi.
+                </li>
+
+                <li>
+                    <code>CHAR(n)</code> →
+                    la lunghezza del campo è sempre di <code>n</code> caratteri.
+                </li>
+
+                <li>
+                    <code>VARCHAR(n)</code> →
+                    permette di utilizzare campi di lunghezza variabile.
+                </li>
+            </ul>
+
+        </section>
+
+
+        <!-- ==============================
+             FOREIGN KEY
+             ============================== -->
+
+        <section class="note-card" id="foreign-key">
+
+            <span class="note-number">05</span>
+
+            <h2>Vincoli di Integrità Referenziale</h2>
+
+            <p>
+                I vincoli di integrità referenziale garantiscono la
+                <strong>coerenza dei dati</strong> tra tabelle collegate
+                da una relazione.
+            </p>
+
+            <h3>Concetto chiave</h3>
+
+            <p>
+                Un vincolo di integrità referenziale impone che ogni valore
+                presente nella colonna di <strong>Foreign Key</strong>
+                di una tabella figlia corrisponda a un valore esistente
+                nella <strong>Primary Key</strong> della tabella padre.
+            </p>
+
+
+            <h3>Esempio</h3>
+
+            <ul>
+                <li>
+                    <strong>Tabella padre:</strong>
+                    Studenti
+                </li>
+
+                <li>
+                    <strong>Tabella figlia:</strong>
+                    Assenze
+                </li>
+            </ul>
+
+            <blockquote>
+                Non è possibile inserire un record in
+                <code>Assenze</code> con <code>Studente = 105</code>
+                se nella tabella <code>Studenti</code> non esiste
+                un record con <code>Codice = 105</code>.
+            </blockquote>
+
+
+            <h3>Sintassi</h3>
+
+            <pre><code>CONSTRAINT [nome_vincolo]
+FOREIGN KEY (colonna_esterna)
+REFERENCES tabella_padre (colonna_padre)
+[ON DELETE opzione]
+[ON UPDATE opzione]</code></pre>
+
+
+            <h3>Esempio di tabella figlia</h3>
+
+            <pre><code>CREATE TABLE Assenze (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Data DATE NOT NULL,
+    Studente INT,
+
+    CONSTRAINT FK_Assenze_Studenti
+        FOREIGN KEY (Studente)
+        REFERENCES Studenti(Codice)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);</code></pre>
+
+
+            <h3>ON DELETE e ON UPDATE</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Opzione</th>
+                        <th>Descrizione</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td><strong>CASCADE</strong></td>
+                        <td>
+                            Modifica o elimina automaticamente
+                            i record figli associati.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>RESTRICT / NO ACTION</strong></td>
+                        <td>
+                            Impedisce la modifica o eliminazione
+                            del record padre se esistono figli associati.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>SET NULL</strong></td>
+                        <td>
+                            Imposta la Foreign Key a NULL.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>SET DEFAULT</strong></td>
+                        <td>
+                            Imposta la Foreign Key al valore predefinito.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <h3>Note tecniche</h3>
+
+            <ol>
+                <li>
+                    In MySQL e MariaDB l'integrità referenziale
+                    è supportata da InnoDB.
+                </li>
+
+                <li>
+                    <code>SET DEFAULT</code> non è supportato
+                    dal motore InnoDB.
+                </li>
+
+                <li>
+                    Per l'inserimento bisogna prima inserire i dati
+                    nella tabella padre e successivamente nella figlia.
+                </li>
+
+                <li>
+                    Per la cancellazione manuale si procede al contrario,
+                    a meno di utilizzare <code>ON DELETE CASCADE</code>.
+                </li>
+            </ol>
+
+        </section>
+
+
+        <!-- ==============================
+             @
+             ============================== -->
+
+        <section class="note-card" id="chiocciole">
+
+            <span class="note-number">06</span>
+
+            <h2>Le @</h2>
+
+
+            <h3>@ — Variabile dell'utente</h3>
+
+            <p>
+                È un contenitore temporaneo creato dall'utente
+                per salvare un valore durante l'esecuzione delle query.
+            </p>
+
+            <pre><code>SET @sconto = 0.20;</code></pre>
+
+
+            <h3>@@ — Impostazioni del server</h3>
+
+            <p>
+                Rappresentano le impostazioni interne di MariaDB
+                che definiscono il comportamento del database.
+            </p>
+
+            <pre><code>SELECT @@max_connections;
+
+SELECT @@time_zone;</code></pre>
+
+
+            <h3>Senza @ — Colonna della tabella</h3>
+
+            <p>
+                Rappresenta il campo reale in cui sono salvati
+                i dati delle righe della tabella.
+            </p>
+
+            <pre><code>SELECT prezzo FROM prodotti;</code></pre>
+
+
+            <h3>Tabella riassuntiva</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sintassi</th>
+                        <th>Cos'è?</th>
+                        <th>Chi la crea?</th>
+                        <th>Uso principale</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td><code>prezzo</code></td>
+                        <td>Colonna</td>
+                        <td>Tu</td>
+                        <td>Leggere/scrivere dati</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>@mio_dato</code></td>
+                        <td>Variabile utente</td>
+                        <td>Tu</td>
+                        <td>Valore temporaneo</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>@@config</code></td>
+                        <td>Variabile di sistema</td>
+                        <td>MariaDB</td>
+                        <td>Configurazione del server</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+
+
+        <!-- ==============================
+             ESERCITAZIONE
+             ============================== -->
+
+        <section class="note-card" id="esercitazione">
+
+            <span class="note-number">07</span>
+
+            <h2>Esercitazione SQL</h2>
+
+            <p>
+                Materiale relativo all'esercitazione SQL.
+            </p>
+
+            <a href="Esercizi.sql" class="button primary">
+                Apri Esercizi.sql
+            </a>
+
+        </section>
+
+
+        <!-- Torna indietro -->
+        <div class="back-link">
+
+            <a href="./">
+                ← Torna agli appunti di Informatica
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Ale Torchia
+        </p>
+
+    </footer>
+ <script src="../../script.js"></script>
+</body>
+</html>
