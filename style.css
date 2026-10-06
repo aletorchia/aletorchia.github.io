@@ -1,0 +1,525 @@
+/* ==============================
+   RESET
+   ============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    color: #f4f4f5;
+    background: #09090b;
+
+    overflow-x: hidden;
+}
+
+
+/* ==============================
+   SFONDO
+   ============================== */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(124, 58, 237, 0.12),
+            transparent 35%
+        );
+
+    pointer-events: none;
+    z-index: -2;
+}
+
+.background-glow {
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    top: 20%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(124, 58, 237, 0.10);
+
+    filter: blur(120px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* ==============================
+   NAVBAR
+   ============================== */
+
+.navbar {
+    width: min(1100px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 28px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 28px;
+}
+
+.navbar nav a {
+    color: #a1a1aa;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.navbar nav a:hover {
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+
+/* ==============================
+   HERO
+   ============================== */
+
+.hero {
+    min-height: calc(100vh - 140px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px 20px;
+}
+
+
+/* ==============================
+   GLASS CARD
+   ============================== */
+
+.glass-card {
+    width: min(720px, 100%);
+
+    padding: 70px 60px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    border-radius: 24px;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+
+/* ==============================
+   TESTO
+   ============================== */
+
+.eyebrow {
+    display: inline-block;
+
+    margin-bottom: 22px;
+
+    color: #a78bfa;
+
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    letter-spacing: 0.18em;
+}
+
+h1 {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+
+    line-height: 1;
+
+    letter-spacing: -0.055em;
+
+    font-weight: 700;
+
+    margin-bottom: 28px;
+}
+
+h1 span {
+    background: linear-gradient(
+        120deg,
+        #a78bfa,
+        #c4b5fd
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.glass-card p {
+    max-width: 560px;
+
+    margin: 0 auto;
+
+    color: #a1a1aa;
+
+    font-size: 1.05rem;
+
+    line-height: 1.7;
+}
+
+
+/* ==============================
+   BUTTONS
+   ============================== */
+
+.buttons {
+    margin-top: 38px;
+
+    display: flex;
+    justify-content: center;
+
+    gap: 14px;
+}
+
+.button {
+    padding: 13px 24px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Bottone principale */
+
+.button.primary {
+    color: #ffffff;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #8b5cf6
+    );
+
+    box-shadow:
+        0 8px 25px rgba(124, 58, 237, 0.25);
+}
+
+.button.primary:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(124, 58, 237, 0.35);
+}
+
+
+/* Bottone secondario */
+
+.button.secondary {
+    color: #e4e4e7;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.button.secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+
+    border-color: rgba(255, 255, 255, 0.18);
+
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   FOOTER
+   ============================== */
+
+footer {
+    width: min(1100px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 20px 0 30px;
+
+    text-align: center;
+
+    color: #52525b;
+
+    font-size: 0.75rem;
+}
+
+
+/* ==============================
+   MOBILE
+   ============================== */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        width: min(100% - 30px, 1100px);
+
+        padding: 22px 0;
+    }
+
+    .navbar nav {
+        gap: 16px;
+    }
+
+    .navbar nav a {
+        font-size: 0.8rem;
+    }
+
+    .hero {
+        padding: 30px 15px;
+    }
+
+    .glass-card {
+        padding: 50px 25px;
+
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: clamp(3rem, 15vw, 4.5rem);
+    }
+
+    .glass-card p {
+        font-size: 0.95rem;
+    }
+
+    .buttons {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .button {
+        width: 100%;
+    }
+}
+
+/* ==============================
+   PAGINA APPUNTI
+   ============================== */
+
+.page {
+    width: min(1000px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 80px 0;
+}
+
+
+/* Header */
+
+.page-header {
+    margin-bottom: 50px;
+}
+
+.page-header h1 {
+    margin-bottom: 20px;
+}
+
+.page-header p {
+    max-width: 600px;
+
+    color: #a1a1aa;
+
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+
+/* Materie */
+
+.subjects {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+/* Card */
+
+.subject-card {
+    display: grid;
+
+    grid-template-columns: 70px 1fr auto;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 25px 30px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+/* Hover */
+
+.subject-card:hover {
+    transform: translateY(-3px);
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border-color: rgba(167, 139, 250, 0.35);
+}
+
+
+/* Numero */
+
+.subject-number {
+    color: #71717a;
+
+    font-size: 0.75rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.1em;
+}
+
+
+/* Titolo */
+
+.subject-card h2 {
+    margin-bottom: 5px;
+
+    font-size: 1.15rem;
+
+    font-weight: 600;
+}
+
+
+/* Descrizione */
+
+.subject-card p {
+    color: #71717a;
+
+    font-size: 0.85rem;
+
+    line-height: 1.5;
+}
+
+
+/* Freccia */
+
+.arrow {
+    color: #a78bfa;
+
+    font-size: 1.3rem;
+
+    transition:
+        transform 0.2s ease;
+}
+
+.subject-card:hover .arrow {
+    transform: translateX(5px);
+}
+
+
+/* ==============================
+   MOBILE
+   ============================== */
+
+@media (max-width: 600px) {
+
+    .page {
+        width: min(100% - 30px, 1000px);
+
+        padding: 50px 0;
+    }
+
+    .subject-card {
+        grid-template-columns: 40px 1fr auto;
+
+        gap: 15px;
+
+        padding: 20px;
+    }
+
+    .subject-card h2 {
+        font-size: 1rem;
+    }
+
+    .subject-card p {
+        font-size: 0.8rem;
+    }
+}
+
