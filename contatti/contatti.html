@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#09090b">
+<title>CONTATTI | Ale Torchia</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* Solo le parti che il tuo style.css non ha: pulsanti <button> e righe contatto */
+  button.button { border: 0; font-family: inherit; cursor: pointer; }
+  button.button.secondary { border: 1px solid rgba(255, 255, 255, 0.10); }
+  .status { min-height: 1.2em; margin-top: 14px; color: #71717a; font-size: 0.8rem; }
+
+  .contacts { margin-top: 30px; text-align: left; }
+  .contacts .subject-card { grid-template-columns: 44px 1fr auto; }
+  .contacts .subject-card svg {
+    box-sizing: border-box;
+    width: 42px;
+    height: 42px;
+    padding: 10px;
+    border: 1px solid currentColor;
+    border-radius: 13px;
+    transition: transform 0.2s ease;
+  }
+  .contacts .subject-card:nth-child(1) svg { color: #25d366; background: rgba(37, 211, 102, 0.12); }
+  .contacts .subject-card:nth-child(2) svg {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.22);
+    background: linear-gradient(135deg, #833ab4, #fd1d1d 55%, #fcb045);
+  }
+  .contacts .subject-card:nth-child(3) svg { color: #38bdf8; background: rgba(56, 189, 248, 0.12); }
+  .contacts .subject-card:nth-child(4) svg { color: #fbbf24; background: rgba(251, 191, 36, 0.12); }
+  .contacts .subject-card:nth-child(5) svg { color: #2dd4bf; background: rgba(45, 212, 191, 0.12); }
+  .contacts .subject-card:hover svg { transform: scale(1.08) rotate(-3deg); }
+  .contacts .subject-card p { margin: 0; max-width: none; font-size: 0.85rem; line-height: 1.5; color: #71717a; overflow-wrap: anywhere; }
+  @media (max-width: 600px) {
+    .contacts .subject-card { grid-template-columns: 42px 1fr auto; }
+    .glass-card { padding: 45px 20px; }
+  }
+  a:focus-visible, button:focus-visible { outline: 2px solid #a78bfa; outline-offset: 3px; }
+</style>
+</head>
+<body>
+<div class="background-glow"></div>
+
+<header class="navbar">
+  <a class="logo" href="../">ALE TORCHIA</a>
+</header>
+
+<main class="hero">
+  <div class="glass-card">
+    <span class="eyebrow">HAI SCANSIONATO</span>
+
+
+    <div class="buttons">
+      <button class="button primary" id="saveVcf" type="button">Salva nei contatti</button>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+
+    <div class="subjects contacts">
+      <a class="subject-card" href="https://wa.me/393921492843" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.5L3 21z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .7a3.5 3.5 0 0 1-1.7-1.7l.7-1-1-2L9 9.5z"/></svg>
+        <div><h2>WhatsApp</h2><p>Scrivimi in chat</p></div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="subject-card" href="https://instagram.com/alessandro.torchia8" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>
+        <div><h2>Instagram</h2><p>@alessandro.torchia8</p></div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="subject-card" href="mailto:alessandrotorchia@proton.me">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 8 8 6 8-6"/></svg>
+        <div><h2>Email</h2><p>alessandrotorchia@proton.me</p></div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="subject-card" href="tel:+393921492843">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/></svg>
+        <div><h2>Chiama</h2><p>392 149 2843</p></div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="subject-card" href="https://aletorchia.github.io" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+        <div><h2>Sito</h2><p>aletorchia.github.io</p></div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>© 2026 Ale Torchia</footer>
+
+<script>
+  var C = {
+    first: "Alessandro",
+    last: "Torchia",
+    phone: "+393921492843",
+    email: "alessandrotorchia@proton.me",
+    instagram: "https://instagram.com/alessandro.torchia8"
+  };
+  var statusEl = document.getElementById("status");
+
+  function download(filename, mime, text) {
+    var blob = new Blob([text], { type: mime });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+  }
+
+  document.getElementById("saveVcf").addEventListener("click", function () {
+    var vcf = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      "N:" + C.last + ";" + C.first + ";;;",
+      "FN:" + C.first + " " + C.last,
+      "TEL;TYPE=CELL:" + C.phone,
+      "EMAIL;TYPE=INTERNET:" + C.email,
+      "URL:" + C.instagram,
+      "END:VCARD"
+    ].join("\r\n");
+    download("Alessandro-Torchia.vcf", "text/vcard;charset=utf-8", vcf);
+    statusEl.textContent = "Apri il file scaricato per aggiungere il contatto.";
+  });
+
+  document.getElementById("saveCsv").addEventListener("click", function () {
+    var csv = [
+      "First Name,Last Name,Phone 1 - Value,E-mail 1 - Value,Website 1 - Value",
+      [C.first, C.last, C.phone, C.email, C.instagram].join(",")
+    ].join("\r\n");
+    download("Alessandro-Torchia.csv", "text/csv;charset=utf-8", "\uFEFF" + csv);
+    statusEl.textContent = "CSV scaricato.";
+  });
+</script>
+</body>
+</html>
